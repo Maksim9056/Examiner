@@ -13,11 +13,13 @@ namespace ExamWorkerService
         {
             var cancellationTokenSource = new CancellationTokenSource();
 
+            var serviceName = args.Length > 0 ? args[0] : "Examiner2"; // Задаем наименование службы
+
             var host = CreateHostBuilder(args).Build();
 
             await host.StartAsync(cancellationTokenSource.Token);
 
-            Console.WriteLine("Press any key to stop the service...");
+            Console.WriteLine($"Service '{serviceName}' started. Press any key to stop the service...");
             Console.ReadKey();
 
             cancellationTokenSource.Cancel();
@@ -34,23 +36,4 @@ namespace ExamWorkerService
                     services.AddHostedService<Worker>();
                 });
     }
-
-    //public class Worker : BackgroundService
-    //{
-    //    private readonly ILogger<Worker> _logger;
-
-    //    public Worker(ILogger<Worker> logger)
-    //    {
-    //        _logger = logger;
-    //    }
-
-    //    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-    //    {
-    //        while (!stoppingToken.IsCancellationRequested)
-    //        {
-    //            _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-    //            await Task.Delay(1000, stoppingToken);
-    //        }
-    //    }
-    //}
 }
