@@ -129,7 +129,9 @@ namespace ExamServerData
 
       public  List<Statictics> StatickUsers { get; set; }
 
-    public  string path = Environment.CurrentDirectory.ToString();
+      //public  string path = Environment.CurrentDirectory.ToString();
+      public  string path = AppDomain.CurrentDomain.BaseDirectory;
+
 
         /// <summary>
         /// https://metanit.com/sharp/efcore/1.2.php
@@ -2187,7 +2189,9 @@ namespace ExamServerData
 
         public void Catalog_Add()
         {
-            string path = Environment.CurrentDirectory.ToString();
+            //string path = Environment.CurrentDirectory.ToString();
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+
 
             if (!Directory.Exists(path + "\\Postgres"))
             {

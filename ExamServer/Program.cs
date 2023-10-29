@@ -263,13 +263,14 @@ namespace ExamServer
 
             try
             {
-                string path = Environment.CurrentDirectory.ToString();
+                //string path = Environment.CurrentDirectory.ToString();
+                string path = AppDomain.CurrentDomain.BaseDirectory; 
                 FileInfo fileInfo = new FileInfo(path + "\\Server.json");
 
                 //Если есть то загружаем настройки сервера если нет то создают
                 if (fileInfo.Exists)
                 {
-                    using (FileStream fs = new FileStream("Server.json", FileMode.Open))
+                    using (FileStream fs = new FileStream(path + "\\Server.json", FileMode.Open))
                     {
                         Seting _aFile = JsonSerializer.Deserialize<Seting>(fs);
                         Ip_Adress = _aFile.Ip_adress;
@@ -280,14 +281,14 @@ namespace ExamServer
                 }
                 else
                 {
-                    using (FileStream fileStream = new FileStream("Server.json", FileMode.OpenOrCreate))
+                    using (FileStream fileStream = new FileStream(path + "\\Server.json", FileMode.OpenOrCreate))
                     {
                         Seting connect_Server_ = new Seting(IPAddress.Loopback.ToString(), 9595, 2);
                         JsonSerializer.Serialize<Seting>(fileStream, connect_Server_);
 
                     }
 
-                    using (FileStream fileStream = new FileStream("Server.json", FileMode.OpenOrCreate))
+                    using (FileStream fileStream = new FileStream(path + "\\Server.json", FileMode.OpenOrCreate))
                     {
                         Seting aFile = JsonSerializer.Deserialize<Seting>(fileStream);
 
