@@ -21,10 +21,10 @@ namespace ExamWorkerService
                 await Task.Delay(1000, stoppingToken);
                 _logger.LogWarning("{Joke}", "Пример");
 
-                stoppingToken.ThrowIfCancellationRequested();
+                //stoppingToken.ThrowIfCancellationRequested();
 
                 ExamServer.Program program = new ExamServer.Program();
-                await program.Main();
+                program.Main();
 
                 }
             }

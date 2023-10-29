@@ -40,7 +40,7 @@ namespace ExamWorkerService
                 {
                     services.Configure<HostOptions>(options =>
                     {
-                        options.ShutdownTimeout = TimeSpan.FromSeconds(1); // Установите значение таймаута в секундах
+                        options.ShutdownTimeout = TimeSpan.FromSeconds(10); // Установите значение таймаута в секундах
                     });
                 });
     }
