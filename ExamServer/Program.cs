@@ -36,7 +36,7 @@ namespace ExamServer
 
         Logging logging = new Logging();
 
-        public async void Main()
+        public void Main()
         {
             try
             {

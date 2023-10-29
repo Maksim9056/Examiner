@@ -11,6 +11,12 @@ namespace ExamWorkerService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            ExamServer.Program program = new ExamServer.Program();
+
+            Thread t1 = new Thread(new ThreadStart(program.Main));
+            t1.IsBackground = true;
+            t1.Start();
+
             while (!stoppingToken.IsCancellationRequested)
             {
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
