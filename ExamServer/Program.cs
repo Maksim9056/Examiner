@@ -9,6 +9,7 @@ using System.Text.Json;
 //using Npgsql.EntityFrameworkCore.PostgreSQL;
 using System.ServiceProcess;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Diagnostics.Metrics;
 
 namespace ExamServer
 {
@@ -35,9 +36,8 @@ namespace ExamServer
 
         Logging logging = new Logging();
 
-        public void Main()
+        public async void Main()
         {
-
             try
             {
                 GlobalClass globalClass = new GlobalClass();
@@ -67,6 +67,7 @@ namespace ExamServer
 
                 server.Start();
                 Console.WriteLine("\nСервер запушен");
+
                 while (true)
                 {
                     Console.WriteLine("\nОжидание соединения...");
@@ -77,6 +78,7 @@ namespace ExamServer
                     Console.Write("\nСоединие№" + counter.ToString() + "!");
 
                 }
+
             }
             catch (SocketException e)
             {
@@ -86,6 +88,17 @@ namespace ExamServer
             Console.Read();
 
         }
+
+        //public void TheadClient(TcpListener server,int counter)
+        //{
+        //    Console.WriteLine("\nОжидание соединения...");
+        //    //  ThreadPool.QueueUserWorkItem(ClientProcessing, client);
+        //    ThreadPool.QueueUserWorkItem(ClientProcessing, server.AcceptTcpClient());
+        //    counter++;
+
+        //    Console.Write("\nСоединие№" + counter.ToString() + "!");
+
+        //}
 
 
 

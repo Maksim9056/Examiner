@@ -1,47 +1,54 @@
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
-using System;
+using ExamWorkerService;   // пространство имен класса Worker
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace ExamWorkerService
+IHost host = Host.CreateDefaultBuilder(args)
+    .ConfigureServices(services =>
 {
-    public class Program
+services.AddHostedService<FileWatcherService2>();
+})
+    .Build();
+
+host.Run();
+
+public class FileWatcherService2 : IHostedService
+{
+    FileSystemWatcher? watcher;
+    //string filePath = "folderEvents.txt";
+    public async Task StartAsync(CancellationToken cancellationToken)
     {
-        public static async Task Main(string[] args)
-        {
-            using var cancellationTokenSource = new CancellationTokenSource();
+        //watcher = new FileSystemWatcher("C:\\Temp");
 
-            var serviceName = args.Length > 0 ? args[0] : "Examiner"; // Задаем наименование службы
+        //// записываем изменения
+        //watcher.Changed += async (o, e) => await File.AppendAllTextAsync(filePath, $"{DateTime.Now} Changed: {e.FullPath}\n");
+        //// записываем данные о создании файлов и папок
+        //watcher.Created += async (o, e) => await File.AppendAllTextAsync(filePath, $"{DateTime.Now} Created: {e.FullPath}\n");
+        //// записываем данные об удалении файлов и папок
+        //watcher.Deleted += async (o, e) => await File.AppendAllTextAsync(filePath, $"{DateTime.Now} Deleted: {e.FullPath}\n");
+        //// записываем данные о переименовании
+        //watcher.Renamed += async (o, e) => await File.AppendAllTextAsync(filePath, $"{DateTime.Now} Renamed: {e.OldFullPath} to {e.FullPath}\n");
+        //// записываем данные об ошибках
+        //watcher.Error += async (o, e) => await File.AppendAllTextAsync(filePath, $"{DateTime.Now} Error: {e.GetException().Message}\n");
 
-            var host = CreateHostBuilder(args).Build();
+        //watcher.IncludeSubdirectories = true; // отслеживаем изменения в подкаталогах
+        //watcher.EnableRaisingEvents = true;    // включаем события
 
-            await host.StartAsync(cancellationTokenSource.Token);
 
-            Console.WriteLine($"Service '{serviceName}' started. Press any key to stop the service...");
-            Console.ReadKey();
+        //MyThread mt = new MyThread();
+        ExamServer.Program program = new ExamServer.Program();
 
-            cancellationTokenSource.Cancel();
+        Thread t1 = new Thread(new ThreadStart(program.Main));
+        t1.IsBackground = true;
+        t1.Start();
 
-            await host.StopAsync(TimeSpan.FromSeconds(10)); // Установите значение таймаута в секундах
+        //ExamServer.Program program = new ExamServer.Program();
+        //program.Main();
 
-            cancellationTokenSource.Dispose();
-        }
+        await Task.CompletedTask;
+    }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                //.UseSystemd() // Если вы работаете в Linux
-                .ConfigureServices((hostContext, services) =>
-                {
-                    services.AddHostedService<Worker>();
-                })
-                .ConfigureServices((hostContext, services) =>
-                {
-                    services.Configure<HostOptions>(options =>
-                    {
-                        options.ShutdownTimeout = TimeSpan.FromSeconds(10); // Установите значение таймаута в секундах
-                    });
-                });
+    public async Task StopAsync(CancellationToken cancellationToken)
+    {
+        //watcher?.Dispose();
+        await Task.CompletedTask;
     }
 }
