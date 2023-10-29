@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            ExamServer.Program program = new ExamServer.Program();
+            program.Main(args);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Xml.Linq;
 using ExamModels;
-using Npgsql;
+//using Npgsql;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static ExamModels.CheckMail_and_Password;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
@@ -145,7 +145,7 @@ namespace ExamServerData
             public DbSet<ExamsTest> ExamsTest { get; set; } = null!;
             public DbSet<UserExams> UserExams { get; set; } = null!;
             public DbSet<Answer> Answer { get; set; } = null!;
-            public DbSet<Class_interaction_Users.Options> Options { get; set; } = null!;
+            public DbSet<Options> Options { get; set; } = null!;
             public DbSet<Test> Test { get; set; } = null!;
             public DbSet<Exam> Exam { get; set; } = null!;
             public DbSet<Exams> Exams { get; set; } = null!;
@@ -171,7 +171,7 @@ namespace ExamServerData
                         optionsBuilder.UseSqlite("Data Source=helloapp.db");
                         break;
                     case 3: // SQL Server
-                        optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=helloappdb;Trusted_Connection=True;");
+                        //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=helloappdb;Trusted_Connection=True;");
                         break;
                 }
             }
