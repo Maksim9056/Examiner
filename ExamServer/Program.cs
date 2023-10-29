@@ -283,7 +283,7 @@ namespace ExamServer
                 {
                     using (FileStream fileStream = new FileStream(path + "\\Server.json", FileMode.OpenOrCreate))
                     {
-                        Seting connect_Server_ = new Seting(IPAddress.Loopback.ToString(), 9595, 2);
+                        Seting connect_Server_ = new Seting(IPAddress.Loopback.ToString(), 9595, 1);
                         JsonSerializer.Serialize<Seting>(fileStream, connect_Server_);
 
                     }
