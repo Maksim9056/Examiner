@@ -35,29 +35,29 @@ namespace ExamServer
 
         Logging logging = new Logging();
 
-         public async Task Main()
-         {
+        public async Task Main()
+        {
 
             try
             {
-                   GlobalClass globalClass = new GlobalClass();
-                    SaveOpen();
+                GlobalClass globalClass = new GlobalClass();
+                SaveOpen();
 
-                    globalClass.TestSQL();
+                globalClass.TestSQL();
 
-                    int MaxThreadsCount = Environment.ProcessorCount;
-                    ThreadPool.SetMaxThreads(MaxThreadsCount, MaxThreadsCount);
+                int MaxThreadsCount = Environment.ProcessorCount;
+                ThreadPool.SetMaxThreads(MaxThreadsCount, MaxThreadsCount);
 
-                    IPAddress localAddr = IPAddress.Parse(Ip_Adress);
-                    Console.WriteLine();
-                    Console.WriteLine("Конфигурация многопоточного сервера:" + MaxThreadsCount.ToString());
-                    Console.WriteLine("Пользователь:" + Environment.UserName.ToString());
-                    Console.WriteLine("IP-адрес :" + Ip_Adress.ToString());
-                    Console.WriteLine("Путь:" + Environment.CurrentDirectory.ToString());
+                IPAddress localAddr = IPAddress.Parse(Ip_Adress);
+                Console.WriteLine();
+                Console.WriteLine("Конфигурация многопоточного сервера:" + MaxThreadsCount.ToString());
+                Console.WriteLine("Пользователь:" + Environment.UserName.ToString());
+                Console.WriteLine("IP-адрес :" + Ip_Adress.ToString());
+                Console.WriteLine("Путь:" + Environment.CurrentDirectory.ToString());
 
-                    int counter = 0;
-                    RegisterCommands();
-                    globalClass.Catalog_Add();
+                int counter = 0;
+                RegisterCommands();
+                globalClass.Catalog_Add();
 
                 //globalClass.DBackup();
 
@@ -66,17 +66,17 @@ namespace ExamServer
                 server = new TcpListener(localAddr, port);
 
                 server.Start();
-                    Console.WriteLine("\nСервер запушен");
-                    while (true)
-                    {
-                        Console.WriteLine("\nОжидание соединения...");
-                  //  ThreadPool.QueueUserWorkItem(ClientProcessing, client);
+                Console.WriteLine("\nСервер запушен");
+                while (true)
+                {
+                    Console.WriteLine("\nОжидание соединения...");
+                    //  ThreadPool.QueueUserWorkItem(ClientProcessing, client);
                     ThreadPool.QueueUserWorkItem(ClientProcessing, server.AcceptTcpClient());
-                        counter++;
-                   
-                        Console.Write("\nСоединие№" + counter.ToString() + "!");
+                    counter++;
 
-                    }
+                    Console.Write("\nСоединие№" + counter.ToString() + "!");
+
+                }
             }
             catch (SocketException e)
             {
