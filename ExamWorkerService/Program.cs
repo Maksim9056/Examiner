@@ -13,7 +13,7 @@ namespace ExamWorkerService
         {
             using var cancellationTokenSource = new CancellationTokenSource();
 
-            var serviceName = args.Length > 0 ? args[0] : "Examiner2"; // Задаем наименование службы
+            var serviceName = args.Length > 0 ? args[0] : "Examiner"; // Задаем наименование службы
 
             var host = CreateHostBuilder(args).Build();
 
