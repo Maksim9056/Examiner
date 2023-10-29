@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             ExamServer.Program program = new ExamServer.Program();
-            program.Main(args);
+            program.Main();
         }
     }
 }

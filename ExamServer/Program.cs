@@ -35,7 +35,7 @@ namespace ExamServer
 
         Logging logging = new Logging();
 
-         public void Main(string[] args)
+         public void Main()
          {
 
             try
