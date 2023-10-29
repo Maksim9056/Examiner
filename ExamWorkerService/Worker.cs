@@ -1,27 +1,41 @@
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace ExamWorkerService
 {
-    public class Worker : BackgroundService
+    public class Worker : IHostedService
     {
         private readonly ILogger<Worker> _logger;
+        private readonly CancellationTokenSource _cancellationTokenSource;
 
         public Worker(ILogger<Worker> logger)
         {
             _logger = logger;
+            _cancellationTokenSource = new CancellationTokenSource();
         }
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        public Task StartAsync(CancellationToken cancellationToken)
         {
-            ExamServer.Program program = new ExamServer.Program();
+            var program = new ExamServer.Program();
 
-            Thread t1 = new Thread(new ThreadStart(program.Main));
-            t1.IsBackground = true;
-            t1.Start();
-
-            while (!stoppingToken.IsCancellationRequested)
+            Task.Run(() =>
             {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(1000, stoppingToken);
-            }
+                program.Main();
+                _cancellationTokenSource.Cancel();
+            }, _cancellationTokenSource.Token);
+
+            return Task.CompletedTask;
+        }
+
+        public Task StopAsync(CancellationToken cancellationToken)
+        {
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
+
+            return Task.CompletedTask;
         }
     }
 }
