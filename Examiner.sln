@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamModels", "ExamModels\Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamConsole", "ExamConsole\ExamConsole.csproj", "{6D487D8B-E0EE-4E39-8E45-DF2F37B42792}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamServerData", "ExamServerData\ExamServerData.csproj", "{5512020B-43FE-4AD4-A21C-A09DC41092F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamServer", "ExamServer\ExamServer.csproj", "{FD25E660-AB8F-4E97-91BB-58ACBE00D051}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,14 @@ Global
 		{6D487D8B-E0EE-4E39-8E45-DF2F37B42792}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D487D8B-E0EE-4E39-8E45-DF2F37B42792}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D487D8B-E0EE-4E39-8E45-DF2F37B42792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5512020B-43FE-4AD4-A21C-A09DC41092F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5512020B-43FE-4AD4-A21C-A09DC41092F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5512020B-43FE-4AD4-A21C-A09DC41092F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5512020B-43FE-4AD4-A21C-A09DC41092F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD25E660-AB8F-4E97-91BB-58ACBE00D051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD25E660-AB8F-4E97-91BB-58ACBE00D051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD25E660-AB8F-4E97-91BB-58ACBE00D051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD25E660-AB8F-4E97-91BB-58ACBE00D051}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
