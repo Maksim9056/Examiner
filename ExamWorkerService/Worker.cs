@@ -16,9 +16,12 @@ namespace ExamWorkerService
 
                 while (!stoppingToken.IsCancellationRequested)
             {
+
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
+                await Task.Delay(1000, stoppingToken);
                 _logger.LogWarning("{Joke}", "Пример");
+
+                stoppingToken.ThrowIfCancellationRequested();
 
                 ExamServer.Program program = new ExamServer.Program();
                 await program.Main();
