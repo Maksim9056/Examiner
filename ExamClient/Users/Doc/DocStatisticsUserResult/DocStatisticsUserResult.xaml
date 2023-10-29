@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             x:Class="Client.Users.Doc.DocStatisticsUserResult.DocStatisticsUserResult"  
+            >
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="1"  >
+                <Grid x:Name="DataTable" BackgroundColor="LightGray" Padding="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </ScrollView>
+            
+            
+            
+            <Button Grid.Row="3"
+                    Text="Назад"
+                    Clicked="GoBack"
+                    VerticalOptions="End"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="50"
+                    Padding="10"/>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

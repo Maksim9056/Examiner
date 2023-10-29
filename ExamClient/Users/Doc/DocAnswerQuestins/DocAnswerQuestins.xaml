@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Client.Users.Doc.DocAnswerQuestins.DocAnswerQuestins" 
+             Title="Ответы">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="Users" Text="Мой Label" Grid.Row="0"  
+                   FontSize="16"    
+                   FontFamily="Arial"    
+                   FontAttributes="Bold"    
+                   TextColor="Green"    
+            />
+
+            <Label Text="Ответы" Grid.Row="1"  
+                   FontSize="20"    
+                   FontFamily="Arial"    
+                   FontAttributes="Bold"    
+                   TextColor="Purple"    
+                   HorizontalTextAlignment="Center"    
+                   VerticalTextAlignment="Center" />
+
+            <ListView x:Name="QuestionList"     
+                      Grid.Row="2" 
+                      RowHeight="30" 
+                      ItemSelected="OnItemSelected"    
+                      ItemsSource="{Binding QuestionAnswers}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding QuestionAnswer.Answer.AnswerOptions}" Grid.Column="0"    
+                                       FontSize="16"    
+                                       FontFamily="Arial"    
+                                       FontAttributes="Bold"    
+                                       TextColor="Red"    
+                                       HorizontalTextAlignment="Center"    
+                                       VerticalTextAlignment="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Назад"      
+                    Clicked="GoBack" Grid.Row="3" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
