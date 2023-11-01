@@ -7,7 +7,7 @@
 * **ExamModels** - проект библиотеки (dll), содержащий классы и модель проекта по патерну MVC (model-view-controller)
 * **ExamServer** - 
 * **ExamServerData** - проект библиотеки (dll), содержит классы работы с СУБД по технологии Entity Framework Core, работающую с СУБД: SQLite, PostGreSQL (основная), MS SQL.
-* **ExamWorkerService** - проект для запуска серверной части (backend) в качетсве службы windows (также демона на linux - в будущем) 
+* **ExamWorkerService** - проект для запуска серверной части (backend) в качетсве службы windows (также демона на linux - в будущем)  <https://metanit.com/sharp/dotnet/3.1.php?ysclid=log4hvjeb8711038467>
 
 
 ### Автор: Бобрецов Максим Сергеевич
