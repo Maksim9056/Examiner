@@ -29,7 +29,19 @@
 
 ## Клиент имеет 3 (три) стартовые страницы:
 1. Интерфейс ввода логина и пароля
+<br>
+<img src='https://github.com/Maksim9056/Examiner/assets/108364585/94c4e241-85c3-473d-9345-a9a3f9eb7e9d' width="450" />
+</br>
+
 2. Интерфейс задания настроек подключения (IP, Port)
+<br>
+<img src='https://github.com/Maksim9056/Examiner/assets/108364585/238543a2-353e-4e86-8406-6ee909c305e6' width="450" />
+</br>
+
 3. Интерфейс регистрации нового пользователя
+<br>
+<img src='https://github.com/Maksim9056/Examiner/assets/108364585/9718dbb2-6a14-4712-9520-95d8b04ddbb5' width="450" />
+</br>
+
 
 ### Автор: Бобрецов Максим Сергеевич
