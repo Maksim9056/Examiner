@@ -6,7 +6,7 @@
 * **ExamConsole** - проект для запуска из консоли серверной компоненты, содержит вызов процедуры старта из проекта ExamServer.program.Main()
 * **ExamModels** - проект библиотеки (dll), содержащий классы и модель проекта по патерну MVC (model-view-controller)
 * **ExamServer** - 
-* **ExamServerData** - 
+* **ExamServerData** - проект библиотеки (dll), содержит классы работы с СУБД по технологии Entity Framework Core, работающую с СУБД: SQLite, PostGreSQL, MS SQL.
 * **ExamWorkerService** - 
 
 
