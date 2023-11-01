@@ -7,13 +7,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamClient", "ExamClient\Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamModels", "ExamModels\ExamModels.csproj", "{618DB64D-6A9F-48D4-8720-5BAD84B32C73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamConsole", "ExamConsole\ExamConsole.csproj", "{6D487D8B-E0EE-4E39-8E45-DF2F37B42792}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamConsole", "ExamConsole\ExamConsole.csproj", "{6D487D8B-E0EE-4E39-8E45-DF2F37B42792}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamServerData", "ExamServerData\ExamServerData.csproj", "{5512020B-43FE-4AD4-A21C-A09DC41092F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamServerData", "ExamServerData\ExamServerData.csproj", "{5512020B-43FE-4AD4-A21C-A09DC41092F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamServer", "ExamServer\ExamServer.csproj", "{FD25E660-AB8F-4E97-91BB-58ACBE00D051}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamServer", "ExamServer\ExamServer.csproj", "{FD25E660-AB8F-4E97-91BB-58ACBE00D051}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamWorkerService", "ExamWorkerService\ExamWorkerService.csproj", "{F8DF857D-70E3-42D1-8504-1850ECFAA849}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamWorkerService", "ExamWorkerService\ExamWorkerService.csproj", "{F8DF857D-70E3-42D1-8504-1850ECFAA849}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{5EFDC33A-D47D-40FA-BAC9-7148610FD286}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
