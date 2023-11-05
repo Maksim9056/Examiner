@@ -1,17 +1,47 @@
-using ExamWorkerService;   // пространство имен класса Worker
-using System.Threading;
 
 
-IHost host = Host.CreateDefaultBuilder(args)
-    .UseWindowsService()
-    .ConfigureServices((hostContext, services) =>
+namespace ExamWorkerService
+{
+    public class Program
     {
-        services.AddHostedService<Worker>();
-    })
-    .Build();
+        public static void Main(string[] args)
+        {
+            var isWindowsService = !(args.Length > 0 && args[0] == "--console");
+            var hostBuilder = CreateHostBuilder(args);
+
+            if (isWindowsService)
+                hostBuilder.UseWindowsService();
+
+            var host = hostBuilder.Build();
+
+            if (isWindowsService)
+                host.Run();
+            else
+                host.Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(loggerFactory => loggerFactory.AddEventLog())
+                .ConfigureServices((hostContext, services) =>
+                {
+                    services.AddHostedService<Worker>();
+                });
+    }
+}
 
 
-host.Run();
+//IHost host = Host.CreateDefaultBuilder(args)
+//    .UseWindowsService()
+//    .ConfigureLogging(loggerFactory => loggerFactory.AddEventLog())
+//    .ConfigureServices((hostContext, services) =>
+//    {
+//        services.AddHostedService<Worker>();
+//    })
+//    .Build();
+
+
+//host.Run();
 
 //public class FileWatcherService : BackgroundService
 //{
@@ -59,5 +89,38 @@ host.Run();
 //                await host.RunAsync();
 //            }
 //        }
+//    }
+//}
+
+//using Microsoft.Extensions.DependencyInjection;
+//using Microsoft.Extensions.Hosting;
+//using Microsoft.Extensions.Logging;
+
+//namespace YourNamespace
+//{
+//    public class Program
+//    {
+//        public static void Main(string[] args)
+//        {
+//            var isWindowsService = !(args.Length > 0 && args[0] == "--console");
+//            var hostBuilder = CreateHostBuilder(args);
+
+//            if (isWindowsService)
+//                hostBuilder.UseWindowsService();
+
+//            var host = hostBuilder.Build();
+
+//            if (isWindowsService)
+//                host.RunAsService();
+//            else
+//                host.Run();
+//        }
+
+//        public static IHostBuilder CreateHostBuilder(string[] args) =>
+//            Host.CreateDefaultBuilder(args)
+//                .ConfigureServices((hostContext, services) =>
+//                {
+//                    services.AddHostedService<Worker>();
+//                });
 //    }
 //}
