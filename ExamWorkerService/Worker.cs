@@ -1,3 +1,4 @@
+using ExamWorkerService;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
@@ -38,4 +39,6 @@ namespace ExamWorkerService
             return Task.CompletedTask;
         }
     }
+
 }
+
