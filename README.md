@@ -44,7 +44,7 @@
 </br>
 
 ## Сервер запускается в 2 режимах:
-1. В режиме консоли запуском файла ExamWorkerServis 
+1. В режиме консоли запуском файла ExamWorkerService.exe 
 2. В режиме службы надо зарегистрировать командой   
  ```
  sc.exe create "Examiner" binpath="C:\Examiner\ExamWorkerService.exe"
