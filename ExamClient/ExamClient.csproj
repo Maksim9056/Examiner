@@ -42,6 +42,7 @@
 	  <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
 	  <PackageCertificateThumbprint>D2B703AC6F3B9B0DA13CB4EBDB32ED8BAFDB8BF0</PackageCertificateThumbprint>
 	  <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+	  <NeutralLanguage>ru-RU</NeutralLanguage>
 	</PropertyGroup>
 	
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
@@ -101,6 +102,8 @@
 
 	<ItemGroup>
 	  <Compile Remove="NewPage1.xaml.cs" />
+	  <Compile Remove="Resources\Resx\AppResources.en-US.Designer.cs" />
+	  <Compile Remove="Resources\Resx\AppResources.ru-RU.Designer.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -186,6 +189,11 @@
 	  </Compile>
 	  <Compile Update="Project\Ref\RefUser\RefUserListPage.xaml.cs">
 	    <DependentUpon>RefUserListPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Resx\AppResources.Designer.cs">
+	    <DependentUpon>AppResources.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
 	  </Compile>
 	  <Compile Update="Users\Main\Users.xaml.cs">
 	    <DependentUpon>Users.xaml</DependentUpon>
@@ -305,6 +313,13 @@
 
 	<ItemGroup>
 	  <Folder Include="Platforms\Android\Resources\drawable\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Resx\AppResources.resx">
+	    <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+	    <Generator>ResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>

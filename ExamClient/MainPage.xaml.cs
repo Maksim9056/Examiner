@@ -19,6 +19,8 @@ using static System.Net.WebRequestMethods;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Sockets;
 using static Client.MainPage;
+using System.Globalization;
+using ExamClient.Resources.Resx;
 
 //using Microsoft.AspNetCore.Components.Navigation;
 
@@ -33,6 +35,10 @@ namespace Client
         {
             try
             {
+                CultureInfo ci = new CultureInfo("ru");
+                AppResources.Culture = ci; // Установите локализацию ресурса
+                CultureInfo.CurrentUICulture = ci;
+                CultureInfo.CurrentCulture = ci;
 
                 InitializeComponent();
                 BindingContext = this;

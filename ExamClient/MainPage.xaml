@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"     
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"     
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
+             xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
              x:Class="Client.MainPage"    
              Title="Вход в учетную запись"   
              Loaded="ContentPage_Loaded"  
@@ -42,7 +43,7 @@
 
                     <StackLayout VerticalOptions="CenterAndExpand" Margin="30, 40">
                         <Button x:Name ="CounterLog"   
-                                Text ="Войти"   
+                                Text ="{x:Static resource:AppResources.Войти}"   
                                 SemanticProperties.Hint ="Counts the number of times you click"   
                                 Clicked ="CounterLog_Clicked"   
                                 VerticalOptions="CenterAndExpand"   
@@ -53,7 +54,7 @@
                                 TextColor="{DynamicResource ButtonTextColor}"/>
 
                         <Button x:Name ="CounterBtn"   
-                                Text ="Регистрация"   
+                                Text ="{x:Static resource:AppResources.Регистрация}"    
                                 SemanticProperties.Hint ="Counts the number of times you click"   
                                 Clicked ="CounterBtn_Clicked_1"   
                                 VerticalOptions="CenterAndExpand"   
