@@ -1,28 +1,62 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Client.Project.Settings"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"    
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+             x:Class="Client.Project.Settings"    
+             xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
              Title="Настройки">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
                 <StackLayout VerticalOptions="CenterAndExpand" Margin="0,0,0,20">
-
                     <Label Text="Адрес:" FontSize="25" FontAttributes="Bold" WidthRequest="280" />
-                    <Entry x:Name="AddressEntry" Placeholder="Введите адрес" WidthRequest="280"
+                    <Entry x:Name="AddressEntry" Placeholder="Введите адрес" WidthRequest="280"    
                            Keyboard="Text" TextChanged="AddressEntry_TextChanged"/>
                 </StackLayout>
 
                 <StackLayout VerticalOptions="CenterAndExpand" Margin="0,0,0,20">
-                    <Label Text="Порт:" FontSize="25" FontAttributes="Bold" WidthRequest="280" />
-                    <Entry x:Name="PortEntry"  Placeholder="Введите порт" Keyboard="Text" 
-                           TextChanged="PortEntry_TextChanged" WidthRequest="280" />
+                    <Label Text="{x:Static resource:AppResources.Порт}" FontSize="25" FontAttributes="Bold" WidthRequest="280" />
+                    <Entry x:Name="PortEntry"  Placeholder="{x:Static resource:AppResources.Введитепорт}" 
+                           Keyboard="Text"     
+                           TextChanged="PortEntry_TextChanged"
+                           WidthRequest="280" 
+                    />
                 </StackLayout>
 
+                <ListView x:Name="SettingList"     
+              Grid.Row="2" 
+              RowHeight="30" 
+              ItemSelected="OnItemSelected"    
+              ItemsSource="{Binding RefUser}" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                   <Label 
+                                    Text="{Binding User}"
+                                    Grid.Column="0"    
+                                    FontSize="16"    
+                                    FontFamily="Arial"    
+                                    FontAttributes="Bold"    
+                                    HorizontalTextAlignment="Center"    
+                                    VerticalTextAlignment="Center" 
+                                   />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
                 <StackLayout  Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="End">
-                    <Button Text="Отмена" FontSize="22" Clicked="CancelButtonClicked" Margin="0,0,0,0" WidthRequest="190"/>
+                    <Button Text="Отмена" FontSize="22" Clicked="CancelButtonClicked" Margin="0,0,0,0" WidthRequest="190" />
 
-                    <Button Text="Сохранить"  Clicked="SaveButtonClicked" Margin="10,0,0,0" FontSize="22" WidthRequest="190" />
+                    <Button Text="{x:Static resource:AppResources.Введитепорт}"  
+                            Clicked="SaveButtonClicked" 
+                            Margin="10,0,0,0"
+                            FontSize="22"
+                            WidthRequest="190" 
+                    />
                 </StackLayout>
             </StackLayout>
         </ScrollView>

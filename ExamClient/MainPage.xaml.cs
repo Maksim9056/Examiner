@@ -35,14 +35,28 @@ namespace Client
         {
             try
             {
+                AddSettings();
+                Ip_adress ip_Adress = new Ip_adress();
+                ip_Adress.CheckOS();
                 CultureInfo ci = new CultureInfo("ru");
+                switch (ip_Adress.language) 
+                { 
+                    case 1:
+                        ci = new CultureInfo("ru");
+                        break; 
+                    case 2:
+                        ci = new CultureInfo("en-US");
+                        break;
+
+                }
                 AppResources.Culture = ci; // Установите локализацию ресурса
                 CultureInfo.CurrentUICulture = ci;
                 CultureInfo.CurrentCulture = ci;
 
+            
+
                 InitializeComponent();
                 BindingContext = this;
-                AddSettings();
             }
             catch
             {

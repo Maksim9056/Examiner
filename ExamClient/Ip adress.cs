@@ -14,9 +14,15 @@ namespace Client
 {
     public class Ip_adress
     {
+
+        public string Ip { get; set; }  
         public static string Ip_adresss { get; set; }
 
         public string Ip_adressss { get; set; }
+
+        public int language { get; set; }
+
+        public int Port { get; set; }   
 
         public void CheckOS()
         {
@@ -85,6 +91,9 @@ namespace Client
 
                     // Вывод данных из объекта setingFromFile
                     Ip_adressss = setingFromFile.Ip_adress;
+                    Ip = setingFromFile.Ip_adress;
+                    Port  = setingFromFile.Port;
+                    language = setingFromFile.TypeSQL;
                     Console.WriteLine($"Ip_adress: {setingFromFile.Ip_adress}");
                     Console.WriteLine($"Port: {setingFromFile.Port}");
                     Console.WriteLine($"TypeSQL: {setingFromFile.TypeSQL}");
@@ -115,7 +124,14 @@ namespace Client
                         using (FileStream fs = new FileStream(appDirectory + "\\Client.json", FileMode.OpenOrCreate))
                         {
                             Seting _aFile = System.Text.Json.JsonSerializer.Deserialize<Seting>(fs);
+
+                            Ip = _aFile.Ip_adress;
+
                             Ip_adressss = _aFile.Ip_adress;
+                            Port = _aFile.Port;
+
+                            language = _aFile.TypeSQL;
+
                         }
                     }
                     else
@@ -131,6 +147,11 @@ namespace Client
                         {
                             Seting aFile = System.Text.Json.JsonSerializer.Deserialize<Seting>(fileStream);
                             Ip_adresss = aFile.Ip_adress;
+                            Ip = aFile.Ip_adress;
+
+                            Port = aFile.Port;
+                            language = aFile.TypeSQL;
+
                             Ip_adressss = Ip_adresss.ToString();
                         }
 
@@ -148,6 +169,63 @@ namespace Client
             catch(Exception)
             {
 
+            }
+        }
+
+        public void Update(string AddressEntrys, int PortEntrys,int settingLanguage,int Int)
+        {
+            if (DeviceInfo.Platform == DevicePlatform.Android)
+            {
+                Console.WriteLine("Операционная система: Android");
+                Seting seting = new Seting(AddressEntrys, PortEntrys, Int);
+                // Преобразование в JSON-строку
+                string json = JsonConvert.SerializeObject(seting, Formatting.Indented);
+                // Создание и запись в JSON-файл
+                string fileName = "Client.json";
+                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), fileName);
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+                File.WriteAllText(path, json);
+                // Чтение JSON-файла
+                string jsonFromFile = File.ReadAllText(path);
+                // Преобразование JSON-строки в объект Seting
+                Seting setingFromFile = JsonConvert.DeserializeObject<Seting>(jsonFromFile);
+                // Вывод данных из объекта setingFromFile
+                Console.WriteLine($"Ip_adress: {setingFromFile.Ip_adress}");
+                Console.WriteLine($"Port: {setingFromFile.Port}");
+                Console.WriteLine($"TypeSQL: {setingFromFile.TypeSQL}");
+            }
+            else if (DeviceInfo.Platform == DevicePlatform.WinUI)
+            {
+                string appDirectory = System.AppContext.BaseDirectory;
+                FileInfo fileInfo = new FileInfo(appDirectory + "\\Client.json");
+                // Если есть то загружаем настройки сервера если нет то создают
+                if (fileInfo.Exists)
+                {
+                    File.Delete(appDirectory + "\\Client.json");
+
+                    using (FileStream fs = new FileStream(appDirectory + "\\Client.json", FileMode.OpenOrCreate))
+                    {
+                        Seting seting = new Seting(AddressEntrys, PortEntrys, settingLanguage);
+                        System.Text.Json.JsonSerializer.Serialize<Seting>(fs, seting);
+                    }
+                }
+                else
+                {
+                    using (FileStream fileStream = new FileStream(appDirectory + "\\Client.json", FileMode.OpenOrCreate))
+                    {
+                        Seting connect_Server_ = new Seting(AddressEntrys, PortEntrys, settingLanguage);
+                        System.Text.Json.JsonSerializer.Serialize<Seting>(fileStream, connect_Server_);
+                    }
+
+                    using (FileStream fileStream = new FileStream(appDirectory + "\\Client.json", FileMode.OpenOrCreate))
+                    {
+                        Seting aFile = System.Text.Json.JsonSerializer.Deserialize<Seting>(fileStream);
+                    }
+
+                }
             }
         }
     }

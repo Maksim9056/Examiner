@@ -61,6 +61,15 @@ namespace ExamClient.Resources.Resx {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Введите порт.
+        /// </summary>
+        internal static string Введитепорт {
+            get {
+                return ResourceManager.GetString("Введитепорт", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Войти.
         /// </summary>
         internal static string Войти {
@@ -70,11 +79,29 @@ namespace ExamClient.Resources.Resx {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Порт.
+        /// </summary>
+        internal static string Порт {
+            get {
+                return ResourceManager.GetString("Порт", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Регистрация.
         /// </summary>
         internal static string Регистрация {
             get {
                 return ResourceManager.GetString("Регистрация", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сохранить.
+        /// </summary>
+        internal static string Сохранить {
+            get {
+                return ResourceManager.GetString("Сохранить", resourceCulture);
             }
         }
         
