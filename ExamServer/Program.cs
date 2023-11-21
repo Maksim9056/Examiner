@@ -204,7 +204,7 @@ namespace ExamServer
             }
         }
 
-        public static  void ClientProcessing(object client_obj)
+        public static async  void ClientProcessing(object client_obj)
         {
             try
             {
@@ -240,13 +240,13 @@ namespace ExamServer
                     string json = responseData.Substring(3, responseData.Length - 3);
                     data_ = json;
                     byte[] msg = Encoding.UTF8.GetBytes(json);
-                    //if (comand == "057")
-                    //{
-                    //    using (StreamReader reader = new StreamReader(stream, Encoding.Default))
-                    //    {
-                    //        responseData = await reader.ReadToEndAsync();
-                    //    }
-                    //}
+                    if (comand == "057")
+                    {
+                        using (StreamReader reader = new StreamReader(stream, Encoding.Default))
+                        {
+                            responseData = await reader.ReadToEndAsync();
+                        }
+                    }
               
                     HandleCommand(comand, msg, globalClass, stream, logging, mail);
                 }

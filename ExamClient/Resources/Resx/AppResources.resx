@@ -151,35 +151,8 @@
   <data name="ВыборРезервнойКопии" xml:space="preserve">
     <value>Выбор резервной копии</value>
   </data>
-  <data name="Добавитьвопрос" xml:space="preserve">
-    <value>Добавить вопрос</value>
-  </data>
-  <data name="Добавитьответ" xml:space="preserve">
-    <value>Добавить ответ</value>
-  </data>
-  <data name="Добавитьтест" xml:space="preserve">
-    <value>Добавить тест</value>
-  </data>
-  <data name="Добавитьэкзамен" xml:space="preserve">
-    <value>Добавить экзамен</value>
-  </data>
-  <data name="ИмяИлиВопрос" xml:space="preserve">
-    <value>Имя/Вопрос:</value>
-  </data>
-  <data name="ИмяИлиОтвет" xml:space="preserve">
-    <value>Имя/Ответ:</value>
-  </data>
-  <data name="ИмяИлиЭкзамена" xml:space="preserve">
-    <value>Имя/Экзамена:</value>
-  </data>
   <data name="ИнтерфейсАдминистратора" xml:space="preserve">
     <value>Интерфейс администратора</value>
-  </data>
-  <data name="Кодвопроса" xml:space="preserve">
-    <value>Код вопроса (Id):</value>
-  </data>
-  <data name="Кодответа" xml:space="preserve">
-    <value>Код ответа (Id):</value>
   </data>
   <data name="КодПочты" xml:space="preserve">
     <value>Код почты</value>
@@ -187,35 +160,11 @@
   <data name="Назад" xml:space="preserve">
     <value>Назад</value>
   </data>
-  <data name="Наименованиеэкзамена" xml:space="preserve">
-    <value>Наименование экзамена:</value>
-  </data>
   <data name="Настройки" xml:space="preserve">
     <value>Настройки</value>
   </data>
-  <data name="Описаниеответа" xml:space="preserve">
-    <value>Описание ответа:</value>
-  </data>
-  <data name="Ответ" xml:space="preserve">
-    <value>Ответ</value>
-  </data>
   <data name="Отмена" xml:space="preserve">
     <value>Отмена</value>
-  </data>
-  <data name="Оценкавопроса" xml:space="preserve">
-    <value>Оценка вопроса:</value>
-  </data>
-  <data name="Переченьвопросов" xml:space="preserve">
-    <value>Перечень вопросов</value>
-  </data>
-  <data name="Переченьответов" xml:space="preserve">
-    <value>Перечень ответов</value>
-  </data>
-  <data name="Переченьтестов" xml:space="preserve">
-    <value>Перечень тестов</value>
-  </data>
-  <data name="Переченьэкзаменов" xml:space="preserve">
-    <value>Перечень экзаменов</value>
   </data>
   <data name="Порт" xml:space="preserve">
     <value>Порт</value>
@@ -230,41 +179,8 @@
     <value>Регистрация</value>
     <comment>Регистрация пользователя</comment>
   </data>
-  <data name="Редактировать" xml:space="preserve">
-    <value>Редактировать</value>
-  </data>
-  <data name="РезервнаяКопия" xml:space="preserve">
-    <value>Резервная копия</value>
-  </data>
-  <data name="Создать" xml:space="preserve">
-    <value>Создать</value>
-  </data>
-  <data name="Создатьвопрос" xml:space="preserve">
-    <value>Создать вопрос</value>
-  </data>
-  <data name="Создатьэкзамен" xml:space="preserve">
-    <value>Создать экзамен</value>
-  </data>
   <data name="Сохранить" xml:space="preserve">
     <value>Сохранить</value>
-  </data>
-  <data name="СправочникВопросов" xml:space="preserve">
-    <value>Справочник вопросов</value>
-  </data>
-  <data name="СправочникОтветов" xml:space="preserve">
-    <value>Справочник ответов</value>
-  </data>
-  <data name="СправочникПользователей" xml:space="preserve">
-    <value>Справочник пользователей</value>
-  </data>
-  <data name="СправочникТестов" xml:space="preserve">
-    <value>Справочник тестов</value>
-  </data>
-  <data name="СправочникЭкзаменов" xml:space="preserve">
-    <value>Справочник экзаменов</value>
-  </data>
-  <data name="Текствопроса" xml:space="preserve">
-    <value>Текст вопроса:</value>
   </data>
   <data name="Тест" xml:space="preserve">
     <value>Тест</value>
