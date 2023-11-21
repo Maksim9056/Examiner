@@ -4,7 +4,7 @@
              x:Class="Client.Project.RefExamsListPage"
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
                              
-             Title="{x:Static resource:AppResources.Справочникэкзаменов}"
+             Title="{x:Static resource:AppResources.СправочникЭкзаменов}"
              Loaded="ContentPage_Loaded">
 
     <ContentPage.Content>

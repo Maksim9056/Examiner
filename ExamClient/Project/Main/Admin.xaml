@@ -70,7 +70,7 @@
 
                 <Button  
                     x:Name="CounterLogExams"        
-                    Text="{x:Static resource:AppResources.Справочникэкзаменов}"  
+                    Text="{x:Static resource:AppResources.СправочникЭкзаменов}"  
                     SemanticProperties.Hint="Counts the number of times you click"  
                     Clicked="CounterLogExamsClicked"  
                     VerticalOptions="Start"  
