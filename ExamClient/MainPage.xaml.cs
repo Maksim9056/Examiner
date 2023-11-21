@@ -35,10 +35,9 @@ namespace Client
         {
             try
             {
-                AddSettings();
                 Ip_adress ip_Adress = new Ip_adress();
                 ip_Adress.CheckOS();
-                CultureInfo ci = new CultureInfo("ru");
+                CultureInfo ci = null;
                 switch (ip_Adress.language) 
                 { 
                     case 1:
@@ -53,8 +52,8 @@ namespace Client
                 CultureInfo.CurrentUICulture = ci;
                 CultureInfo.CurrentCulture = ci;
 
-            
 
+                AddSettings();
                 InitializeComponent();
                 BindingContext = this;
             }

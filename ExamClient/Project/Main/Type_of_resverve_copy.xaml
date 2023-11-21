@@ -2,8 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Client.Project.Main.Type_of_resverve_copy"
-             Title="Выбор резевной копии">
-    
+             Title="{x:Static resource:AppResources.ВыборРезервнойКопии}"  
+             xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+             >
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -31,7 +33,7 @@
                                         TextColor="Red"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center" />
-                                <Button Text="Востановить"
+                                <Button Text="{x:Static resource:AppResources.Востановить}"                
                                         Command="{Binding EditCommand}"
                                         CommandParameter="{Binding .}" Grid.Column="1" />
                                 <!--<Button Text="Удалить"
@@ -43,9 +45,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Создать"
+            <Button Text="{x:Static resource:AppResources.Создать}"
                     Clicked="CreateButtonClicked" Grid.Row="1" />
-            <Button Text="Назад"
+            <Button Text="{x:Static resource:AppResources.Назад}"                        
                     Clicked="GoBack" Grid.Row="2" />
         </Grid>
     </ContentPage.Content>

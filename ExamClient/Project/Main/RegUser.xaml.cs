@@ -591,6 +591,7 @@ public partial class RegUser : ContentPage
 
                 if (photo != null)
                 {
+                    //      Image_Loadeds(sender, e);
                     // save the file into local storage
                     byte[] imageBytes = System.IO.File.ReadAllBytes(photo.FullPath);
 
@@ -606,7 +607,7 @@ public partial class RegUser : ContentPage
 
                     using (MemoryStream memoryStream = new MemoryStream())
                     {
-                        Filles[] json_List_Friends = new Filles[1] ;
+                        Filles[] json_List_Friends = new Filles[1];
                         json_List_Friends[0] = filles;
 
                         JsonSerializer.Serialize<Filles[]>(memoryStream, json_List_Friends);
@@ -659,7 +660,7 @@ public partial class RegUser : ContentPage
                     //using Stream sourceStream = await photo.OpenReadAsync();
                     //await sourceStream.CopyToAsync(localFileStream);
                     //Images.Source = localFileStream.Name;
-                    Images.Source = photo.FullPath; 
+                    Images.Source = photo.FullPath;
                 }
                 else
                 {
@@ -708,11 +709,83 @@ public partial class RegUser : ContentPage
         }
     }
 
+
+    //public async void Image_Loadeds(object sender, EventArgs e)
+    //{
+    //    try
+    //    {
+    //        Ip_adress ip_Adress = new Ip_adress();
+    //        ip_Adress.CheckOS();
+
+    //        if (MediaPicker.Default.IsCaptureSupported)
+    //        {
+    //            FileResult photo = await MediaPicker.Default.CapturePhotoAsync();
+
+    //            if (photo != null)
+    //            {
+    //                // save the file into local storage
+    //                byte[] imageBytes = System.IO.File.ReadAllBytes(photo.FullPath);
+
+    //                var utf8String = Convert.ToBase64String(imageBytes);
+
+    //                imageBytes = Convert.FromBase64String(utf8String);
+
+    //                Filles filles = new Filles(0, imageBytes);
+
+    //                using (MemoryStream memoryStream = new MemoryStream())
+    //                {
+    //                    Filles[] json_List_Friends = new Filles[1];
+    //                    json_List_Friends[0] = filles;
+
+    //                    JsonSerializer.Serialize<Filles[]>(memoryStream, json_List_Friends);
+    //                    memoryStream.Position = 0;
+    //                    using (StreamReader reader = new StreamReader(memoryStream, Encoding.UTF8))
+    //                    {
+    //                        string st = reader.ReadToEnd();
+    //                        using (TcpClient client = new TcpClient(ip_Adress.Ip_adressss, 9595))
+    //                        {
+    //                            client.SendTimeout = 10000;
+    //                            client.SendBufferSize = 100000;
+    //                            using (NetworkStream stream = client.GetStream())
+    //                            {
+    //                                byte[] data = Encoding.UTF8.GetBytes("057" + st);
+    //                                await stream.WriteAsync(data, 0, data.Length);
+
+    //                                //StringBuilder completeMessage = new StringBuilder();
+    //                                //byte[] readingData = new byte[256];
+    //                                //int numberOfBytesRead = 0;
+    //                                //do
+    //                                //{
+    //                                //    numberOfBytesRead = await stream.ReadAsync(readingData, 0, readingData.Length);
+    //                                //    completeMessage.Append(Encoding.UTF8.GetString(readingData, 0, numberOfBytesRead));
+    //                                //}
+    //                                //while (stream.DataAvailable);
+
+    //                                //string responseDat = completeMessage.ToString();
+
+    //                                //Filles exams_Check = JsonSerializer.Deserialize<Filles>(responseDat);
+
+    //                                //// Correct mistake here (Mistake)
+    //                                //Filles = exams_Check;
+
+    //                            }
+    //                        }
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        // Handle exception
+    //        Console.WriteLine(ex.Message);
+
+    //    }
+    //}
+
     private void nameEntry9_TextChanged(object sender, TextChangedEventArgs e)
     {
         CodMail = nameEntry9.Text;
     }
-
-
 }
 

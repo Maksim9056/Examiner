@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Client.Main.RegUser"
-             Title="Регистрация"
+             xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
              BackgroundColor="White"
-             Loaded="ContentPage_Loaded">
+             Loaded="ContentPage_Loaded"
+            Title="{x:Static resource:AppResources.Регистрация}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -15,9 +16,9 @@
             <StackLayout Padding="10" BackgroundColor="White" VerticalOptions="CenterAndExpand">
               
                 <Entry x:Name="nameEntry3"
-                       FontSize="16"
+                       FontSize="16"             
                        TextChanged="nameEntry1_TextChanged_2"
-                       Placeholder="Введите имя"
+                       Placeholder="{x:Static resource:AppResources.ВведитеИмя}"
                        Keyboard="Text"
                        HorizontalOptions="CenterAndExpand"
                        WidthRequest="250"
@@ -26,8 +27,8 @@
 
                 <Entry x:Name="nameEntry"
                        FontSize="16"
-                       TextChanged="nameEntry_TextChanged"
-                       Placeholder="Введите электроную почту"
+                       TextChanged="nameEntry_TextChanged"  
+                       Placeholder="{x:Static resource:AppResources.ВведитеЭлектроннуюПочту}"
                        Keyboard="Email"
                        HorizontalOptions="CenterAndExpand"
                        WidthRequest="250"
@@ -35,8 +36,8 @@
                  />
                 
                    <Entry x:Name="nameEntry9"
-                     FontSize="16"
-                     Placeholder="Код почты"
+                     FontSize="16"                                       
+                     Placeholder="{x:Static resource:AppResources.КодПочты} "
                      TextChanged="nameEntry9_TextChanged"
                       Keyboard="Text"
                       HorizontalOptions="CenterAndExpand"
@@ -47,7 +48,7 @@
                 
                 <Entry x:Name="nameEntry1"
                        FontSize="16"
-                       Placeholder="Введите пароль"
+                       Placeholder="{x:Static resource:AppResources.ВведитеПароль}"  
                        TextChanged="nameEntry1_TextChanged"
                        Keyboard="Text"
                        HorizontalOptions="CenterAndExpand"
@@ -57,7 +58,7 @@
 
                 <Entry x:Name="nameEntry2"
                        FontSize="16"
-                       Placeholder="Введите пароль"
+                       Placeholder="{x:Static resource:AppResources.ВведитеПароль}"
                        TextChanged="nameEntry2_TextChanged"
                        Keyboard="Text"
                        HorizontalOptions="CenterAndExpand"
@@ -69,7 +70,7 @@
 
                 <Image x:Name="Images" Loaded="Image_Loaded" Aspect="AspectFit" />
 
-                <Label x:Name="header" Text="Выберите Роль"
+                <Label x:Name="header" Text="{x:Static resource:AppResources.ВыберитеРоль}"
                        FontSize="16"
                        HorizontalOptions="CenterAndExpand"
                        WidthRequest="250"
@@ -103,8 +104,8 @@
             </StackLayout>
         </ScrollView>
         <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10">
-            <Button Text="Сохранить" Clicked="SaveButtonClick" HorizontalOptions="FillAndExpand"/>
-            <Button Text="Назад" Clicked="GoBack" HorizontalOptions="FillAndExpand"/>
+            <Button Text="{x:Static resource:AppResources.Сохранить}" Clicked="SaveButtonClick" HorizontalOptions="FillAndExpand"/>
+            <Button Text="{x:Static resource:AppResources.Назад}" Clicked="GoBack" HorizontalOptions="FillAndExpand"/>
         </StackLayout>
     </Grid>
 </ContentPage>

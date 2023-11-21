@@ -3,20 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
              x:Class="Client.Project.Settings"    
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
-             Title="Настройки">
+             Title="{x:Static resource:AppResources.Настройки}">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
                 <StackLayout VerticalOptions="CenterAndExpand" Margin="0,0,0,20">
-                    <Label Text="Адрес:" FontSize="25" FontAttributes="Bold" WidthRequest="280" />
-                    <Entry x:Name="AddressEntry" Placeholder="Введите адрес" WidthRequest="280"    
+                    <Label Text="{x:Static resource:AppResources.Адрес}" FontSize="25" FontAttributes="Bold" WidthRequest="280" />
+                    <Entry x:Name="AddressEntry" Placeholder="{x:Static resource:AppResources.Введитеадрес}" WidthRequest="280"    
                            Keyboard="Text" TextChanged="AddressEntry_TextChanged"/>
                 </StackLayout>
 
                 <StackLayout VerticalOptions="CenterAndExpand" Margin="0,0,0,20">
                     <Label Text="{x:Static resource:AppResources.Порт}" FontSize="25" FontAttributes="Bold" WidthRequest="280" />
                     <Entry x:Name="PortEntry"  Placeholder="{x:Static resource:AppResources.Введитепорт}" 
-                           Keyboard="Text"     
+                           Keyboard="Numeric"     
                            TextChanged="PortEntry_TextChanged"
                            WidthRequest="280" 
                     />
@@ -49,9 +49,9 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <StackLayout  Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="End">
-                    <Button Text="Отмена" FontSize="22" Clicked="CancelButtonClicked" Margin="0,0,0,0" WidthRequest="190" />
-
-                    <Button Text="{x:Static resource:AppResources.Введитепорт}"  
+                    <Button Text="{x:Static resource:AppResources.Отмена}" FontSize="22" Clicked="CancelButtonClicked" Margin="0,0,0,0" WidthRequest="190" />
+                    
+                    <Button Text="{x:Static resource:AppResources.Сохранить}"  
                             Clicked="SaveButtonClicked" 
                             Margin="10,0,0,0"
                             FontSize="22"

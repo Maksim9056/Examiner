@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
-             x:Class="Client.Project.RefExamsListPage"  
-             Title="Справочник экзаменов"
+             x:Class="Client.Project.RefExamsListPage"
+             xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+                             
+             Title="{x:Static resource:AppResources.Справочникэкзаменов}"
              Loaded="ContentPage_Loaded">
 
     <ContentPage.Content>
@@ -32,10 +34,10 @@
                                         TextColor="Red"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center" />
-                                <Button Text="Редактировать"  
+                                <Button Text="{x:Static resource:AppResources.Редактировать}"  
                                         Command="{Binding EditCommand}"  
                                         CommandParameter="{Binding .}" Grid.Column="1" />
-                                <Button Text="Удалить"  
+                                <Button Text="{x:Static resource:AppResources.Удалить}"  
                                         Command="{Binding DelCommand}"  
                                         CommandParameter="{Binding .}" Grid.Column="2" 
                                         IsVisible="True" />
@@ -44,9 +46,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Создать"
+            <Button Text="{x:Static resource:AppResources.Создать}"
                     Clicked="CreateButtonClicked" Grid.Row="1" />
-            <Button Text="Назад"  
+            <Button Text="{x:Static resource:AppResources.Назад}"  
                     Clicked="GoBack" Grid.Row="2" />
         </Grid>
     </ContentPage.Content>

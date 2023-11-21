@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"   
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
-             x:Class="Client.Project.RefAnswerListPage"   
-             Title="Справочник ответов"   
-             Loaded="ContentPage_Loaded">
+             x:Class="Client.Project.RefAnswerListPage" 
+             xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+             Title="{x:Static resource:AppResources.СправочникОтветов}"   
+             Loaded="ContentPage_Loaded"
+             >
+    
 
     <ContentPage.Content>
         <Grid>
@@ -26,7 +29,7 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Text="{Binding Answers.AnswerOptions}" Grid.Column="0"   
-                                        FontSize="16"   
+                                        FontSize="16"           
                                         FontFamily="Arial"   
                                         FontAttributes="Bold"   
                                         TextColor="Red"   
@@ -35,10 +38,10 @@
                                 <CheckBox IsChecked="{Binding Answers.CorrectAnswers}" Grid.Column="1"   
                                           HorizontalOptions="Center"   
                                           VerticalOptions="Center" />
-                                <Button Text="Редактировать"   
+                                <Button Text="{x:Static resource:AppResources.Редактировать}"   
                                         Command="{Binding EditCommand}"   
                                         CommandParameter="{Binding .}" Grid.Column="2" />
-                                <Button Text="Удалить"   
+                                <Button Text="{x:Static resource:AppResources.Удалить}"   
                                         Command="{Binding DelCommand}"   
                                         CommandParameter="{Binding .}" Grid.Column="3"   
                                         IsVisible="True" />
@@ -47,9 +50,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Создать"   
+            <Button Text="{x:Static resource:AppResources.Создать}"   
                     Clicked="CreateButtonClicked" Grid.Row="1" />
-            <Button Text="Назад"   
+            <Button Text="{x:Static resource:AppResources.Отмена}"   
                     Clicked="GoBack" Grid.Row="2" />
         </Grid>
     </ContentPage.Content>

@@ -74,7 +74,10 @@ public partial class Settings : ContentPage
         else
         {
         }
-        ((ListView)sender).SelectedItem = null;
+
+           App s = new App();
+        
+       ((ListView)sender).SelectedItem = null;
     }
 
 
@@ -115,33 +118,39 @@ public partial class Settings : ContentPage
             {
                 Console.WriteLine("Операционная система: Android");
                 //Path = FileSystem.AppDataDirectory;
-                Seting seting = new Seting(AddressEntrys, PortEntrys, 1);
-                // Преобразование в JSON-строку
-                string json = JsonConvert.SerializeObject(seting, Formatting.Indented);
+           
 
                 // Создание и запись в JSON-файл
                 string fileName = "Client.json";
                 string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), fileName);
+                int end = 0;
                 if (File.Exists(path))
                 {
+                    ip_Adress.CheckOS();
+                    end = ip_Adress.language;
                     File.Delete(path);
                 }
+
+
+               
+                Seting seting = new Seting(AddressEntrys, PortEntrys, end);
+                // Преобразование в JSON-строку
+                string json = JsonConvert.SerializeObject(seting, Formatting.Indented);
+      
                 File.WriteAllText(path, json);
-
                 // Чтение JSON-файла
-                string jsonFromFile = File.ReadAllText(path);
-
+                //     string jsonFromFile = File.ReadAllText(path);
                 // Преобразование JSON-строки в объект Seting
-                Seting setingFromFile = JsonConvert.DeserializeObject<Seting>(jsonFromFile);
+                // Seting setingFromFile = JsonConvert.DeserializeObject<Seting>(jsonFromFile);
 
                 // Вывод данных из объекта setingFromFile
                 //  Ip_adressss = setingFromFile.Ip_adress;
                 //    AddressEntry.Text = setingFromFile.Ip_adress.ToString();
 
                 //      PortEntry.Text = setingFromFile.Port.ToString();
-                Console.WriteLine($"Ip_adress: {setingFromFile.Ip_adress}");
-                Console.WriteLine($"Port: {setingFromFile.Port}");
-                Console.WriteLine($"TypeSQL: {setingFromFile.TypeSQL}");
+                //   Console.WriteLine($"Ip_adress: {setingFromFile.Ip_adress}");
+                //     Console.WriteLine($"Port: {setingFromFile.Port}");
+                //   Console.WriteLine($"TypeSQL: {setingFromFile.TypeSQL}");
             }
             else if (DeviceInfo.Platform == DevicePlatform.WinUI)
             {
@@ -162,14 +171,14 @@ public partial class Settings : ContentPage
                 string appDirectory = System.AppContext.BaseDirectory;
 
                 FileInfo fileInfo = new FileInfo(appDirectory + "\\Client.json");
-
+                ip_Adress.CheckOS();
                 // Если есть то загружаем настройки сервера если нет то создают
                 if (fileInfo.Exists)
                 {
                     File.Delete(appDirectory + "\\Client.json");
                     using (FileStream fs = new FileStream(appDirectory + "\\Client.json", FileMode.OpenOrCreate))
                     {
-                        Seting seting = new Seting(AddressEntrys, PortEntrys, 1);
+                        Seting seting = new Seting(AddressEntrys, PortEntrys, ip_Adress.language);
                         System.Text.Json.JsonSerializer.Serialize<Seting>(fs, seting);
                         //      Ip_adressss = _aFile.Ip_adress;
 
@@ -225,12 +234,21 @@ public partial class Settings : ContentPage
     {
         try
         {
-            PortEntrys = Convert.ToInt32(PortEntry.Text);
+            if (string.IsNullOrEmpty(PortEntry.Text))
+            {
+         
+                PortEntrys = 0;
+            }
+            else
+            {
+                PortEntrys = Convert.ToInt32(PortEntry.Text);
+
+            }
         }
         catch (Exception ex)
         {
 
-            await DisplayAlert("Ошибка", ex.Message.ToString(), "ОК");
+           await DisplayAlert("Ошибка", ex.Message.ToString(), "ОК");
         }
     }
 

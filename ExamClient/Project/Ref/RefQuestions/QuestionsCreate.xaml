@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage x:Class="Client.Project.QuestionsCreate"     
         xmlns="http://schemas.microsoft.com/dotnet/2021/maui"       
-        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"     
-        Title="Создать вопрос">
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+        xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+        Title="{x:Static resource:AppResources.Создатьвопрос}">
+   
 
     <ContentPage.Content>
         <Grid>
@@ -13,22 +15,22 @@
 
             <StackLayout Grid.Row="0" Margin="10">
                 <!--<Label Text="Код пользователя (Id):" />   
-                <Entry Text="{Binding Id}" />-->
+                <Entry Text="{Binding Id}" />--> 
 
-                <Label Text="Имя/Вопрос:" />
+                <Label Text="{x:Static resource:AppResources.ИмяИлиВопрос}" />
                 <Entry Text="{Binding QuestionName}" />
 
-                <Label Text="Правильный ответ:" />
+                <Label Text="{x:Static resource:AppResources.Правильныеответы}" />
                 <Entry Text="{Binding AnswerTrue}" />
 
-                <Label Text="Оценка вопроса:" />
+                <Label Text="{x:Static resource:AppResources.Оценкавопроса}" />
                 <Entry Text="{Binding Grade}" />
 
             </StackLayout>
 
             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Margin="10">
-                <Button Text="Сохранить" Clicked="SaveButtonClick" />
-                <Button Text="Отмена" Clicked="CancelButtonClick" />
+                <Button Text="{x:Static resource:AppResources.Сохранить}" Clicked="SaveButtonClick" />
+                <Button Text="{x:Static resource:AppResources.Отмена}" Clicked="CancelButtonClick" />
             </StackLayout>
         </Grid>
     </ContentPage.Content>

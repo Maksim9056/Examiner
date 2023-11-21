@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
              x:Class="Client.MainPage"    
-             Title="Вход в учетную запись"   
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             Title="{x:Static resource:AppResources.ВходвучетнуюЗапись}"
              Loaded="ContentPage_Loaded"  
-             BackgroundColor="{DynamicResource PageBackgroundColor}">
+             >
 
     <ScrollView >
         <Grid Padding="20">
@@ -22,7 +23,7 @@
                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="20">
                     <Entry x:Name="nameEntry9"   
                            FontSize="22"   
-                           Placeholder="Введите электронную почту"   
+                           Placeholder="{x:Static resource:AppResources.ВведитеЭлектроннуюПочту}"   
                            Keyboard="Email"   
                            HeightRequest="60"   
                            HorizontalOptions="FillAndExpand"   
@@ -32,7 +33,7 @@
 
                     <Entry x:Name="nameEntry1"   
                            FontSize="22"   
-                           Placeholder="Введите пароль"   
+                           Placeholder="{x:Static resource:AppResources.ВведитеПароль}"   
                            HeightRequest="60"   
                            HorizontalOptions="FillAndExpand"   
                            TextChanged="nameEntry1_TextChanged"   

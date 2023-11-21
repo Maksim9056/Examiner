@@ -228,6 +228,9 @@ namespace ExamServer
                     }
                     while (stream.DataAvailable);
                     responseData = completeMessage.ToString();
+                  //  string Data = "";
+                    // Используем асинхронный метод чтения
+              
                     //Способ есть но пробовать надо
                     //responseData = await Task<string>.Run(() =>
                     //{
@@ -237,7 +240,14 @@ namespace ExamServer
                     string json = responseData.Substring(3, responseData.Length - 3);
                     data_ = json;
                     byte[] msg = Encoding.UTF8.GetBytes(json);
-
+                    //if (comand == "057")
+                    //{
+                    //    using (StreamReader reader = new StreamReader(stream, Encoding.Default))
+                    //    {
+                    //        responseData = await reader.ReadToEndAsync();
+                    //    }
+                    //}
+              
                     HandleCommand(comand, msg, globalClass, stream, logging, mail);
                 }
             }

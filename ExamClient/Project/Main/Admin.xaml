@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             Title="Интерфейс администратора"
              xmlns:views="clr-namespace:Client"
              xmlns:sys="clr-namespace:System;assembly=netstandard"
              xmlns:controls="clr-namespace:Client.Controls"
              x:Class="Client.Main.Admin"
-             Loaded="ContentPage_Loaded">
+             xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+             Loaded="ContentPage_Loaded"
+             Title="{x:Static resource:AppResources.ИнтерфейсАдминистратора}"
+             >
 
 
     <Shell.TitleView>
@@ -28,7 +30,7 @@
                 <!-- Добавленная кнопка -->
                 <Button  
                     x:Name="НастройкиBackups"  
-                    Text="Настройки"  
+                    Text="{x:Static resource:AppResources.Настройки}"  
                     SemanticProperties.Hint="This is a new button"  
                     Clicked="Backups"  
                     VerticalOptions="Start"  
@@ -44,7 +46,7 @@
 
                 <Button  
                     x:Name="CounterLog4"  
-                    Text="Справочник пользователей"  
+                    Text="{x:Static resource:AppResources.СправочникПользователей}"          
                     SemanticProperties.Hint="Counts the number of times you click"  
                     Clicked="CounterLog4_Clicked"  
                     VerticalOptions="Start"  
@@ -55,8 +57,8 @@
                     Padding="10" />
 
                 <Button  
-                    x:Name="CounterLogTest"  
-                    Text="Справочник тестов"  
+                    x:Name="CounterLogTest"                 
+                    Text="{x:Static resource:AppResources.СправочникТестов}"  
                     SemanticProperties.Hint="Counts the number of times you click"  
                     Clicked="CounterLogTest_Clicked"  
                     VerticalOptions="Start"  
@@ -67,8 +69,8 @@
                     Padding="10" />
 
                 <Button  
-                    x:Name="CounterLogExams"  
-                    Text="Справочник экзаменов"  
+                    x:Name="CounterLogExams"        
+                    Text="{x:Static resource:AppResources.СправочникЭкзаменов}"  
                     SemanticProperties.Hint="Counts the number of times you click"  
                     Clicked="CounterLogExamsClicked"  
                     VerticalOptions="Start"  
@@ -80,7 +82,7 @@
 
                 <Button  
                     x:Name="CounterLogQuestions"  
-                    Text="Справочник вопросов"  
+                    Text="{x:Static resource:AppResources.СправочникВопросов}"  
                     SemanticProperties.Hint="Counts the number of times you click"  
                     Clicked="CounterLogQuestionsClicked"  
                     VerticalOptions="Start"  
@@ -92,7 +94,7 @@
 
                 <Button  
                     x:Name="CounterLogAnswer"  
-                    Text="Справочник ответов"  
+                    Text="{x:Static resource:AppResources.СправочникОтветов}"     
                     SemanticProperties.Hint="Counts the number of times you click"  
                     Clicked="CounterLogAnswerClicked"  
                     VerticalOptions="Start"  
@@ -106,7 +108,7 @@
 
         <Button 
             Grid.Row="1" 
-            Text="Назад" 
+            Text="{x:Static resource:AppResources.Назад}" 
             Clicked="GoBack" 
             VerticalOptions="End" 
             HorizontalOptions="FillAndExpand" 
