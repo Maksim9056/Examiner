@@ -10,7 +10,13 @@ namespace ExamWorkerService
             var hostBuilder = CreateHostBuilder(args);
 
             if (isWindowsService)
+            {
                 hostBuilder.UseWindowsService();
+            }
+            else
+            {
+                hostBuilder.UseSystemd();
+            }
 
             var host = hostBuilder.Build();
 
@@ -22,7 +28,7 @@ namespace ExamWorkerService
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureLogging(loggerFactory => loggerFactory.AddEventLog())
+                //.ConfigureLogging(loggerFactory => loggerFactory.AddEventLog())
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();
