@@ -228,6 +228,9 @@
   <data name="Настройки" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="Ок" xml:space="preserve">
+    <value>Ok</value>
+  </data>
   <data name="Описаниеответа" xml:space="preserve">
     <value>Response Description:</value>
   </data>
@@ -239,6 +242,9 @@
   </data>
   <data name="Оценкавопроса" xml:space="preserve">
     <value>Assessment of the issue:</value>
+  </data>
+  <data name="Ошибка" xml:space="preserve">
+    <value>Error</value>
   </data>
   <data name="Пароли" xml:space="preserve">
     <value>Password:</value>

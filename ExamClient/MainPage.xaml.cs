@@ -35,22 +35,22 @@ namespace Client
         {
             try
             {
-                Ip_adress ip_Adress = new Ip_adress();
-                ip_Adress.CheckOS();
-                CultureInfo ci = null;
-                switch (ip_Adress.language) 
-                { 
-                    case 1:
-                        ci = new CultureInfo("ru");
-                        break; 
-                    case 2:
-                        ci = new CultureInfo("en-US");
-                        break;
+                //Ip_adress ip_Adress = new Ip_adress();
+                //ip_Adress.CheckOS();
+                //CultureInfo ci = null;
+                //switch (ip_Adress.language) 
+                //{ 
+                //    case 1:
+                //        ci = new CultureInfo("ru");
+                //        break; 
+                //    case 2:
+                //        ci = new CultureInfo("en-US");
+                //        break;
 
-                }
-                AppResources.Culture = ci; // Установите локализацию ресурса
-                CultureInfo.CurrentUICulture = ci;
-                CultureInfo.CurrentCulture = ci;
+                //}
+                //AppResources.Culture = ci; // Установите локализацию ресурса
+                //CultureInfo.CurrentUICulture = ci;
+                //CultureInfo.CurrentCulture = ci;
 
 
                 AddSettings();
@@ -90,7 +90,7 @@ namespace Client
             }
             catch(Exception ex) 
             {
-                DisplayAlert("Ошибка", ex.Message, "Ок");
+                DisplayAlert(AppResources.Ошибка, ex.Message, AppResources.Ок);
             }
         }
         //var rt = Shell.Current.CurrentState.Location.OriginalString;
@@ -139,14 +139,14 @@ namespace Client
                 var Result = checkPing.CheckPingIp(галочка);
                 галочка1 = Result;   }
             if (галочка1 == null)  {
-                await DisplayAlert("Уведомление", "Сервер выключен или недоступен!", "ОK"); }
+                await DisplayAlert("Уведомление", "Сервер выключен или недоступен!", AppResources.Ок); }
             else
             {  if (Mail == null) {
-                    await DisplayAlert("Уведомление", "Почта не пустая!", "ОK");    }
+                    await DisplayAlert("Уведомление", "Почта не пустая!", AppResources.Ок);    }
                 else
                 { //Проверяет почту пуста или нет
                     if (string.IsNullOrEmpty(Mail)) {
-                        await DisplayAlert("Уведомление", "Почта не заполнена!", "ОK");  }
+                        await DisplayAlert("Уведомление", "Почта не заполнена!", AppResources.Ок);  }
                     else
                     { //Регеулярное выражение
                         string patern = "@.";
@@ -155,10 +155,10 @@ namespace Client
                         //Проверяет в Mail есть ли в строке это @ почту
                         if (Regex.IsMatch(Mail, patern)) {
                             if (Password == null){
-                                await DisplayAlert("Уведомление", "Пароль не заполнен!", "ОK");}
+                                await DisplayAlert("Уведомление", "Пароль не заполнен!", AppResources.Ок);}
                             else
                             { if (string.IsNullOrEmpty(Password)){
-                                    await DisplayAlert("Уведомление", "Пароль не заполнен!", "ОK");  }
+                                    await DisplayAlert("Уведомление", "Пароль не заполнен!", AppResources.Ок);  }
                                 else
                                 {//Обьявляем MemoryStream 
                                     using (MemoryStream memoryStream = new MemoryStream())
@@ -179,19 +179,19 @@ namespace Client
                                         //Ответ с сервера получаем 
                                         if (command.Travel_logout == null)
                                         {
-                                            await DisplayAlert("Уведомление", "Такого пользователя нет!", "ОK"); }
+                                            await DisplayAlert("Уведомление", "Такого пользователя нет!", AppResources.Ок); }
                                         else   {
                                             if (string.IsNullOrEmpty(command.Travel_logout.Employee_Mail))
                                             {
-                                                await DisplayAlert("Уведомление", "Такого пользователя нет!", "ОK");   }
+                                                await DisplayAlert("Уведомление", "Такого пользователя нет!", AppResources.Ок);   }
                                             else
                                             { if (command.Travel_logout.Id == 0)  {
-                                                    await DisplayAlert("Уведомление", "Пароль введен не верно!", "ОK");}
+                                                    await DisplayAlert("Уведомление", "Пароль введен не верно!", AppResources.Ок);}
                                                 else
                                                 {   var regis_Users = command.Travel_logout;
                                                     switch (regis_Users.Rechte.Id) {
                                                         case 1:
-                                                            await Application.Current.MainPage.DisplayAlert("Уведомление", "Пользователь Авторизовался!", "ОK");
+                                                            await Application.Current.MainPage.DisplayAlert("Уведомление", "Пользователь Авторизовался!", AppResources.Ок);
                                                             await Navigation.PushAsync(new Client.Users.Users(regis_Users));
                                                             var flyoutItemhelp1 = (FlyoutItem)Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("login"));
                                                             if (flyoutItemhelp1 != null) {
@@ -203,7 +203,7 @@ namespace Client
                                                             break;
                                                         case 2:
                                                             await Navigation.PushAsync(new Admin());
-                                                            await Application.Current.MainPage.DisplayAlert("Уведомление", "Администратор Авторизовался!", "ОK");
+                                                            await Application.Current.MainPage.DisplayAlert("Уведомление", "Администратор Авторизовался!", AppResources.Ок);
                                                             //Admin admin = new Admin();
                                                             var flyoutItemhelp = (FlyoutItem)Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("login"));
                                                             if (flyoutItemhelp != null){
@@ -221,7 +221,7 @@ namespace Client
                         else
                         {
                             //Не проходит на почту действетульную
-                            await DisplayAlert("Уведомление", "Ввели не почту!", "ОK");
+                            await DisplayAlert("Уведомление", "Ввели не почту!", AppResources.Ок);
                         }}}}}
 
 
@@ -244,23 +244,23 @@ namespace Client
             }
             if (галочка == null)
             {
-                await DisplayAlert("Уведомление", "Сервер выключен или недоступен!", "ОK");
+                await DisplayAlert("Уведомление", "Сервер выключен или недоступен!", AppResources.Ок);
                 return;
             }
             if (string.IsNullOrEmpty(Mail))
             {
-                await DisplayAlert("Уведомление", "Почта не заполнена!", "ОK");
+                await DisplayAlert("Уведомление", "Почта не заполнена!", AppResources.Ок);
                 return;
             }
             string pattern = "@.";
             if (!Regex.IsMatch(Mail, pattern))
             {
-                await DisplayAlert("Уведомление", "Некорректный формат адреса электронной почты!", "ОK");
+                await DisplayAlert("Уведомление", "Некорректный формат адреса электронной почты!", AppResources.Ок);
                 return;
             }
             if (string.IsNullOrEmpty(Password))
             {
-                await DisplayAlert("Уведомление", "Пароль не заполнен!", "ОK");
+                await DisplayAlert("Уведомление", "Пароль не заполнен!", AppResources.Ок);
                 return;
             }
             using (MemoryStream memoryStream = new MemoryStream())
@@ -276,11 +276,11 @@ namespace Client
 
                 if (command.Travel_logout == null || string.IsNullOrEmpty(command.Travel_logout.Employee_Mail))
                 {
-                    await DisplayAlert("Уведомление", "Такого пользователя нет!", "ОK");
+                    await DisplayAlert("Уведомление", "Такого пользователя нет!", AppResources.Ок);
                 }
                 else if (command.Travel_logout.Id == 0)
                 {
-                    await DisplayAlert("Уведомление", "Пароль введен не верно!", "ОK");
+                    await DisplayAlert("Уведомление", "Пароль введен не верно!", AppResources.Ок);
                 }
                 else
                 {
@@ -288,7 +288,7 @@ namespace Client
                     switch (regis_Users.Rechte.Id)
                     {
                         case 1:
-                            await Application.Current.MainPage.DisplayAlert("Уведомление", "Пользователь Авторизовался!", "ОK");
+                            await Application.Current.MainPage.DisplayAlert("Уведомление", "Пользователь Авторизовался!", AppResources.Ок);
                             await Navigation.PushAsync(new Client.Users.Users(regis_Users));
                             var flyoutItemhelp1 = (FlyoutItem)Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("login"));
                             if (flyoutItemhelp1 != null)
@@ -303,7 +303,7 @@ namespace Client
                             break;
                         case 2:
                             await Navigation.PushAsync(new Admin());
-                            await Application.Current.MainPage.DisplayAlert("Уведомление", "Администратор Авторизовался!", "ОK");
+                            await Application.Current.MainPage.DisplayAlert("Уведомление", "Администратор Авторизовался!", AppResources.Ок);
                             var flyoutItemhelp = (FlyoutItem)Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("login"));
                             if (flyoutItemhelp != null)
                             {
@@ -429,7 +429,7 @@ namespace Client
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Ошибка", "Сообщение" + ex.Message + "\n" + "Помощь:" + ex.HelpLink, "Ок");
+                await DisplayAlert("Ошибка", "Сообщение" + ex.Message + "\n" + "Помощь:" + ex.HelpLink, AppResources.Ок);
             }
         }
 
@@ -495,14 +495,14 @@ namespace Client
                 }
                 if (галочка == null)
                 {
-                    await DisplayAlert("Уведомление", "Сервер выключен или недоступен!", "ОK");
+                    await DisplayAlert("Уведомление", "Сервер выключен или недоступен!", AppResources.Ок);
                     return;
                 }
                 await Navigation.PushAsync(new RegUser());
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Ошибка", "Сообщение" + ex.Message + "\n" + "Помощь:" + ex.HelpLink, "Ок");
+                await DisplayAlert("Ошибка", "Сообщение" + ex.Message + "\n" + "Помощь:" + ex.HelpLink, AppResources.Ок);
 
             }
         }

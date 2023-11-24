@@ -394,6 +394,15 @@ namespace ExamClient.Resources.Resx {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ок.
+        /// </summary>
+        internal static string Ок {
+            get {
+                return ResourceManager.GetString("Ок", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Описание ответа:.
         /// </summary>
         internal static string Описаниеответа {
@@ -426,6 +435,15 @@ namespace ExamClient.Resources.Resx {
         internal static string Оценкавопроса {
             get {
                 return ResourceManager.GetString("Оценкавопроса", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка.
+        /// </summary>
+        internal static string Ошибка {
+            get {
+                return ResourceManager.GetString("Ошибка", resourceCulture);
             }
         }
         
