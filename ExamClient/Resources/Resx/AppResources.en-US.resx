@@ -126,6 +126,9 @@
   <data name="MailПользователя" xml:space="preserve">
     <value>Mail of the user</value>
   </data>
+  <data name="Админскаяпанель" xml:space="preserve">
+    <value>Admin panel</value>
+  </data>
   <data name="Адрес" xml:space="preserve">
     <value>Address:</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="Кодтеста" xml:space="preserve">
     <value>id of the test (id):</value>
+  </data>
+  <data name="Логин" xml:space="preserve">
+    <value>Login</value>
   </data>
   <data name="Назад" xml:space="preserve">
     <value>Back</value>

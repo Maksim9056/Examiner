@@ -5,6 +5,7 @@
        xmlns:views1="clr-namespace:Client.Project"
        xmlns:sys="clr-namespace:System;assembly=netstandard"
        xmlns:controls="clr-namespace:Client.Controls"
+       xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
        x:Class="Client.AppShell">
 
     <Shell.ItemTemplate>
@@ -29,7 +30,7 @@
         <controls:FlyoutHeader />
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="Логин"
+    <FlyoutItem Title="{x:Static resource:AppResources.Логин}"
                 Route="login"
                 FlyoutIcon="dotnet_bot.png">
         <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />

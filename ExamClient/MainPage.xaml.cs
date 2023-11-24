@@ -71,11 +71,11 @@ namespace Client
                 var flyoutItemseting = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_seting"));
                 if (flyoutItemseting == null)
                 {
-                    // Создание пунктов меню класса
-                    var main = new ShellContent { Content = new Client.Project.Settings()};
+                   // Создание пунктов меню класса
+                   var main = new ShellContent { Content = new Client.Project.Settings()};
 
                     // Добавление пунктов меню в класс
-                    Shell.Current.Items.Add(new ShellSection { Title = "Настройки", Icon = "dotnet_bot.png", Route = "seting", Items = { main } });
+                    Shell.Current.Items.Add(new ShellSection { Title = AppResources.Настройки, Icon = "dotnet_bot.png", Route = "seting", Items = { main } });
 
                     // Обработчик события при нажатии на пункт меню
                     //main.PropertyChanged += async (sender, e) =>

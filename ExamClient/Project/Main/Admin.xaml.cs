@@ -3,6 +3,7 @@ using Microsoft.Maui.Controls;
 using System.Windows.Input;
 using Microsoft.Maui.Controls;
 using System.Resources;
+using ExamClient.Resources.Resx;
 
 namespace Client.Main;
 
@@ -370,8 +371,9 @@ public partial class Admin : ContentPage
             // Создание пунктов меню класса
             var main = new ShellContent { Content = new Client.Main.Admin(), Route = "admin" };
 
+
             // Добавление пунктов меню в класс
-            Shell.Current.Items.Add(new ShellSection { Title = "Админская панель", Icon = "dotnet_bot.png", Route = "admin", Items = { main } });
+            Shell.Current.Items.Add(new ShellSection { Title = AppResources.Админскаяпанель,Icon = "dotnet_bot.png", Route = "admin", Items = { main } });
 
             // Обработчик события при нажатии на пункт меню
             //main.PropertyChanged += async (sender, e) =>
@@ -391,7 +393,7 @@ public partial class Admin : ContentPage
             var main = new ShellContent { Content = new Project.RefUserListPage()};
 
             // Добавление пунктов меню в класс
-            Shell.Current.Items.Add(new ShellSection { Title = "Справочник пользователей", Icon = "dotnet_bot.png", Route = "userd", Items = { main } });
+            Shell.Current.Items.Add(new ShellSection { Title = AppResources.СправочникПользователей, Icon = "dotnet_bot.png", Route = "userd", Items = { main } });
 
             //// Обработчик события при нажатии на пункт меню
             //main.PropertyChanged += async (sender, e) =>
@@ -404,24 +406,24 @@ public partial class Admin : ContentPage
             //};
         }
 
-
+   
         var flyoutItemTest = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_test"));
         if (flyoutItemTest == null)
         {
             // Создание пунктов меню класса
             var main = new ShellContent { Content = new Project.RefTestListPage() };
             // Добавление пунктов меню в класс
-            Shell.Current.Items.Add(new ShellSection { Title = "Справочник тестов", Items = { main }, Icon = "dotnet_bot.png", Route = "test" });
+            Shell.Current.Items.Add(new ShellSection { Title = AppResources.СправочникТестов, Items = { main }, Icon = "dotnet_bot.png", Route = "test" });
 
         }
-
+      
         var flyoutItemExams = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_Exams"));
         if (flyoutItemExams == null)
         {
             // Создание пунктов меню класса
             var main = new ShellContent { Content = new Project.RefExamsListPage() };
             // Добавление пунктов меню в класс
-            Shell.Current.Items.Add(new ShellSection { Title = "Справочник экзаменов", Items = { main }, Icon = "dotnet_bot.png", Route = "Exams" });
+            Shell.Current.Items.Add(new ShellSection { Title = AppResources.СправочникЭкзаменов, Items = { main }, Icon = "dotnet_bot.png", Route = "Exams" });
 
         }
 
@@ -431,17 +433,19 @@ public partial class Admin : ContentPage
             // Создание пунктов меню класса
             var main = new ShellContent { Content = new Project.RefQuestionsListPage() };
             // Добавление пунктов меню в класс
-            Shell.Current.Items.Add(new ShellSection { Title = "Справочник вопросов", Items = { main }, Icon = "dotnet_bot.png", Route = "Questions" });
+            Shell.Current.Items.Add(new ShellSection { Title = AppResources.СправочникВопросов, Items = { main }, Icon = "dotnet_bot.png", Route = "Questions" });
 
         }
 
         var flyoutItemAnswer = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_Answer"));
         if (flyoutItemAnswer == null)
         {
+         
+
             // Создание пунктов меню класса
             var main = new ShellContent { Content = new Project.RefAnswerListPage() };
             // Добавление пунктов меню в класс
-            Shell.Current.Items.Add(new ShellSection { Title = "Справочник ответов", Items = { main }, Icon = "dotnet_bot.png", Route = "Answer" });
+            Shell.Current.Items.Add(new ShellSection { Title = AppResources.СправочникОтветов, Items = { main }, Icon = "dotnet_bot.png", Route = "Answer" });
 
         }
 

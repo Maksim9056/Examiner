@@ -88,6 +88,15 @@ namespace ExamClient.Resources.Resx {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Админская панель.
+        /// </summary>
+        internal static string Админскаяпанель {
+            get {
+                return ResourceManager.GetString("Админскаяпанель", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Адрес:.
         /// </summary>
         internal static string Адрес {
@@ -336,6 +345,15 @@ namespace ExamClient.Resources.Resx {
         internal static string Кодтеста {
             get {
                 return ResourceManager.GetString("Кодтеста", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Логин.
+        /// </summary>
+        internal static string Логин {
+            get {
+                return ResourceManager.GetString("Логин", resourceCulture);
             }
         }
         
