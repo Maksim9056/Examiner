@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Backup" xml:space="preserve">
+    <value>Резервная копия</value>
+  </data>
   <data name="Idопций" xml:space="preserve">
     <value>Id опций:</value>
   </data>
@@ -160,6 +163,9 @@
   <data name="ВыборРезервнойКопии" xml:space="preserve">
     <value>Выбор резервной копии</value>
   </data>
+  <data name="Датарегистрации" xml:space="preserve">
+    <value>Дата регистрации:</value>
+  </data>
   <data name="Добавитьвопрос" xml:space="preserve">
     <value>Добавить вопрос</value>
   </data>
@@ -196,6 +202,9 @@
   <data name="Кодответа" xml:space="preserve">
     <value>Код ответа (Id):</value>
   </data>
+  <data name="Кодпользователя" xml:space="preserve">
+    <value>Код пользователя (Id):</value>
+  </data>
   <data name="КодПочты" xml:space="preserve">
     <value>Код почты</value>
   </data>
@@ -229,6 +238,9 @@
   <data name="Пароли" xml:space="preserve">
     <value>Пароль:</value>
   </data>
+  <data name="Пароль" xml:space="preserve">
+    <value>Пароль:</value>
+  </data>
   <data name="Переченьвопросов" xml:space="preserve">
     <value>Перечень вопросов</value>
   </data>
@@ -240,6 +252,9 @@
   </data>
   <data name="Переченьэкзаменов" xml:space="preserve">
     <value>Перечень экзаменов</value>
+  </data>
+  <data name="Пользователь" xml:space="preserve">
+    <value>Пользователь</value>
   </data>
   <data name="Порт" xml:space="preserve">
     <value>Порт</value>

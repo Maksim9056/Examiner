@@ -1,6 +1,8 @@
 using ExamModels;
 using Microsoft.Maui.Controls;
 using System.Windows.Input;
+using Microsoft.Maui.Controls;
+using System.Resources;
 
 namespace Client.Main;
 
@@ -360,8 +362,7 @@ public partial class Admin : ContentPage
         //    };
         //}
 
-      
-
+        //   string greeting = resManager.GetString();
 
         var flyoutItemAdmin = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_admin"));
         if (flyoutItemAdmin == null)

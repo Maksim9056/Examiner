@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Client.Project.Main.Backup"
-             Title="Backup"            
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+             Title="{x:Static resource:AppResources.Backup}"            
              >
 
     <Grid>
@@ -17,7 +17,7 @@
             <Grid x:Name="Табличка" WidthRequest="800" HeightRequest="1000">
                 <Button 
                     x:Name="CounterLog4" 
-                    Text="Резерная копия" 
+                    Text="Backup" 
                     SemanticProperties.Hint="Counts the number of times you click" 
                     Clicked="CounterLog4_Clicked" 
                     VerticalOptions="Start" 
@@ -33,7 +33,7 @@
 
         <Button 
             Grid.Row="1" 
-            Text="Назад" 
+            Text="{x:Static resource:AppResources.Назад}" 
             Clicked="GoBack" 
             VerticalOptions="End" 
             HorizontalOptions="FillAndExpand" 
