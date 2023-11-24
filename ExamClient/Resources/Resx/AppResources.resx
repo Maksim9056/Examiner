@@ -139,6 +139,9 @@
     <value>Войти</value>
     <comment>Пользователя</comment>
   </data>
+  <data name="Вопрос" xml:space="preserve">
+    <value>Вопрос</value>
+  </data>
   <data name="Востановить" xml:space="preserve">
     <value>Востановить</value>
   </data>

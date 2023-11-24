@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
              x:Class="Client.Project.RefQuestionsListPage"   
              Title="Справочник вопросов" 
-             Loaded="ContentPage_Loaded">
+              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
 
+             Loaded="ContentPage_Loaded">
+    {x:Static resource:AppResources.Вопрос}
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>

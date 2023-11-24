@@ -124,6 +124,15 @@ namespace ExamClient.Resources.Resx {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вопрос.
+        /// </summary>
+        internal static string Вопрос {
+            get {
+                return ResourceManager.GetString("Вопрос", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Востановить.
         /// </summary>
         internal static string Востановить {
