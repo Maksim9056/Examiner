@@ -1,7 +1,10 @@
 
-
+using Microsoft.Extensions.Hosting.Systemd;
 namespace ExamWorkerService
 {
+    /// <summary>
+    /// Microsoft.Extensions.Hosting.Systemd 7.0
+    /// </summary>
     public class Program
     {
         public static void Main(string[] args)
