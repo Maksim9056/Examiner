@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Idопций" xml:space="preserve">
+    <value>Id options:</value>
+  </data>
+  <data name="MailПользователя" xml:space="preserve">
+    <value>Mail of the user</value>
+  </data>
   <data name="Адрес" xml:space="preserve">
     <value>Address:</value>
   </data>
@@ -171,6 +177,12 @@
   <data name="ИмяИлиОтвет" xml:space="preserve">
     <value>Name/Response:</value>
   </data>
+  <data name="ИмяИлиПользователя" xml:space="preserve">
+    <value>Name/User:</value>
+  </data>
+  <data name="ИмяИлиТеста" xml:space="preserve">
+    <value>Name/Test:</value>
+  </data>
   <data name="ИмяИлиЭкзамена" xml:space="preserve">
     <value>Name/Exam:</value>
   </data>
@@ -186,8 +198,14 @@
   <data name="КодПочты" xml:space="preserve">
     <value>Mail code</value>
   </data>
+  <data name="Кодтеста" xml:space="preserve">
+    <value>id of the test (id):</value>
+  </data>
   <data name="Назад" xml:space="preserve">
     <value>Back</value>
+  </data>
+  <data name="Наименованиетеста" xml:space="preserve">
+    <value>Test of the test:</value>
   </data>
   <data name="Наименованиеэкзамена" xml:space="preserve">
     <value>Name of the exam:</value>
@@ -206,6 +224,9 @@
   </data>
   <data name="Оценкавопроса" xml:space="preserve">
     <value>Assessment of the issue:</value>
+  </data>
+  <data name="Пароли" xml:space="preserve">
+    <value>Password:</value>
   </data>
   <data name="Переченьвопросов" xml:space="preserve">
     <value>List of questions</value>
@@ -237,11 +258,20 @@
   <data name="РезервнаяКопия" xml:space="preserve">
     <value>Backup copy</value>
   </data>
+  <data name="Рольпользователя" xml:space="preserve">
+    <value>Rolles of the user</value>
+  </data>
   <data name="Создать" xml:space="preserve">
     <value>To create</value>
   </data>
   <data name="Создатьвопрос" xml:space="preserve">
     <value>Create a question</value>
+  </data>
+  <data name="СоздатьПользователя" xml:space="preserve">
+    <value>Create user</value>
+  </data>
+  <data name="Создатьтест" xml:space="preserve">
+    <value>Create test</value>
   </data>
   <data name="Создатьэкзамен" xml:space="preserve">
     <value>Create an exam</value>

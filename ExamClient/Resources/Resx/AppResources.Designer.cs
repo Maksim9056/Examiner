@@ -61,6 +61,24 @@ namespace ExamClient.Resources.Resx {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Id опций:.
+        /// </summary>
+        internal static string Idопций {
+            get {
+                return ResourceManager.GetString("Idопций", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Mail Пользователя:.
+        /// </summary>
+        internal static string MailПользователя {
+            get {
+                return ResourceManager.GetString("MailПользователя", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Адрес:.
         /// </summary>
         internal static string Адрес {
@@ -223,6 +241,24 @@ namespace ExamClient.Resources.Resx {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Имя/Пользователя:.
+        /// </summary>
+        internal static string ИмяИлиПользователя {
+            get {
+                return ResourceManager.GetString("ИмяИлиПользователя", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Имя/Теста:.
+        /// </summary>
+        internal static string ИмяИлиТеста {
+            get {
+                return ResourceManager.GetString("ИмяИлиТеста", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Имя/Экзамена:.
         /// </summary>
         internal static string ИмяИлиЭкзамена {
@@ -268,11 +304,29 @@ namespace ExamClient.Resources.Resx {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Код теста (Id):.
+        /// </summary>
+        internal static string Кодтеста {
+            get {
+                return ResourceManager.GetString("Кодтеста", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Назад.
         /// </summary>
         internal static string Назад {
             get {
                 return ResourceManager.GetString("Назад", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Наименование теста:.
+        /// </summary>
+        internal static string Наименованиетеста {
+            get {
+                return ResourceManager.GetString("Наименованиетеста", resourceCulture);
             }
         }
         
@@ -327,6 +381,15 @@ namespace ExamClient.Resources.Resx {
         internal static string Оценкавопроса {
             get {
                 return ResourceManager.GetString("Оценкавопроса", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Пароль:.
+        /// </summary>
+        internal static string Пароли {
+            get {
+                return ResourceManager.GetString("Пароли", resourceCulture);
             }
         }
         
@@ -421,6 +484,15 @@ namespace ExamClient.Resources.Resx {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Роль пользователя.
+        /// </summary>
+        internal static string Рольпользователя {
+            get {
+                return ResourceManager.GetString("Рольпользователя", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Создать.
         /// </summary>
         internal static string Создать {
@@ -439,6 +511,24 @@ namespace ExamClient.Resources.Resx {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Создать пользователя.
+        /// </summary>
+        internal static string СоздатьПользователя {
+            get {
+                return ResourceManager.GetString("СоздатьПользователя", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Создать тест.
+        /// </summary>
+        internal static string Создатьтест {
+            get {
+                return ResourceManager.GetString("Создатьтест", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Создать экзамен.
         /// </summary>
         internal static string Создатьэкзамен {
@@ -453,6 +543,24 @@ namespace ExamClient.Resources.Resx {
         internal static string Сохранить {
             get {
                 return ResourceManager.GetString("Сохранить", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Справочник вопросов.
+        /// </summary>
+        internal static string Справочник_вопросов {
+            get {
+                return ResourceManager.GetString("Справочник вопросов", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Справочник тестов.
+        /// </summary>
+        internal static string Справочник_тестов {
+            get {
+                return ResourceManager.GetString("Справочник тестов", resourceCulture);
             }
         }
         

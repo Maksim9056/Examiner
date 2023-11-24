@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage x:Class="Client.Project.UserCreate"  
         xmlns="http://schemas.microsoft.com/dotnet/2021/maui"    
-        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
-        Title="Создать пользователя">
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+        Title="{x:Static resource:AppResources.СоздатьПользователя}">
 
     <ContentPage.Content>
         <Grid>
@@ -15,25 +16,25 @@
                 <!--<Label Text="Код пользователя (Id):" />
                 <Entry Text="{Binding Id}" />-->
 
-                <Label Text="Имя/Пользователя:" />
+                <Label Text="{x:Static resource:AppResources.ИмяИлиПользователя}" /> 
                 <Entry Text="{Binding Name_Employee}" />
 
-                <Label Text="Пароль:" />
+                <Label Text="{x:Static resource:AppResources.Пароли}" /> 
                 <Entry Text="{Binding Password}" />
 
                 <!--<Label Text="Дата регистрации:" />
                 <Entry Text="{Binding DataMess}" />-->
 
-                <Label Text="Роль пользователя:" />
+                <Label Text="{x:Static resource:AppResources.Рольпользователя}" />
                 <Entry Text="{Binding Id_roles_users}" />
 
-                <Label Text="Mail Пользователя:" />
+                <Label Text="{x:Static resource:AppResources.MailПользователя}" />
                 <Entry Text="{Binding Employee_Mail}" />
             </StackLayout>
 
             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Margin="10">
-                <Button Text="Сохранить" Clicked="SaveButton_Click" />
-                <Button Text="Отмена" Clicked="CancelButton_Click" />
+                <Button Text="{x:Static resource:AppResources.Сохранить}" Clicked="SaveButton_Click" />
+                <Button Text="{x:Static resource:AppResources.Отмена}" Clicked="CancelButton_Click" />
             </StackLayout>
         </Grid>
     </ContentPage.Content>

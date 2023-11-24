@@ -2,7 +2,8 @@
 <ContentPage x:Class="Client.Project.TestCreate"   
         xmlns="http://schemas.microsoft.com/dotnet/2021/maui"     
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
-        Title="Создать тест">
+        xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+        Title="{x:Static resource:AppResources.Создатьтест}">
 
     <ContentPage.Content>
         <Grid>
@@ -16,16 +17,16 @@
                 <!--<Label Text="Код пользователя (Id):" /> 
                 <Entry Text="{Binding Id}" />-->
 
-                <Label Text="Имя/Теста:" />
+                <Label Text="{x:Static resource:AppResources.ИмяИлиТеста}" />
                 <Entry Text="{Binding Name_Test}" />
 
-                <Label Text="Id опций:" />
+                <Label Text="{x:Static resource:AppResources.Idопций}" />
                 <Entry Text="{Binding Options_Id}" />
             </StackLayout>
 
             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Margin="10">
-                <Button Text="Сохранить" Clicked="SaveButton_Click" />
-                <Button Text="Отмена" Clicked="CancelButton_Click" />
+                <Button Text="{x:Static resource:AppResources.Сохранить}" Clicked="SaveButton_Click" />
+                <Button Text="{x:Static resource:AppResources.Отмена}" Clicked="CancelButton_Click" />
             </StackLayout>
 
           
