@@ -7,9 +7,12 @@ namespace Client
     {
         public App()
         {
+            // Проверка ОС
             Ip_adress ip_Adress = new Ip_adress();
             ip_Adress.CheckOS();
-            CultureInfo ci = null;
+
+            // Локализация
+            CultureInfo ci;
             switch (ip_Adress.language)
             {
                 case 1:
@@ -18,9 +21,12 @@ namespace Client
                 case 2:
                     ci = new CultureInfo("en-US");
                     break;
-
+                default:
+                    ci = CultureInfo.InvariantCulture; // Если язык не соответствует, используйте инвариантную локализацию
+                    break;
             }
-            AppResources.Culture = ci; // Установите локализацию ресурса
+
+            AppResources.Culture = ci; // Установка локализации ресурсов
             CultureInfo.CurrentUICulture = ci;
             CultureInfo.CurrentCulture = ci;
 

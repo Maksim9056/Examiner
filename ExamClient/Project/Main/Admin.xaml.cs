@@ -4,7 +4,9 @@ using System.Windows.Input;
 using Microsoft.Maui.Controls;
 using System.Resources;
 using ExamClient.Resources.Resx;
-
+using Microsoft.Maui.Controls.StyleSheets;
+using System.Reflection;
+ 
 namespace Client.Main;
 
 public partial class Admin : ContentPage
@@ -15,6 +17,8 @@ public partial class Admin : ContentPage
     public Admin()
 	{
 		InitializeComponent();
+        this.Resources.Add(StyleSheet.FromResource
+                   ("Resources/Styles/mystyles.css", IntrospectionExtensions.GetTypeInfo(typeof(MainPage)).Assembly));
         BindingContext = this;
     }
 

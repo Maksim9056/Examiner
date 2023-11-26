@@ -21,12 +21,15 @@ using System.Net.Sockets;
 using static Client.MainPage;
 using System.Globalization;
 using ExamClient.Resources.Resx;
+using Microsoft.Maui.Controls.StyleSheets;
+using System.Reflection;
 
 //using Microsoft.AspNetCore.Components.Navigation;
 
 
 namespace Client
 {
+
     public partial class MainPage : ContentPage
     {
         public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
@@ -53,15 +56,29 @@ namespace Client
                 //CultureInfo.CurrentCulture = ci;
 
 
+                //Resources.MergedDictionaries.Remove(new ResourceDictionary { Source = new Uri("Resources/Styles/Colors.xaml", UriKind.Relative) });
+                //Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Colors2.xaml", UriKind.Relative) });
+                // Удалите существующий ресурс
+
                 AddSettings();
+
                 InitializeComponent();
+
+                Application.Current.Resources.Remove("Primary");
+
+                // Добавьте новый ресурс с обновленным значением
+                var primaryColor = Color.FromHex("#CD5C5C");
+                Application.Current.Resources.Add("Primary", primaryColor);
+
                 BindingContext = this;
+
             }
             catch
             {
 
             }
         }
+
 
 
         public void AddSettings()

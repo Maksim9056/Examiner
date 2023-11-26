@@ -10,6 +10,10 @@
              Title="{x:Static resource:AppResources.ИнтерфейсАдминистратора}"
              >
 
+    <!--<ContentPage.Resources>
+        <StyleSheet Source="/Resources/Styles/mystyles.css" />
+    </ContentPage.Resources>-->
+
 
     <Shell.TitleView>
         <Image Source="dotnet_bot.png"

@@ -7,6 +7,8 @@
        xmlns:controls="clr-namespace:Client.Controls"
        xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
        x:Class="Client.AppShell">
+    
+
 
     <Shell.ItemTemplate>
         <DataTemplate>
