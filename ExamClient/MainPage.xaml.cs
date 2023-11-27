@@ -38,37 +38,35 @@ namespace Client
         {
             try
             {
-                //Ip_adress ip_Adress = new Ip_adress();
-                //ip_Adress.CheckOS();
-                //CultureInfo ci = null;
-                //switch (ip_Adress.language) 
-                //{ 
-                //    case 1:
-                //        ci = new CultureInfo("ru");
-                //        break; 
-                //    case 2:
-                //        ci = new CultureInfo("en-US");
-                //        break;
 
+                //ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+                //if (mergedDictionaries != null)
+                //{
+                //    mergedDictionaries.Clear();
+                //    mergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Styles.xaml") });
                 //}
-                //AppResources.Culture = ci; // Установите локализацию ресурса
-                //CultureInfo.CurrentUICulture = ci;
-                //CultureInfo.CurrentCulture = ci;
+                // Ресурсы приложения
+                //var resourceDictionary = new ResourceDictionary();
+                //resourceDictionary.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Colors.xaml", UriKind.Relative) });
+                //resourceDictionary.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Styles2.xaml", UriKind.Relative) });
+                //Application.Current.Resources = resourceDictionary;
 
+                //Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Styles2.xaml", UriKind.Relative) });
 
-                //Resources.MergedDictionaries.Remove(new ResourceDictionary { Source = new Uri("Resources/Styles/Colors.xaml", UriKind.Relative) });
-                //Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Colors2.xaml", UriKind.Relative) });
-                // Удалите существующий ресурс
 
                 AddSettings();
 
                 InitializeComponent();
 
-                Application.Current.Resources.Remove("Primary");
 
-                // Добавьте новый ресурс с обновленным значением
-                var primaryColor = Color.FromHex("#CD5C5C");
-                Application.Current.Resources.Add("Primary", primaryColor);
+                //Application.Current.Resources.Remove("ButtonTextColor");
+                //var primaryColor = Color.FromHex("#CD5C5C");
+                //Application.Current.Resources.Add("ButtonTextColor", primaryColor);
+
+                //Application.Current.Resources.Remove("ButtonBackgroundColor");
+                //var primaryColor1 = Color.FromHex("#CD5C5C");
+                //Application.Current.Resources.Add("ButtonBackgroundColor", primaryColor1);
+
 
                 BindingContext = this;
 

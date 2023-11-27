@@ -32,6 +32,10 @@ namespace Client
 
             InitializeComponent();
 
+            //Application.Current.Resources.Remove("ButtonBackgroundColor");
+            //var primaryColor1 = Color.FromHex("#CD5C5C");
+            //Application.Current.Resources.Add("ButtonBackgroundColor", primaryColor1);
+
             MainPage = new AppShell();
         }
     }

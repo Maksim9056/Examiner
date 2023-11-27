@@ -7,9 +7,11 @@
              Title="{x:Static resource:AppResources.ВходвучетнуюЗапись}"
              Loaded="ContentPage_Loaded"  
              >
-    <ContentPage.Resources>
-        <StyleSheet Source="Resources\Styles\mystyles.css" />
-    </ContentPage.Resources>
+
+    <!--<ContentPage.Resources>
+        <ResourceDictionary Source="Resources/Styles/Styles2.xaml" />
+    </ContentPage.Resources>-->
+
     <ScrollView >
         <Grid Padding="20">
             <Grid.RowDefinitions>
@@ -52,10 +54,10 @@
                                 VerticalOptions="CenterAndExpand"   
                                 HorizontalOptions ="FillAndExpand"   
                                 FontSize="18"   
-                                 HeightRequest="60"
-                                 StyleClass="english"
+                                HeightRequest="60"
+                                StyleClass="english"
                                 BackgroundColor="{DynamicResource ButtonBackgroundColor}"  
-                              TextColor="{DynamicResource ButtonTextColor}"
+                                TextColor="{DynamicResource ButtonTextColor}"
                                 
                              />
 

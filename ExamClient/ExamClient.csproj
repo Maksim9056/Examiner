@@ -279,7 +279,10 @@
 	  <MauiXaml Update="Project\Main\RegUser.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\Colors2.xaml">
+	  <MauiXaml Update="Resources\Styles\Styles3.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\Styles2.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Users\Doc\DocAnswerQuestins\DocAnswerQuestins.xaml">
