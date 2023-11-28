@@ -347,6 +347,7 @@
   </data>
   <data name="Тестыдляэкзамена" xml:space="preserve">
     <value>Тесты для экзамена:</value>
+    <comment>Тесты для экзамена</comment>
   </data>
   <data name="Удалить" xml:space="preserve">
     <value>Удалить</value>
