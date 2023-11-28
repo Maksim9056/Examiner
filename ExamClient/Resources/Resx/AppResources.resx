@@ -166,6 +166,15 @@
   <data name="ВыборРезервнойКопии" xml:space="preserve">
     <value>Выбор резервной копии</value>
   </data>
+  <data name="Выборэкзамена" xml:space="preserve">
+    <value>Выбор экзамена</value>
+  </data>
+  <data name="Выбранныйэкзамен" xml:space="preserve">
+    <value>Выбранный экзамен</value>
+  </data>
+  <data name="ВыужесдалиТест" xml:space="preserve">
+    <value>Вы уже сдали Тест!</value>
+  </data>
   <data name="Датарегистрации" xml:space="preserve">
     <value>Дата регистрации:</value>
   </data>
@@ -335,6 +344,9 @@
   <data name="Тест" xml:space="preserve">
     <value>Тест</value>
     <comment>Тест для пользователя</comment>
+  </data>
+  <data name="Тестыдляэкзамена" xml:space="preserve">
+    <value>Тесты для экзамена:</value>
   </data>
   <data name="Удалить" xml:space="preserve">
     <value>Удалить</value>

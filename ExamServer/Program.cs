@@ -209,11 +209,12 @@ namespace ExamServer
             try
             {
                 using (TcpClient client = client_obj as TcpClient)
-                {
+                {                 
+                    NetworkStream stream = client.GetStream();
+
                     GlobalClass globalClass = new GlobalClass();
 
                     Mail mail = new Mail();
-                    NetworkStream stream = client.GetStream();
                     Command command = new Command();
                     Logging logging  = new Logging();
                     string responseData = string.Empty;

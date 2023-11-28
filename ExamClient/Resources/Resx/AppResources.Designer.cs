@@ -205,6 +205,33 @@ namespace ExamClient.Resources.Resx {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Выбор экзамена.
+        /// </summary>
+        internal static string Выборэкзамена {
+            get {
+                return ResourceManager.GetString("Выборэкзамена", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выбранный экзамен.
+        /// </summary>
+        internal static string Выбранныйэкзамен {
+            get {
+                return ResourceManager.GetString("Выбранныйэкзамен", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы уже сдали Тест!.
+        /// </summary>
+        internal static string ВыужесдалиТест {
+            get {
+                return ResourceManager.GetString("ВыужесдалиТест", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Дата регистрации:.
         /// </summary>
         internal static string Датарегистрации {
@@ -705,6 +732,15 @@ namespace ExamClient.Resources.Resx {
         internal static string Тест {
             get {
                 return ResourceManager.GetString("Тест", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Тесты для экзамена:.
+        /// </summary>
+        internal static string Тестыдляэкзамена {
+            get {
+                return ResourceManager.GetString("Тестыдляэкзамена", resourceCulture);
             }
         }
         

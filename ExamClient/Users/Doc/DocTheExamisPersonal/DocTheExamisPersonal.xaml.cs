@@ -1,4 +1,5 @@
-﻿using ExamModels;
+﻿using ExamClient.Resources.Resx;
+using ExamModels;
 
 namespace Client.Users;
 
@@ -177,7 +178,7 @@ public partial class DocTheExamisPersonal : ContentPage
             if (!Commands.Any(q => q  == selectedTest.UserExams.Exams.Name_exam))
             {
                 //await DisplayAlert("Выбранный вопрос", selectedTestQuestion.TestQuestion.IdQuestions.QuestionName, "OK");
-                await DisplayAlert("Выбранный экзамен", selectedTest.UserExams.Exams.Name_exam, "OK");
+                await DisplayAlert(AppResources.Выбранныйэкзамен, selectedTest.UserExams.Exams.Name_exam, AppResources.Ок);
                 //await Navigation.PushAsync(new Doc.DocAnswerQuestins.DocAnswerQuestins(selectedTestQuestion.TestQuestion.IdQuestions, Test, Exams, CurrrentUser, questions1));
                 await Navigation.PushAsync(new Doc.DocTestsFromQuestions.DocTestsFromQuestions(selectedTest.UserExams.Exams, CurrrentUser));
 
@@ -185,7 +186,7 @@ public partial class DocTheExamisPersonal : ContentPage
             }
             else
             {
-                await DisplayAlert("Вы  cдали экзамен  !", selectedTest.UserExams.Exams.Name_exam, "OK");
+                await DisplayAlert(AppResources.ВыужесдалиТест, selectedTest.UserExams.Exams.Name_exam, AppResources.Ок);
             }
         // vSelectedItem = selectedTest.Exams;
 

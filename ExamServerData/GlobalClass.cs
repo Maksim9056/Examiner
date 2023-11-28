@@ -177,6 +177,8 @@ namespace ExamServerData
                         break;
                 }
             }
+
+
             public void BackupDatabaseMSSQL(string backupFilePath)
             {
                 using (var connection = Database.GetDbConnection() as SqlConnection)

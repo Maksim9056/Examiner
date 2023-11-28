@@ -1,4 +1,5 @@
-﻿using ExamModels;
+﻿using ExamClient.Resources.Resx;
+using ExamModels;
 using static Client.Project.DocExamTestListPage;
 
 namespace Client.Users.Doc.DocTestsFromQuestions;
@@ -26,8 +27,7 @@ public partial class DocTestsFromQuestions : ContentPage
         CurrrentUser = currrentUser;
 
         TestList.ItemsSource = GetExamsTest(exams, currrentUser);
-
-        Title = "Тесты для экзамена: " + exams.Name_exam;
+        Title = AppResources.Тестыдляэкзамена+ exams.Name_exam;
 
 #pragma warning disable CS0618 // Тип или член устарел
         MessagingCenter.Subscribe<DocTestsFromQuestions>(this, "UpdateForm", (sender) =>
@@ -56,14 +56,14 @@ public partial class DocTestsFromQuestions : ContentPage
 
         if (!Commands.Any(q => q == selectedExamsTest.ExamsTest.Test.Name_Test))
         {
-            await DisplayAlert("Выбранный экзамен", selectedExamsTest.ExamsTest.Test.Name_Test, "OK");
+               await DisplayAlert(AppResources.Выбранныйэкзамен, selectedExamsTest.ExamsTest.Test.Name_Test, AppResources.Ок);
            
             await Navigation.PushAsync(new Doc.DocTestMenu.DocTestMenu(CurrrentExams, selectedExamsTest.ExamsTest.Test, CurrrentUser));
 
         }
-        else
+        else 
         {
-            await DisplayAlert("Вы уже cдали Тест!", selectedExamsTest.ExamsTest.Test.Name_Test, "OK");
+            await DisplayAlert(AppResources.ВыужесдалиТест, selectedExamsTest.ExamsTest.Test.Name_Test, AppResources.Ок);
         }
 
       //  await DisplayAlert("Выбранный тест", selectedExamsTest.ExamsTest.Test.Name_Test, "OK");
