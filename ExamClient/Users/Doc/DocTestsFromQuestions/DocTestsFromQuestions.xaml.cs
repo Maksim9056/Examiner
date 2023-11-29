@@ -27,7 +27,7 @@ public partial class DocTestsFromQuestions : ContentPage
         CurrrentUser = currrentUser;
 
         TestList.ItemsSource = GetExamsTest(exams, currrentUser);
-        Title = AppResources.Тестыдляэкзамена+ exams.Name_exam;
+        Title = AppResources.Тестыдляэкзамена + exams.Name_exam;
 
 #pragma warning disable CS0618 // Тип или член устарел
         MessagingCenter.Subscribe<DocTestsFromQuestions>(this, "UpdateForm", (sender) =>
