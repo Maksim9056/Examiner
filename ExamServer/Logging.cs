@@ -225,16 +225,17 @@ namespace ExamServer
 
             var Cтатус = SearhComand(действия);
 
+            string path = AppDomain.CurrentDomain.BaseDirectory;
 
             DateTime d = DateTime.Now;
             try
             {
 
 
-             
 
 
-                using (StreamWriter writer = new StreamWriter("LogsFile.txt", true))
+
+                using (StreamWriter writer = new StreamWriter(path + "\\LogsFile.txt", true))
                 {
 
                     Logging logging = new Logging(d, user, Comand, Cтатус, Ошибка);
@@ -251,20 +252,20 @@ namespace ExamServer
             }
             catch(Exception) 
             {
-                using (StreamWriter writer = new StreamWriter("LogsFile.txt", true))
-                {
+                //using (StreamWriter writer = new StreamWriter(path + "\\LogsFile.txt", true))
+                //{
 
-                    Logging logging = new Logging(d, user, Comand, Cтатус, Ошибка);
+                //    Logging logging = new Logging(d, user, Comand, Cтатус, Ошибка);
 
 
-                    // Запиши данные в файл
-                    await writer.WriteLineAsync($"{logging.DateTime}, {logging.Name}, {logging.Действие}, {logging.Cтатус},{logging.Ошибка}");
-                    // Или использовать writer.Write(), если нужно записать данные в файл без переноса строки
+                //    // Запиши данные в файл
+                //    await writer.WriteLineAsync($"{logging.DateTime}, {logging.Name}, {logging.Действие}, {logging.Cтатус},{logging.Ошибка}");
+                //    // Или использовать writer.Write(), если нужно записать данные в файл без переноса строки
 
-                    // Закрой StreamWriter
-                    writer.Close();
+                //    // Закрой StreamWriter
+                //    writer.Close();
 
-                }
+                //}
             }
 
 

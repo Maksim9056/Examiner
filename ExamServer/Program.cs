@@ -40,6 +40,8 @@ namespace ExamServer
         {
             try
             {
+
+            
                 GlobalClass globalClass = new GlobalClass();
                 SaveOpen();
 
@@ -84,8 +86,12 @@ namespace ExamServer
             {
                 Console.WriteLine("SocketException:{0}", e.Message);
             }
+            catch(Exception ) 
+            {
+                Environment.Exit(0);
+            }
             Console.WriteLine("\nНажмите Enter");
-            Console.Read();
+          //  Console.Read();
 
         }
 

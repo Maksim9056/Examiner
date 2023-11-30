@@ -10,23 +10,31 @@ namespace ExamWorkerService
         public static void Main(string[] args)
         {
             var isWindowsService = !(args.Length > 0 && args[0] == "--console");
-            var hostBuilder = CreateHostBuilder(args);
+            //Сделай сразу разделение
 
             if (isWindowsService)
             {
+                var hostBuilder = CreateHostBuilders(args);
                 hostBuilder.UseWindowsService();
+                var host = hostBuilder.Build();
+                host.Run();
+
             }
             else
             {
+                var hostBuilder = CreateHostBuilder(args);
+
                 hostBuilder.UseSystemd();
+                var host = hostBuilder.Build();
+                host.Run();
+
             }
 
-            var host = hostBuilder.Build();
 
-            if (isWindowsService)
-                host.Run();
-            else
-                host.Run();
+            //if (isWindowsService)
+            //    host.Run();
+            //else
+            //    host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -36,6 +44,14 @@ namespace ExamWorkerService
                 {
                     services.AddHostedService<Worker>();
                 });
+
+        public static IHostBuilder CreateHostBuilders(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureLogging(loggerFactory => loggerFactory.AddEventLog())
+            .ConfigureServices((hostContext, services) =>
+            {
+                services.AddHostedService<Worker>();
+            });
     }
 }
 
