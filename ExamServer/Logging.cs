@@ -221,28 +221,50 @@ namespace ExamServer
 
         public async void Insert(string user, StatusType statusType, Действия действия,string Ошибка)
         {
-
             var Comand = SearhComand(действия);
 
             var Cтатус = SearhComand(действия);
 
 
             DateTime d = DateTime.Now;
-
-
-            using (StreamWriter writer = new StreamWriter("LogsFile.txt", true))
+            try
             {
 
-                Logging logging = new Logging(d, user, Comand, Cтатус, Ошибка);
+
+             
 
 
-                // Запиши данные в файл
-               await writer.WriteLineAsync($"{logging.DateTime}, {logging.Name}, {logging.Действие}, {logging.Cтатус}, {logging.Ошибка}");
-                // Или использовать writer.Write(), если нужно записать данные в файл без переноса строки
+                using (StreamWriter writer = new StreamWriter("LogsFile.txt", true))
+                {
 
-                // Закрой StreamWriter
-                writer.Close();
+                    Logging logging = new Logging(d, user, Comand, Cтатус, Ошибка);
 
+
+                    // Запиши данные в файл
+                    await writer.WriteLineAsync($"{logging.DateTime}, {logging.Name}, {logging.Действие}, {logging.Cтатус}, {logging.Ошибка}");
+                    // Или использовать writer.Write(), если нужно записать данные в файл без переноса строки
+
+                    // Закрой StreamWriter
+                    writer.Close();
+
+                }
+            }
+            catch(Exception) 
+            {
+                using (StreamWriter writer = new StreamWriter("LogsFile.txt", true))
+                {
+
+                    Logging logging = new Logging(d, user, Comand, Cтатус, Ошибка);
+
+
+                    // Запиши данные в файл
+                    await writer.WriteLineAsync($"{logging.DateTime}, {logging.Name}, {logging.Действие}, {logging.Cтатус},{logging.Ошибка}");
+                    // Или использовать writer.Write(), если нужно записать данные в файл без переноса строки
+
+                    // Закрой StreamWriter
+                    writer.Close();
+
+                }
             }
 
 

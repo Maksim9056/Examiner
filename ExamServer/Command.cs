@@ -1118,7 +1118,7 @@ namespace ExamServer
         {
             User user = JsonSerializer.Deserialize<User>(arg1);
 
-        var users =     mail.RegUserMail(user.Name_Employee, user.Employee_Mail);
+          var users =  mail.RegUserMail(user.Name_Employee, user.Employee_Mail);
 
             using (MemoryStream ms = new MemoryStream())
             {

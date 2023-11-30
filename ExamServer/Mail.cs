@@ -38,7 +38,6 @@ namespace ExamServer
             catch (Exception e)
             {
                 Console.WriteLine("Произошла ошибка при отправке письма: " + e.Message);
-                Console.Read();
                 user = new User() { Name_Employee = "1"};
             }
 
