@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Client.Users.Users"
+              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+            
              Loaded="ContentPage_Loaded">
 
     <ContentPage.Content>
@@ -31,7 +33,7 @@
                 <StackLayout Grid.Row="1"
                              Margin="0,150,0,0">
                     <Button x:Name="ExamButton"
-                            Text="Экзамен"
+                            Text="{x:Static resource:AppResources.Экзамен}"
                             WidthRequest="320"
                             Clicked="ExamButtonClicked"
                             VerticalOptions="Start"
@@ -40,7 +42,7 @@
                             Style="{DynamicResource ButtonStyle}" />
 
                     <Button x:Name="StatictickButton"
-                            Text="Статистика"
+                            Text="{x:Static resource:AppResources.Статистика}"
                             WidthRequest="320"
                             Clicked="Statictick_Users"
                             VerticalOptions="Start"
@@ -49,7 +51,7 @@
                             Style="{DynamicResource ButtonStyle}" />
 
                     <Button x:Name="AchievementsButton"
-                            Text="Достижения"
+                            Text="{x:Static resource:AppResources.Достижения}"
                             WidthRequest="320"
                             Clicked="AchievementsButtonClicked"
                             VerticalOptions="Start"
@@ -68,7 +70,7 @@
                 </StackLayout>
 
                 <Button Grid.Row="3"
-                        Text="Назад"
+                        Text="{x:Static resource:AppResources.Назад}"
                         Clicked="GoBack"
                         VerticalOptions="End"
                         HorizontalOptions="FillAndExpand"

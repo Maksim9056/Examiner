@@ -1,3 +1,4 @@
+using ExamClient.Resources.Resx;
 using ExamModels;
 
 namespace Client.Users.Doc.DocAnswerQuestins;
@@ -26,7 +27,7 @@ public partial class DocAnswerQuestins : ContentPage
         viewModel = new QuestionAnswerEditorViewModel();
         viewModelManager = new QuestionAnswerManager();
         CurrrentQuestions = questions;
-        Users.Text = "Ответьте на вопрос:"+questions.QuestionName;
+        Users.Text = AppResources.Ответьтенавопрос + questions.QuestionName;
         CurrrentTest = test;
         CurrrentUser =  user;
         Exams = exams;
@@ -84,8 +85,7 @@ public partial class DocAnswerQuestins : ContentPage
 
         var selectedTestQuestion = (RefQuestionAnswer)e.SelectedItem;
         //    await DisplayAlert("Выбранный ответ", selectedTestQuestion.QuestionAnswer.Answer.AnswerOptions, "OK");
-     
-        await DisplayAlert("Выбранный ответ", selectedTestQuestion.QuestionAnswer.Answer.AnswerOptions, "OK");
+        await DisplayAlert(AppResources.Выбранныйответ, selectedTestQuestion.QuestionAnswer.Answer.AnswerOptions, AppResources.Ок);
 
         //TravelServerTest travelServerTest = new TravelServerTest(CurrrentUser, CurrrentQuestions, CurrrentTest, selectedTestQuestion.QuestionAnswer, Exams);
         Save_results travelServerTest = new Save_results();

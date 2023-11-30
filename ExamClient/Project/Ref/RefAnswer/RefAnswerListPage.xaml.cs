@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ExamModels;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using ExamClient.Resources.Resx;
 
 namespace Client.Project
 {
@@ -33,7 +34,7 @@ namespace Client.Project
             }
             catch (Exception ex)
             {
-                DisplayAlert("Ошибка", ex.Message, "ОК");
+                DisplayAlert(AppResources.Ошибка, ex.Message, AppResources.Ок);
             }
         }
 
@@ -107,7 +108,7 @@ namespace Client.Project
 
             viewModelManager.DeleteAnswerData(selectedAnswer.Answers);
 
-            DisplayAlert("Удаляется вопрос", selectedAnswer.Answers.AnswerOptions, "OK");
+            DisplayAlert(AppResources.Удаляетсявопрос , selectedAnswer.Answers.AnswerOptions, AppResources.Ок);
             UpdateForm();
         }
 
@@ -137,7 +138,7 @@ namespace Client.Project
             }
             catch(Exception ex) 
             {
-                DisplayAlert("Ошибка перехода на вопрос создать!", ex.Message, "ОК");
+                DisplayAlert(AppResources.Ошибкапереходанавопроссоздать, ex.Message,AppResources.Ок);
             }
         }
     }

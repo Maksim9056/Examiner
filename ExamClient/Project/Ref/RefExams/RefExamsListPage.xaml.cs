@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ExamModels;
 using System.Collections.ObjectModel;
 using Client.Main;
+using ExamClient.Resources.Resx;
 
 namespace Client.Project
 {
@@ -98,8 +99,8 @@ public partial class RefExamsListPage : ContentPage
             var selectedTest = (RefExams)test;
 
             viewModelManager.DeleteExamsData(selectedTest.Exams);
-
-            DisplayAlert("Удаляется тест", selectedTest.Exams.Name_exam, "OK");
+            
+            DisplayAlert( AppResources.Удаляетсятест, selectedTest.Exams.Name_exam,AppResources.Ок);
             UpdateForm();
         }
 

@@ -1,3 +1,4 @@
+using ExamClient.Resources.Resx;
 using ExamModels;
 using Microsoft.Extensions.Options;
 using System;
@@ -26,7 +27,7 @@ namespace Client.Project
                 BindingContext = viewModel;
             }catch (Exception ex)
             {
-                DisplayAlert("Ошибка создания!", ex.Message,"ОК");
+                DisplayAlert(AppResources.Ошибкасоздания, ex.Message,AppResources.Ок);
             }
         }
 

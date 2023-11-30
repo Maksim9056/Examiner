@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ExamModels;
 using System.Collections.ObjectModel;
+using ExamClient.Resources.Resx;
 
 
 namespace Client.Project
@@ -25,7 +26,7 @@ namespace Client.Project
             viewModelManager = new QuestionAnswerManager();
             CurrrentQuestions = questions;
             QuestionList.ItemsSource = GetQuestionAnswer(questions);
-            Title = "Ответы для вопроса: " + questions.QuestionName;
+            Title = AppResources.Ответыдлявопроса + questions.QuestionName;
 #pragma warning disable CS0618 // Тип или член устарел
             MessagingCenter.Subscribe<DocQuestionAnswerListPage>(this, "UpdateForm", (sender) =>
             {
@@ -89,7 +90,7 @@ namespace Client.Project
                 return;
 
             var selectedTestQuestion = (RefQuestionAnswer)e.SelectedItem;
-            await DisplayAlert("Выбранный ответ", selectedTestQuestion.QuestionAnswer.Answer.AnswerOptions, "OK");
+            await DisplayAlert( AppResources.Выбранныйответ, selectedTestQuestion.QuestionAnswer.Answer.AnswerOptions, AppResources.Ок);
             ((ListView)sender).SelectedItem = null;
         }
 
@@ -105,7 +106,7 @@ namespace Client.Project
 
             viewModelManager.DeleteQuestionAnswerData(selectedTestQuestion.QuestionAnswer);
 
-            DisplayAlert("Удаляется ответ", selectedTestQuestion.QuestionAnswer.Questions.QuestionName, "OK");
+            DisplayAlert( AppResources.Удаляетсяответ, selectedTestQuestion.QuestionAnswer.Questions.QuestionName, AppResources.Ок);
             UpdateForm(CurrrentQuestions);
         }
 

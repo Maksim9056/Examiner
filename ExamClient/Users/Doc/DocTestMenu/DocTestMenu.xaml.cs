@@ -1,3 +1,4 @@
+using ExamClient.Resources.Resx;
 using ExamModels;
 
 namespace Client.Users.Doc.DocTestMenu;
@@ -23,7 +24,7 @@ public partial class DocTestMenu : ContentPage
         CurrrentUser = currrentUser;
        var Result =   GetTestQuestions(test);
         refTestQuestions = Result;
-       Question.Text = "Количество вопросов :" +  Result.Count().ToString();
+       Question.Text = AppResources.Количествовопросов + Result.Count().ToString();
     
 
     }

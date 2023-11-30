@@ -1,4 +1,5 @@
-    using ExamModels;
+using ExamClient.Resources.Resx;
+using ExamModels;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Client.Users.Doc.DocTestQuestionsTheAnswers;
@@ -46,11 +47,10 @@ public partial class DocTestQuestionsTheAnswers : ContentPage
             return;
 
         var selectedTestQuestion = (RefTestQuestion)e.SelectedItem;
-       
-    //    await DisplayAlert("Выбранный вопрос", selectedTestQuestion.TestQuestion.IdQuestions.QuestionName, "OK");
 
-        // var selectedTestQuestion = (RefQuestionAnswer)e.SelectedItem;
-        await DisplayAlert("Выбранный ответ", selectedTestQuestion.TestQuestion.IdQuestions.QuestionName, "OK");
+        //    await DisplayAlert("Выбранный вопрос", selectedTestQuestion.TestQuestion.IdQuestions.QuestionName, "OK");
+            // var selectedTestQuestion = (RefQuestionAnswer)e.SelectedItem;
+            await DisplayAlert(AppResources.Выбранныйответ, selectedTestQuestion.TestQuestion.IdQuestions.QuestionName, AppResources.Ок);
       //  questions1.Add(selectedTestQuestion.TestQuestion.IdQuestions);
 
         if (!questions1.Any(q => q.QuestionName == selectedTestQuestion.TestQuestion.IdQuestions.QuestionName))

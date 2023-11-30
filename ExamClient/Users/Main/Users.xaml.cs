@@ -12,6 +12,7 @@ using System.Net.NetworkInformation;
 using System.Windows.Input;
 using System.Xml.Linq;
 using Image = Microsoft.Maui.Controls.Image;
+using ExamClient.Resources.Resx;
 
 namespace Client.Users;
 
@@ -55,7 +56,7 @@ public partial class Users : ContentPage
         }
         catch (Exception ex)
         {
-             DisplayAlert("Ошибка", "Сообщение" + ex.Message + "\n" + "Помощь:" + ex.HelpLink, "Ок");
+             DisplayAlert(AppResources.Ошибка,AppResources.Сообщение + ex.Message + "\n" + AppResources.Помощь + ex.HelpLink, AppResources.Ок);
 
         }
         return null;
@@ -220,7 +221,7 @@ public partial class Users : ContentPage
 
             }
         }
-        catch(Exception ex) 
+        catch(Exception ) 
         {
            // DisplayAlert("Ошибка", "Сообщение" + ex.Message + "\n" + "Помощь:" + ex.Data, "Ок");
         }
@@ -297,7 +298,8 @@ public partial class Users : ContentPage
             // Создание пунктов меню класса
             var main = new ShellContent { Content = new Client.Users.Users(regis_Users) };
             // Добавление пунктов меню в класс
-            Shell.Current.Items.Add(new ShellSection { Title = "Пользователь", Items = { main }, Icon = "dotnet_bot.png", Route = "user2" });
+            Shell.Current.Items.Add(new ShellSection { Title = AppResources.Пользователь,
+                Items = { main }, Icon = "dotnet_bot.png", Route = "user2" });
 
         }
 

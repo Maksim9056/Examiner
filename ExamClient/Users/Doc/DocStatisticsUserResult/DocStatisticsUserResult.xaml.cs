@@ -1,4 +1,5 @@
-﻿using ExamModels;
+﻿using ExamClient.Resources.Resx;
+using ExamModels;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Compatibility;
 using System.Windows.Input;
@@ -41,8 +42,7 @@ public partial class DocStatisticsUserResult : ContentPage
     public DocStatisticsUserResult(User user)
     {
         InitializeComponent();
-
-        Title = "Статистика экзаменов";
+        Title = AppResources.Статистикаэкзаменов;
 
         CurrrentUser = user;
       List<Statictics> Result = GetUserExams(user);
@@ -66,8 +66,7 @@ public partial class DocStatisticsUserResult : ContentPage
         //}
 
         var labels = new List<List<string>>();
-
-        var Lab = new List<string> { "Экзамен", "Имя теста", "Оценка" };
+        var Lab = new List<string> {         AppResources.Экзамен, AppResources.Имятеста, AppResources.Оценка };
         labels.Insert(0, Lab);
 
         for (int i = 0; i < statictics.Count; i++)

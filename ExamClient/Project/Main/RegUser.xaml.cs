@@ -17,6 +17,7 @@ using SkiaSharp;
 using System.Net.Sockets;
 using Microsoft.Maui.Controls;
 using System.Buffers.Text;
+using ExamClient.Resources.Resx;
 
 namespace Client.Main;
 
@@ -110,7 +111,7 @@ public partial class RegUser : ContentPage
         }
         catch(Exception ex) 
         {
-           await DisplayAlert("Ошибка", "Сообщение" + ex.Message + "\n" + "Помощь:" + ex.HelpLink, "Ок");
+           await DisplayAlert(AppResources.Ошибка,AppResources.Сообщение + ex.Message + "\n" + AppResources.Помощь + ex.HelpLink,AppResources.Ок );
 
         }
       
@@ -157,24 +158,24 @@ public partial class RegUser : ContentPage
             }
             if (галочка == null)
             {
-                await DisplayAlert("Уведомление", "Сервер выключен или недоступен!", "ОK");
+                await DisplayAlert(AppResources.Уведомление, AppResources.Сервервыключенилинедоступен,AppResources.Ок);
                 return;
             }
             if (Password1 == null || Password1 == "")
             {
-                await DisplayAlert("Уведомление", "Пароль на подтверждение не заполнен!", "ОK");
+                await DisplayAlert(AppResources.Уведомление,AppResources.Парольнаподтверждениенезаполнен, AppResources.Ок);
             }
             if (Password == null || Password == "")
             {
-                await DisplayAlert("Уведомление", "Пароль не заполнен!", "ОK");
+                await DisplayAlert(AppResources.Уведомление, AppResources.Парольнезаполнен, AppResources.Ок);
             }
             if (User_Name == null || User_Name == "")
             {
-                await DisplayAlert("Уведомление", "Имя не заполнено", "ОK");
+                await DisplayAlert(AppResources.Уведомление, AppResources.Имянезаполнено, AppResources.Ок);
             }
             if (Roles == null)
             {
-                await DisplayAlert("Уведомление", "Не заполнено разрешение!", "ОK");
+                await DisplayAlert(AppResources.Уведомление, AppResources.Незаполненоразрешение,AppResources.Ок);
             }
 
 
@@ -204,11 +205,11 @@ public partial class RegUser : ContentPage
              if (Mail == null || Mail == "")
             {
 
-                await DisplayAlert("Уведомление", "Почта не заполнена!", "ОK");
+                await DisplayAlert(AppResources.Уведомление, AppResources.Почтанезаполнена , AppResources.Ок);
             }
              if (!Regex.IsMatch(Mail, "@."))
             {
-                await DisplayAlert("Уведомление", "Некорректный адрес электронной почты!", "ОK");
+                await DisplayAlert(AppResources.Уведомление,   AppResources.Некорректныйадресэлектроннойпочты, AppResources.Ок);
             }
             else
             {
@@ -269,11 +270,11 @@ public partial class RegUser : ContentPage
                             // Остальной код для фильтрации по имени
                             if (Message == null)
                             {
-                                await DisplayAlert("Уведомление", "Вы не зарегистрировались!", "ОK");
+                                await DisplayAlert(AppResources.Уведомление, AppResources.Вынезарегистрировались, AppResources.Ок);
                             }
                             else
                             {
-                                await DisplayAlert("Уведомление", "Вы зарегистрировались!", "ОK");
+                                await DisplayAlert(AppResources.Уведомление, AppResources.Вызарегистрировались, AppResources.Ок);
 
 
                             }
@@ -296,7 +297,7 @@ public partial class RegUser : ContentPage
         
         catch(Exception ex)
         {
-            await DisplayAlert("Ошибка", "Сообщение" + ex.Message + "\n" + "Помощь:" + ex.HelpLink, "Ок");
+            await DisplayAlert(AppResources.Ошибка, AppResources.Сообщение + ex.Message + "\n" +AppResources.Помощь + ex.HelpLink, AppResources.Ок);
 
         }
 
@@ -370,7 +371,7 @@ public partial class RegUser : ContentPage
   
             if (Client == null)
             {
-                 DisplayAlert("Уведомление", "Ролей нет!", "ОK");
+                 DisplayAlert(AppResources.Уведомление, AppResources.Ролейнет, AppResources.Ок);
             }
             else
             {
@@ -397,7 +398,7 @@ public partial class RegUser : ContentPage
         }
         catch(Exception ex)
         {
-             DisplayAlert("Ошибка", "Сообщение" + ex.Message + "\n" + "Помощь:" + ex.HelpLink, "Ок");
+             DisplayAlert(AppResources.Ошибка,  AppResources.Сообщение+ ex.Message + "\n" + AppResources.Помощь+ ex.HelpLink, AppResources.Ок);
 
         }
         return null;
@@ -421,7 +422,7 @@ public partial class RegUser : ContentPage
         }
         catch(Exception s)
         {
-            DisplayAlert("Ошибка", s.Message, "ОК");
+            DisplayAlert(AppResources.Ошибка, s.Message, AppResources.Ок);
         }
     }
 
@@ -460,7 +461,7 @@ public partial class RegUser : ContentPage
                 return;
 
             var selectedExamsTest = (RefExamsTest)e.SelectedItem;
-            await DisplayAlert("Выбранная роль:", selectedExamsTest.ExamsTest.Name_roles, "OK");
+            await DisplayAlert(AppResources.Выбраннаяроль, selectedExamsTest.ExamsTest.Name_roles, AppResources.Ок);
 
             ((ListView)sender).SelectedItem = null;
             Roles = selectedExamsTest.ExamsTest;
@@ -468,7 +469,7 @@ public partial class RegUser : ContentPage
         } 
         catch (Exception ex)
         {
-            await DisplayAlert("Ошибка", "Сообщение" + ex.Message + "\n" + "Помощь:" + ex.HelpLink, "Ок");
+            await DisplayAlert(AppResources.Ошибка, AppResources.Сообщение + ex.Message + "\n" + AppResources.Помощь + ex.HelpLink, AppResources.Ок);
 
         }
     }
@@ -544,7 +545,7 @@ public partial class RegUser : ContentPage
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                Console.WriteLine($"{AppResources.Произошлаошибка} {ex.Message}");
             }
         }
     }
@@ -704,7 +705,7 @@ public partial class RegUser : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Ошибка", "Сообщение" + ex.Message + "\n" + "Помощь:" + ex.Data, "Ок");
+            await DisplayAlert(AppResources.Ошибка,AppResources.Сообщение  + ex.Message + "\n" + AppResources.Помощь + ex.Data, AppResources.Ок);
             //Image_Loaded(sender, e);
         }
     }

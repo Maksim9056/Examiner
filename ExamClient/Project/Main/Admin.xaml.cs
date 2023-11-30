@@ -189,7 +189,7 @@ public partial class Admin : ContentPage
         }
         catch(Exception ex) 
         {
-        await    DisplayAlert("Ошибка", ex.Message, AppResources.Ок);
+        await    DisplayAlert(AppResources.Ошибка, ex.Message, AppResources.Ок);
 
         }
 

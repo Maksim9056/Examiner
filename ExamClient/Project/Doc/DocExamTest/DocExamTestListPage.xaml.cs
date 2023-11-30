@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ExamModels;
 using System.Collections.ObjectModel;
+using ExamClient.Resources.Resx;
 
 namespace Client.Project
 {
@@ -24,7 +25,7 @@ namespace Client.Project
             viewModelManager = new ExamsTestManager();
             CurrrentExams = exams;
             TestList.ItemsSource = GetExamsTest(exams);
-            Title = "Тесты для экзамена: " + exams.Name_exam;
+            Title = AppResources.Тестыдляэкзамена + exams.Name_exam;
 
 #pragma warning disable CS0618 // Тип или член устарел
             MessagingCenter.Subscribe<DocExamTestListPage>(this, "UpdateForm", (sender) =>
@@ -76,7 +77,7 @@ namespace Client.Project
                 return;
 
             var selectedExamsTest = (RefExamsTest)e.SelectedItem;
-            await DisplayAlert("Выбранный тест", selectedExamsTest.ExamsTest.Exams.Name_exam, "OK");
+            await DisplayAlert(AppResources.Выбранныйтест, selectedExamsTest.ExamsTest.Exams.Name_exam, AppResources.Ок);
             ((ListView)sender).SelectedItem = null;
         }
 
@@ -92,7 +93,7 @@ namespace Client.Project
 
             viewModelManager.DeleteExamsTestData(selectedExamsTest.ExamsTest);
 
-            DisplayAlert("Удаляется тест", selectedExamsTest.ExamsTest.Exams.Name_exam, "OK");
+            DisplayAlert(AppResources.Удаляетсятест, selectedExamsTest.ExamsTest.Exams.Name_exam, AppResources.Ок);
             UpdateForm(CurrrentExams);
         }
 

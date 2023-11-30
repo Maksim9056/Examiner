@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using ExamClient.Resources.Resx;
 
 namespace Client.Project
 {
@@ -34,7 +35,7 @@ namespace Client.Project
                 BindingContext = viewModel;
             }catch (Exception ex)
             {
-               DisplayAlert("Ошибка ответ!",ex.Message ,"ОК");
+               DisplayAlert(AppResources.Ошибкаответ, ex.Message ,AppResources.Ок);
             }
         }
 
@@ -58,7 +59,7 @@ namespace Client.Project
             viewModelManager.UpdateAnswerData(answer);
 
             // Display a message to indicate that the answer data has been saved successfully
-            DisplayAlert("Изменения сохранены", "", "OK");
+            DisplayAlert( AppResources.Изменениясохранены, "", AppResources.Ок);
 
             // Close the window after saving
             //Navigation.PopModalAsync();

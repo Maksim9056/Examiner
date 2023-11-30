@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ExamModels;
 using System.Collections.ObjectModel;
+using ExamClient.Resources.Resx;
 
 
 namespace Client.Project
@@ -25,7 +26,7 @@ namespace Client.Project
             viewModelManager = new TestQuestionManager();
             CurrrentTest = test;
             QuestionList1.ItemsSource = GetTestQuestions(test);
-            Title = "Вопросы для теста: "+ test.Name_Test;
+            Title =AppResources.Вопросыдлятеста + test.Name_Test;
 #pragma warning disable CS0618 // Тип или член устарел
             MessagingCenter.Subscribe<DocTestQuestionListPage>(this, "UpdateForm", (sender) =>
             {
@@ -75,7 +76,7 @@ namespace Client.Project
                 return;
 
             var selectedTestQuestion = (RefTestQuestion)e.SelectedItem;
-            await DisplayAlert("Выбранный вопрос", selectedTestQuestion.TestQuestion.IdQuestions.QuestionName, "OK");
+            await DisplayAlert(AppResources.Выбранныйвопрос, selectedTestQuestion.TestQuestion.IdQuestions.QuestionName, AppResources.Ок);
             ((ListView)sender).SelectedItem = null;
         }
 
@@ -91,7 +92,7 @@ namespace Client.Project
 
             viewModelManager.DeleteTestQuestionData(selectedTestQuestion.TestQuestion);
 
-            DisplayAlert("Удаляется вопрос", selectedTestQuestion.TestQuestion.IdQuestions.QuestionName, "OK");
+            DisplayAlert(AppResources.Удаляетсявопрос, selectedTestQuestion.TestQuestion.IdQuestions.QuestionName, AppResources.Ок);
             UpdateForm(CurrrentTest);
         }
 

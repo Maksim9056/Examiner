@@ -4,7 +4,7 @@
              x:Class="Client.Users.Doc.DocTestsFromQuestions.DocTestsFromQuestions"
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
 
-             Title="DocTestsFromQuestions">
+             Title="{x:Static resource:AppResources.Тестыизвопросов}">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>

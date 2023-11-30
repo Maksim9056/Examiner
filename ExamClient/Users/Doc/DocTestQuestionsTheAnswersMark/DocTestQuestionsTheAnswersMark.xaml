@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Client.Users.Doc.DocTestQuestionsTheAnswersMark.DocTestQuestionsTheAnswersMark"
-             Title="DocTestQuestionsTheAnswersMark">
+             xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+
+             Title="{x:Static resource:AppResources.Тестовыевопросысответами}">
     
     
     <ContentPage.Content>
@@ -47,7 +49,7 @@
             </ListView>
             <Button 
                     x:Name="TestStart" 
-                    Text="Закончить тест" 
+                    Text="{x:Static resource:AppResources.Закончитьтест}" 
                     SemanticProperties.Hint="Counts the number of times you click" 
                     Clicked="TestStart_Clicked" 
                     

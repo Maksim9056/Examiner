@@ -9,6 +9,7 @@ using ExamModels;
 using System.Collections.ObjectModel;
 using Client.Main;
 using static ExamModels.CommandCL;
+using ExamClient.Resources.Resx;
 
 namespace Client.Project.Main;
 
@@ -110,7 +111,7 @@ namespace Client.Project.Main;
 
         working_With_A_Backup.Restoring_a_backup(backap);
 
-         DisplayAlert("Уведомление", "Востановление успешно !", "OK");
+         DisplayAlert(AppResources.Уведомление, AppResources.Востановлениеуспешно, AppResources.Ок);
 
 
 
@@ -159,7 +160,7 @@ namespace Client.Project.Main;
         private async void CreateButtonClicked(object sender, EventArgs e)
         {
            working_With_A_Backup.DBackup();
-           await DisplayAlert("Уведомление", "Резевная копия создалась !", "OK");
+           await DisplayAlert(AppResources.Уведомление, AppResources.Резевнаякопиясоздалась, AppResources.Ок);
          UpdateForm();
 
         }

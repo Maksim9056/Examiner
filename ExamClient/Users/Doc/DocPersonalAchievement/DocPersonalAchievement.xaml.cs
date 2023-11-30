@@ -1,6 +1,7 @@
 using ExamModels;
 using Client.Controls;
 using System.Windows.Input;
+using ExamClient.Resources.Resx;
 
 namespace Client.Users.Doc.DocPersonalAchievement;
 
@@ -12,7 +13,9 @@ public partial class DocPersonalAchievement : ContentPage
     public DocPersonalAchievement(User user)
 	{
 		InitializeComponent();
-        Title = "Достижения";
+
+        Title = AppResources.Достижения
+;
 
         List<Statictics> Result = GetUserExams(user);
 

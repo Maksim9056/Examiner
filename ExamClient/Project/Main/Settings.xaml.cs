@@ -216,7 +216,7 @@ public partial class Settings : ContentPage
         }
         catch (Exception ex)
         {
-            DisplayAlert("Ошибка", ex.Message, "ОК");
+            DisplayAlert(AppResources.Ошибка, ex.Message, AppResources.Ок);
         }
 
 

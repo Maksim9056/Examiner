@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ExamModels;
 using System.Collections.ObjectModel;
+using ExamClient.Resources.Resx;
 
 namespace Client.Project
 {
@@ -24,7 +25,7 @@ namespace Client.Project
             viewModelManager = new UserExamsManager();
             CurrrentUser = user;
             ExamsList.ItemsSource = GetUserExams(user);
-            Title = "Экзамены для пользователя: " + user.Name_Employee;
+            Title =   AppResources.Экзаменыдляпользователя + user.Name_Employee;
 
 #pragma warning disable CS0618 // Тип или член устарел
             MessagingCenter.Subscribe<DocUserExamsListPage>(this, "UpdateForm", (sender) =>
@@ -74,7 +75,7 @@ namespace Client.Project
                 return;
 
             var selectedUserExams = (RefUserExams)e.SelectedItem;
-            await DisplayAlert("Выбранный экзамен", selectedUserExams.UserExams.Exams.Name_exam, "OK");
+            await DisplayAlert(AppResources.Выбранныйэкзамен , selectedUserExams.UserExams.Exams.Name_exam, AppResources.Ок);
             ((ListView)sender).SelectedItem = null;
         }
 
@@ -90,7 +91,7 @@ namespace Client.Project
 
             viewModelManager.DeleteUserExamsData(selectedUserExams.UserExams);
 
-            DisplayAlert("Удаляется ответ", selectedUserExams.UserExams.Exams.Name_exam, "OK");
+            DisplayAlert(AppResources.Удаляетсяответ, selectedUserExams.UserExams.Exams.Name_exam, AppResources.Ок);
             UpdateForm(CurrrentUser);
         }
 

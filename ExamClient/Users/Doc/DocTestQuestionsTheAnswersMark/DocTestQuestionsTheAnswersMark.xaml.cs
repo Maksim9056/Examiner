@@ -1,4 +1,5 @@
-﻿using ExamModels;
+﻿using ExamClient.Resources.Resx;
+using ExamModels;
 
 namespace Client.Users.Doc.DocTestQuestionsTheAnswersMark;
 
@@ -167,14 +168,15 @@ public partial class DocTestQuestionsTheAnswersMark : ContentPage
         var selectedTestQuestion = (RefTestQuestion)e.SelectedItem;
  
         if (!questions1.Any(q => q.QuestionName == selectedTestQuestion.TestQuestion.IdQuestions.QuestionName))
-        {     
-            await DisplayAlert("Выбранный вопрос", selectedTestQuestion.TestQuestion.IdQuestions.QuestionName, "OK");
+        {
+          
+            await DisplayAlert(AppResources.Выбранныйвопрос, selectedTestQuestion.TestQuestion.IdQuestions.QuestionName, AppResources.Ок);
             await Navigation.PushAsync(new Doc.DocAnswerQuestins.DocAnswerQuestins(selectedTestQuestion.TestQuestion.IdQuestions, Test, Exams,CurrrentUser, questions1));
 
         }
-        else
+        else 
         {
-            await DisplayAlert("Вы уже ответили на вопрос !", selectedTestQuestion.TestQuestion.IdQuestions.QuestionName, "OK");
+            await DisplayAlert(AppResources.Выужеответилинавопрос, selectedTestQuestion.TestQuestion.IdQuestions.QuestionName, AppResources.Ок);
         }
 
         // var selectedTestQuestion = (RefQuestionAnswer)e.SelectedItem;
@@ -259,7 +261,8 @@ public partial class DocTestQuestionsTheAnswersMark : ContentPage
 
         if(testQuestionListS.Count() == questions1.Count())
         {
-            DisplayAlert("Сохранен тест", "Завершен тест !", "Oк");
+
+            DisplayAlert(AppResources.Сохранентест, AppResources.Завершентест, AppResources.Ок);
 
             Roles roles = new Roles { Id = CurrrentUser.Id_roles_users};
             Regis_users regis_Users = new Regis_users()
@@ -269,8 +272,10 @@ public partial class DocTestQuestionsTheAnswersMark : ContentPage
             Navigation.PushAsync(new Client.Users.Users(regis_Users));
         }
         else
+
         {
-            DisplayAlert("Тест не завершен!", "Ответили не на все вопросы !", "Oк");
+
+            DisplayAlert(AppResources.Тестнезавершен,AppResources.Ответилиненавсевопросы, AppResources.Ок);
         }
         
     }

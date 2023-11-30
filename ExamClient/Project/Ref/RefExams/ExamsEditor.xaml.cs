@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using ExamClient.Resources.Resx;
 
 namespace Client.Project
 {
@@ -47,7 +48,7 @@ namespace Client.Project
             viewModelManager.UpdateExamsData(exams);
 
             // Display a message to indicate that the test data has been saved successfully
-            DisplayAlert("Изменения сохранены", "", "OK");
+            DisplayAlert(AppResources.Изменениясохранены, "", AppResources.Ок);
 
             // Close the window after saving
             //Navigation.PopModalAsync();

@@ -126,6 +126,9 @@
   <data name="MailПользователя" xml:space="preserve">
     <value>Mail of the user</value>
   </data>
+  <data name="АдминистраторАвторизовался" xml:space="preserve">
+    <value>The Administrator Has Logged In!</value>
+  </data>
   <data name="Админскаяпанель" xml:space="preserve">
     <value>Admin panel</value>
   </data>
@@ -147,14 +150,23 @@
   <data name="ВведитеЭлектроннуюПочту" xml:space="preserve">
     <value>Enter your email address</value>
   </data>
+  <data name="Ввелинепочту" xml:space="preserve">
+    <value>Entered not mail!</value>
+  </data>
   <data name="Войти" xml:space="preserve">
     <value>Login</value>
   </data>
   <data name="Вопрос" xml:space="preserve">
     <value>Question</value>
   </data>
+  <data name="Вопросыдлятеста" xml:space="preserve">
+    <value>Questions for the test:</value>
+  </data>
   <data name="Востановить" xml:space="preserve">
     <value>Recover</value>
+  </data>
+  <data name="Востановлениеуспешно" xml:space="preserve">
+    <value>Restoration is successful !</value>
   </data>
   <data name="ВходвучетнуюЗапись" xml:space="preserve">
     <value>Log in to your account</value>
@@ -168,8 +180,29 @@
   <data name="Выборэкзамена" xml:space="preserve">
     <value>Exam Selection</value>
   </data>
+  <data name="Выбраннаяроль" xml:space="preserve">
+    <value>Selected role:</value>
+  </data>
+  <data name="Выбранныйвопрос" xml:space="preserve">
+    <value>Selected question</value>
+  </data>
+  <data name="Выбранныйответ" xml:space="preserve">
+    <value>Selected response</value>
+  </data>
+  <data name="Выбранныйтест" xml:space="preserve">
+    <value>Selected test</value>
+  </data>
   <data name="Выбранныйэкзамен" xml:space="preserve">
     <value>Selected Exam</value>
+  </data>
+  <data name="Вызарегистрировались" xml:space="preserve">
+    <value>You have registered!</value>
+  </data>
+  <data name="Вынезарегистрировались" xml:space="preserve">
+    <value>You haven't registered!</value>
+  </data>
+  <data name="Выужеответилинавопрос" xml:space="preserve">
+    <value>You have already answered the question !</value>
   </data>
   <data name="ВыужесдалиТест" xml:space="preserve">
     <value>You have already passed the Test!</value>
@@ -189,6 +222,18 @@
   <data name="Добавитьэкзамен" xml:space="preserve">
     <value>Add an exam</value>
   </data>
+  <data name="Достижения" xml:space="preserve">
+    <value>Achievements</value>
+  </data>
+  <data name="Завершентест" xml:space="preserve">
+    <value>The test is completed!</value>
+  </data>
+  <data name="Закончитьтест" xml:space="preserve">
+    <value>Finish the test</value>
+  </data>
+  <data name="Изменениясохранены" xml:space="preserve">
+    <value>Changes saved</value>
+  </data>
   <data name="ИмяИлиВопрос" xml:space="preserve">
     <value>Name/Question:</value>
   </data>
@@ -203,6 +248,12 @@
   </data>
   <data name="ИмяИлиЭкзамена" xml:space="preserve">
     <value>Name/Exam:</value>
+  </data>
+  <data name="Имянезаполнено" xml:space="preserve">
+    <value>Name is not filled in</value>
+  </data>
+  <data name="Имятеста" xml:space="preserve">
+    <value>Test Name</value>
   </data>
   <data name="ИнтерфейсАдминистратора" xml:space="preserve">
     <value>Admin Interface</value>
@@ -222,6 +273,9 @@
   <data name="Кодтеста" xml:space="preserve">
     <value>id of the test (id):</value>
   </data>
+  <data name="Количествовопросов" xml:space="preserve">
+    <value>Number of questions :</value>
+  </data>
   <data name="Логин" xml:space="preserve">
     <value>Login</value>
   </data>
@@ -237,6 +291,18 @@
   <data name="Настройки" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="Начатьтест" xml:space="preserve">
+    <value>Start the test</value>
+  </data>
+  <data name="Незаполненоразрешение" xml:space="preserve">
+    <value>Permission is not filled in!</value>
+  </data>
+  <data name="Некорректныйадресэлектроннойпочты" xml:space="preserve">
+    <value>Invalid email address!</value>
+  </data>
+  <data name="Некорректныйформатадресаэлектроннойпочты" xml:space="preserve">
+    <value>Incorrect format of the email address!</value>
+  </data>
   <data name="Ок" xml:space="preserve">
     <value>Ok</value>
   </data>
@@ -246,8 +312,23 @@
   <data name="Ответ" xml:space="preserve">
     <value>Answer</value>
   </data>
+  <data name="Ответилиненавсевопросы" xml:space="preserve">
+    <value>Not all questions have been answered !</value>
+  </data>
+  <data name="Ответы" xml:space="preserve">
+    <value>Answers</value>
+  </data>
+  <data name="Ответыдлявопроса" xml:space="preserve">
+    <value>Answers for the question:</value>
+  </data>
+  <data name="Ответьтенавопрос" xml:space="preserve">
+    <value>Answer the question:</value>
+  </data>
   <data name="Отмена" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="Оценка" xml:space="preserve">
+    <value>Evaluation</value>
   </data>
   <data name="Оценкавопроса" xml:space="preserve">
     <value>Assessment of the issue:</value>
@@ -255,11 +336,29 @@
   <data name="Ошибка" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="Ошибкаответ" xml:space="preserve">
+    <value>Error response!</value>
+  </data>
+  <data name="Ошибкапереходанавопроссоздать" xml:space="preserve">
+    <value>Error navigating to the create question!</value>
+  </data>
+  <data name="Ошибкасоздания" xml:space="preserve">
+    <value>Creation error!</value>
+  </data>
   <data name="Пароли" xml:space="preserve">
     <value>Password:</value>
   </data>
   <data name="Пароль" xml:space="preserve">
     <value>Password:</value>
+  </data>
+  <data name="Парольвведенневерно" xml:space="preserve">
+    <value>The password is entered incorrectly!</value>
+  </data>
+  <data name="Парольнаподтверждениенезаполнен" xml:space="preserve">
+    <value>The confirmation password is not filled in!</value>
+  </data>
+  <data name="Парольнезаполнен" xml:space="preserve">
+    <value>The password is not filled in!</value>
   </data>
   <data name="Переченьвопросов" xml:space="preserve">
     <value>List of questions</value>
@@ -276,8 +375,20 @@
   <data name="Пользователь" xml:space="preserve">
     <value>User</value>
   </data>
+  <data name="ПользовательАвторизовался" xml:space="preserve">
+    <value>The User Has Logged In!</value>
+  </data>
+  <data name="Помощь" xml:space="preserve">
+    <value>Help:</value>
+  </data>
   <data name="Порт" xml:space="preserve">
     <value>Port</value>
+  </data>
+  <data name="Почтанезаполнена" xml:space="preserve">
+    <value>The mail is not filled!</value>
+  </data>
+  <data name="Почтанепустая" xml:space="preserve">
+    <value>The mail is not empty!</value>
   </data>
   <data name="Правильныеответы" xml:space="preserve">
     <value>Correct answers:</value>
@@ -285,17 +396,29 @@
   <data name="Правильныйответ" xml:space="preserve">
     <value />
   </data>
+  <data name="Произошлаошибка" xml:space="preserve">
+    <value>An error occurred:</value>
+  </data>
   <data name="Регистрация" xml:space="preserve">
     <value>Registration</value>
   </data>
   <data name="Редактировать" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="Резевнаякопиясоздалась" xml:space="preserve">
+    <value>A carved copy has been created !</value>
+  </data>
   <data name="РезервнаяКопия" xml:space="preserve">
     <value>Backup copy</value>
   </data>
+  <data name="Ролейнет" xml:space="preserve">
+    <value>There are no roles!</value>
+  </data>
   <data name="Рольпользователя" xml:space="preserve">
     <value>Rolles of the user</value>
+  </data>
+  <data name="Сервервыключенилинедоступен" xml:space="preserve">
+    <value>The server is down or unavailable!</value>
   </data>
   <data name="Создать" xml:space="preserve">
     <value>To create</value>
@@ -311,6 +434,12 @@
   </data>
   <data name="Создатьэкзамен" xml:space="preserve">
     <value>Create an exam</value>
+  </data>
+  <data name="Сообщение" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Сохранентест" xml:space="preserve">
+    <value>Saved test !</value>
   </data>
   <data name="Сохранить" xml:space="preserve">
     <value>Save</value>
@@ -330,6 +459,15 @@
   <data name="СправочникЭкзаменов" xml:space="preserve">
     <value>Exam Reference</value>
   </data>
+  <data name="Статистика" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="Статистикаэкзаменов" xml:space="preserve">
+    <value>Exam statistics</value>
+  </data>
+  <data name="Такогопользователянет" xml:space="preserve">
+    <value>There is no such user!</value>
+  </data>
   <data name="Текствопроса" xml:space="preserve">
     <value>Question text:</value>
   </data>
@@ -337,15 +475,39 @@
     <value>TestEN</value>
     <comment>Тест для пользователя</comment>
   </data>
+  <data name="Тестнезавершен" xml:space="preserve">
+    <value>The test is not completed!</value>
+  </data>
+  <data name="Тестовыевопросысответами" xml:space="preserve">
+    <value>TestQuestionsTheAnswers</value>
+  </data>
   <data name="Тестыдляэкзамена" xml:space="preserve">
     <value>Tests for the exam:</value>
     <comment>Тесты для экзамена</comment>
   </data>
+  <data name="Тестыизвопросов" xml:space="preserve">
+    <value>Tests from questions</value>
+  </data>
+  <data name="Уведомление" xml:space="preserve">
+    <value>Notification</value>
+  </data>
   <data name="Удалить" xml:space="preserve">
     <value>Remove</value>
+  </data>
+  <data name="Удаляетсявопрос" xml:space="preserve">
+    <value>The question is being deleted</value>
+  </data>
+  <data name="Удаляетсяответ" xml:space="preserve">
+    <value>The response is being deleted</value>
+  </data>
+  <data name="Удаляетсятест" xml:space="preserve">
+    <value>The test is being deleted</value>
   </data>
   <data name="Экзамен" xml:space="preserve">
     <value>ExamEN</value>
     <comment>Экзамен</comment>
+  </data>
+  <data name="Экзаменыдляпользователя" xml:space="preserve">
+    <value>Exams for the user:</value>
   </data>
 </root>

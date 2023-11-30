@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ExamModels;
 using System.Collections.ObjectModel;
+using ExamClient.Resources.Resx;
 
 namespace Client.Project
 {
@@ -96,7 +97,7 @@ namespace Client.Project
 
             viewModelManager.DeleteQuestionData(selectedQuestion.Question);
 
-            DisplayAlert("Удаляется вопрос", selectedQuestion.Question.QuestionName, "OK");
+            DisplayAlert(AppResources.Удаляетсявопрос, selectedQuestion.Question.QuestionName, AppResources.Ок);
             UpdateForm();
         }
 
