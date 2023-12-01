@@ -34,10 +34,21 @@
     <Style TargetType ="ContentPage">
         <Setter Property="BackgroundColor" Value="LimeGreen "/>
 
-    </Style>
+    </Style> 
 
     <Style TargetType ="ScrollView">
         <Setter Property="BackgroundColor" Value="LightGreen "/>
+
+    </Style>
+
+    <Style TargetType ="Grid">
+        <Setter Property="BackgroundColor" Value="LightGreen "/>
+
+    </Style>
+
+    <Style TargetType ="ListView">
+        <Setter Property="BackgroundColor" Value="White"/>
+
 
     </Style>
 </ResourceDictionary>
