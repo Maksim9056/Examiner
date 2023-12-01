@@ -22,6 +22,7 @@ using System.Globalization;
 using ExamClient.Resources.Resx;
 using Microsoft.Maui.Controls.StyleSheets;
 using System.Reflection;
+using static Microsoft.Maui.Controls.Device;
 
 //using Microsoft.AspNetCore.Components.Navigation;
 
@@ -55,8 +56,14 @@ namespace Client
 
                 AddSettings();
 
-                InitializeComponent();
 
+
+
+
+
+                InitializeComponent();
+                this.Resources.Add(StyleSheet.FromResource
+ ("Resources\\Styles\\Stylegreen1.xaml", IntrospectionExtensions.GetTypeInfo(typeof(MainPage)).Assembly));
 
                 //Application.Current.Resources.Remove("ButtonTextColor");
                 //var primaryColor = Color.FromHex("#CD5C5C");
