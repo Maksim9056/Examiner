@@ -38,44 +38,10 @@ namespace Client
         {
             try
             {
-
-                //ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
-                //if (mergedDictionaries != null)
-                //{
-                //    mergedDictionaries.Clear();
-                //    mergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Styles.xaml") });
-                //}
-                // Ресурсы приложения
-                //var resourceDictionary = new ResourceDictionary();
-                //resourceDictionary.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Colors.xaml", UriKind.Relative) });
-                //resourceDictionary.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Styles2.xaml", UriKind.Relative) });
-                //Application.Current.Resources = resourceDictionary;
-
-                //Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Styles2.xaml", UriKind.Relative) });
-
-
                 AddSettings();
-
-
-
-
-
-
                 InitializeComponent();
-                this.Resources.Add(StyleSheet.FromResource
- ("Resources\\Styles\\Stylegreen1.xaml", IntrospectionExtensions.GetTypeInfo(typeof(MainPage)).Assembly));
-
-                //Application.Current.Resources.Remove("ButtonTextColor");
-                //var primaryColor = Color.FromHex("#CD5C5C");
-                //Application.Current.Resources.Add("ButtonTextColor", primaryColor);
-
-                //Application.Current.Resources.Remove("ButtonBackgroundColor");
-                //var primaryColor1 = Color.FromHex("#CD5C5C");
-                //Application.Current.Resources.Add("ButtonBackgroundColor", primaryColor1);
-
-
+                AddStyle();
                 BindingContext = this;
-
             }
             catch
             {
@@ -83,6 +49,60 @@ namespace Client
             }
         }
 
+
+        public void AddStyle()
+        {
+            Ip_adress ip_Adress = new Ip_adress();
+            ip_Adress.CheckOS();
+
+            //ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+            //if (mergedDictionaries != null)
+            //{
+            //    mergedDictionaries.Clear();
+            //    mergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Styles.xaml") });
+            //}
+            ////Ресурсы приложения
+            //var resourceDictionary = new ResourceDictionary();
+            //resourceDictionary.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Colors.xaml", UriKind.Relative) });
+            //resourceDictionary.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Styles2.xaml", UriKind.Relative) });
+            //Application.Current.Resources = resourceDictionary;
+
+            //Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Resources/Styles/Styles2.xaml", UriKind.Relative) });
+
+            //Application.Current.Resources.Add(StyleSheet.FromResource
+            //("Resources\\Styles\\Styles2.xaml", IntrospectionExtensions.GetTypeInfo(typeof(MainPage)).Assembly));
+
+
+            //Application.Current.Resources.Remove("ButtonTextColor");
+            //var primaryColor = Color.FromHex("#CD5C5C");
+            //Application.Current.Resources.Add("ButtonTextColor", primaryColor);
+
+            //Application.Current.Resources["Border2"] = Color.FromHex("#7bcc23");
+            //Application.Current.Resources["Page2"] = Color.FromHex("#6fef5d");
+            //Application.Current.Resources["ButtonTextColor"] = Color.FromHex("#7bcc23");
+            switch (ip_Adress.ColorStyles)
+            {
+                case 1:
+                    break;
+                case 2:
+                    Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#7bcc23");
+                    Application.Current.Resources["BorderColor"]           = Color.FromHex("#7bcc23");
+                    Application.Current.Resources["CardBackgroundColor"]   = Color.FromHex("#7bcc23");
+                    Application.Current.Resources["Grid"]                  = Color.FromHex("#Black");
+
+                    break;
+                case 3:
+                    Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("Black");
+                    break;
+
+
+            }
+
+            //Application.Current.Resources.Remove("ButtonBackgroundColor");
+            //var primaryColor1 = Color.FromHex("#CD5C5C");
+            //Application.Current.Resources.Add("ButtonBackgroundColor", primaryColor1);
+
+        }
 
 
         public void AddSettings()

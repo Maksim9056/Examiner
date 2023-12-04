@@ -90,7 +90,11 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-	</ItemGroup>
+	    
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Styles\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+
+		</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Remove="Platforms\Android\Resources\Новая папка1\**" />

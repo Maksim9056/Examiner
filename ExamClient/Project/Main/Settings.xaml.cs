@@ -66,10 +66,11 @@ public partial class Settings : ContentPage
             return;
         var selectedTestQuestion = (RefUser)e.SelectedItem;
         int Int = 0;
+        int Int2 = 1;
         if (SettingLanguage.TryGetValue(selectedTestQuestion.User, out var settingLanguage))
         {
             Int = settingLanguage;
-            ip_Adress.Update(AddressEntry.Text, int.Parse(PortEntry.Text), settingLanguage, Int);
+            ip_Adress.Update(AddressEntry.Text, int.Parse(PortEntry.Text), settingLanguage, Int, Int2);
         }
         else
         {
@@ -93,7 +94,7 @@ public partial class Settings : ContentPage
                 //Path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 Console.WriteLine("Операционная система: iOS");
                 // Создание экземпляра класса Seting
-                Seting setting = new Seting(AddressEntrys, PortEntrys, 1);
+                Seting setting = new Seting(AddressEntrys, PortEntrys, 1, 1);
 
                 // Преобразование объекта Seting в JSON строку
                 string json = JsonConvert.SerializeObject(setting);
@@ -124,6 +125,7 @@ public partial class Settings : ContentPage
                 string fileName = "Client.json";
                 string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), fileName);
                 int end = 0;
+                int end2 = 1;
                 if (File.Exists(path))
                 {
                     ip_Adress.CheckOS();
@@ -133,7 +135,7 @@ public partial class Settings : ContentPage
 
 
                
-                Seting seting = new Seting(AddressEntrys, PortEntrys, end);
+                Seting seting = new Seting(AddressEntrys, PortEntrys, end, end2);
                 // Преобразование в JSON-строку
                 string json = JsonConvert.SerializeObject(seting, Formatting.Indented);
       
@@ -178,7 +180,7 @@ public partial class Settings : ContentPage
                     File.Delete(appDirectory + "\\Client.json");
                     using (FileStream fs = new FileStream(appDirectory + "\\Client.json", FileMode.OpenOrCreate))
                     {
-                        Seting seting = new Seting(AddressEntrys, PortEntrys, ip_Adress.language);
+                        Seting seting = new Seting(AddressEntrys, PortEntrys, ip_Adress.language, 1);
                         System.Text.Json.JsonSerializer.Serialize<Seting>(fs, seting);
                         //      Ip_adressss = _aFile.Ip_adress;
 
@@ -191,7 +193,7 @@ public partial class Settings : ContentPage
                 {
                     using (FileStream fileStream = new FileStream(appDirectory + "\\Client.json", FileMode.OpenOrCreate))
                     {
-                        Seting connect_Server_ = new Seting(AddressEntrys, PortEntrys, 1);
+                        Seting connect_Server_ = new Seting(AddressEntrys, PortEntrys, 1, 1);
                         System.Text.Json.JsonSerializer.Serialize<Seting>(fileStream, connect_Server_);
                     }
 

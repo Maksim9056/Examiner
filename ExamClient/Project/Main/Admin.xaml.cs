@@ -17,10 +17,13 @@ public partial class Admin : ContentPage
     public Admin()
 	{
 		InitializeComponent();
-        this.Resources.Add(StyleSheet.FromResource
-                   ("Resources/Styles/mystyles.css", IntrospectionExtensions.GetTypeInfo(typeof(MainPage)).Assembly));
+
+
+        //this.Resources.Add(StyleSheet.FromResource
+        //           ("Resources/Styles/mystyles.css", IntrospectionExtensions.GetTypeInfo(typeof(MainPage)).Assembly));
         BindingContext = this;
     }
+
 
     /// <summary>
     /// Экземпляр класса CommandCL

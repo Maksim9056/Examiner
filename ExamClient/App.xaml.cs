@@ -1,4 +1,5 @@
 ﻿using ExamClient.Resources.Resx;
+using Microsoft.Maui.Hosting;
 using System.Globalization;
 
 namespace Client
@@ -34,7 +35,18 @@ namespace Client
 
             //Application.Current.Resources.Remove("ButtonBackgroundColor");
             //var primaryColor1 = Color.FromHex("#CD5C5C");
-            //Application.Current.Resources.Add("ButtonBackgroundColor", primaryColor1);
+            //Application.Current.Resources.Add("ButtonBackgroundColor", primaryColor1); 
+
+            // Стиль для страницы
+            var pageStyle = new Style(typeof(ContentPage))
+            {
+                ApplyToDerivedTypes = true,
+                Setters = {
+                    new Setter { Property = VisualElement.BackgroundColorProperty, Value = "#D1E9D1" }
+                    // Добавьте другие свойства стиля, если необходимо
+                }
+            };
+
 
             MainPage = new AppShell();
         }

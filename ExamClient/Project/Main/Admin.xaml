@@ -29,7 +29,7 @@
 
         <StackLayout Grid.Row="0">
 
-            <Grid x:Name="Табличка" WidthRequest="800" HeightRequest="1000">
+            <Grid x:Name="Табличка" BackgroundColor="{DynamicResource Grid}" WidthRequest="800" HeightRequest="1000">
 
                 <!-- Добавленная кнопка -->
                 <Button  
@@ -42,12 +42,9 @@
                     HeightRequest="50"  
                     WidthRequest="320"  
                     Margin="0,20,0,0"  
-                    Padding="10" />
-
-
-
-
-
+                    Padding="10" 
+                    BackgroundColor="{DynamicResource ButtonBackgroundColor}"  
+                    TextColor="{DynamicResource ButtonTextColor}"/>
                 <Button  
                     x:Name="CounterLog4"  
                     Text="{x:Static resource:AppResources.СправочникПользователей}"          
@@ -58,7 +55,9 @@
                     HeightRequest="50"  
                     WidthRequest="320"  
                     Margin="0,100,0,0"  
-                    Padding="10" />
+                    Padding="10" 
+                    BackgroundColor="{DynamicResource ButtonBackgroundColor}"  
+                    TextColor="{DynamicResource ButtonTextColor}"/>
 
                 <Button  
                     x:Name="CounterLogTest"                 
@@ -70,7 +69,9 @@
                     HeightRequest="50"  
                     WidthRequest="320"  
                     Margin="0,180,0,0"  
-                    Padding="10" />
+                    Padding="10" 
+                    BackgroundColor="{DynamicResource ButtonBackgroundColor}"  
+                    TextColor="{DynamicResource ButtonTextColor}"/>
 
                 <Button  
                     x:Name="CounterLogExams"        
@@ -82,7 +83,9 @@
                     HeightRequest="50"  
                     WidthRequest="320"  
                     Margin="0,260,0,0"  
-                    Padding="10" />
+                    Padding="10" 
+                    BackgroundColor="{DynamicResource ButtonBackgroundColor}"  
+                    TextColor="{DynamicResource ButtonTextColor}"/>
 
                 <Button  
                     x:Name="CounterLogQuestions"  
@@ -94,7 +97,9 @@
                     HeightRequest="50"  
                     WidthRequest="320"  
                     Margin="0,340,0,0"  
-                    Padding="10" />
+                    Padding="10" 
+                    BackgroundColor="{DynamicResource ButtonBackgroundColor}"  
+                    TextColor="{DynamicResource ButtonTextColor}"/>
 
                 <Button  
                     x:Name="CounterLogAnswer"  
@@ -106,7 +111,9 @@
                     HeightRequest="50"  
                     WidthRequest="320"  
                     Margin="0,420,0,0"  
-                    Padding="10" />
+                    Padding="10" 
+                    BackgroundColor="{DynamicResource ButtonBackgroundColor}"  
+                    TextColor="{DynamicResource ButtonTextColor}"/>
             </Grid>
         </StackLayout>
 
@@ -117,6 +124,8 @@
             VerticalOptions="End" 
             HorizontalOptions="FillAndExpand" 
             HeightRequest="50" 
-            Padding="10" />
+            Padding="10"
+            BackgroundColor="{DynamicResource ButtonBackgroundColor}"  
+            TextColor="{DynamicResource ButtonTextColor}"/>
     </Grid>
 </ContentPage>

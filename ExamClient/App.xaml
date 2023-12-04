@@ -9,8 +9,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" /> 
-                <!--<ResourceDictionary Source="Resources/Styles/Styles.xaml" />-->
-                <ResourceDictionary Source="Resources/Styles/Stylegreen1.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <!--<ResourceDictionary Source="Resources/Styles/Stylegreen1.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
 
             <!-- Стиль для страницы --><!--

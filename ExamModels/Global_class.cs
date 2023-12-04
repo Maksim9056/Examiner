@@ -228,12 +228,18 @@ namespace ExamModels
         /// </summary>
         public int TypeSQL { get; set; }
 
-       
-        public Seting(string ip_adress, int port, int typeSQL)
+        /// <summary>
+        /// Тип Стиля программы
+        /// </summary>
+        public int ColorStyles { get; set; }
+
+
+        public Seting(string ip_adress, int port, int typeSQL,int colorStyles)
         {
             Ip_adress = ip_adress;
             Port = port;
             TypeSQL = typeSQL;
+            ColorStyles = colorStyles;
         }
 
     }
