@@ -88,7 +88,8 @@ namespace Client
                     Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#77c063");
                     //Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#b5de77");
 
-                    //Application.Current.Resources["BorderColor"]           = Color.FromHex("#669933");
+                    //Application.Current.Resources["BorderColor"]           = Color.FromHex("#669933
+                    //CardBackgroundColor
                     Application.Current.Resources["CardBackgroundColor"]   = Color.FromHex("#64A437");
                     Application.Current.Resources["Grid"]                  = Color.FromHex("#Black");
                     Application.Current.Resources["PageBackgroundColor"] = Color.FromHex("#73B365");
