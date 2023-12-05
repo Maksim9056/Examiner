@@ -81,14 +81,18 @@ namespace Client
             //Application.Current.Resources["Page2"] = Color.FromHex("#6fef5d");
             //Application.Current.Resources["ButtonTextColor"] = Color.FromHex("#7bcc23");
             switch (ip_Adress.ColorStyles)
-            {
+            { 
                 case 1:
                     break;
                 case 2:
-                    Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#7bcc23");
-                    Application.Current.Resources["BorderColor"]           = Color.FromHex("#7bcc23");
-                    Application.Current.Resources["CardBackgroundColor"]   = Color.FromHex("#7bcc23");
+                    Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#77c063");
+                    //Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#b5de77");
+
+                    //Application.Current.Resources["BorderColor"]           = Color.FromHex("#669933");
+                    Application.Current.Resources["CardBackgroundColor"]   = Color.FromHex("#64A437");
                     Application.Current.Resources["Grid"]                  = Color.FromHex("#Black");
+                    Application.Current.Resources["PageBackgroundColor"] = Color.FromHex("#73B365");
+
 
                     break;
                 case 3:
