@@ -5,6 +5,7 @@
              x:Class="Client.MainPage"    
              BackgroundColor="{DynamicResource PageBackgroundColor}"
              Title="{x:Static resource:AppResources.ВходвучетнуюЗапись}"
+             
              Loaded="ContentPage_Loaded"  
              >
 

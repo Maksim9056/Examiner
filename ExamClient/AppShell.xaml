@@ -6,6 +6,7 @@
        xmlns:sys="clr-namespace:System;assembly=netstandard"
        xmlns:controls="clr-namespace:Client.Controls"
        xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+       BackgroundColor="{DynamicResource ShellTitle}"
        x:Class="Client.AppShell">
     
 

@@ -85,22 +85,27 @@ namespace Client
                 case 1:
                     break;
                 case 2:
-                    Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#77c063");
-                    //Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#b5de77");
 
+                    //Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#77c063");
+
+                    //Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#b5de77");
+                    // Application.Current.Resources["ButtonBackgroundColor"] =  Color.FromHex("#64A437");
+                    Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#7BC266");
+                    //Application.Current.Resources["PageBackgroundColor"] = Color.FromHex("#64A437");
+                    Application.Current.Resources["ShellTitle"] = Color.FromHex("#7BC266");
+                    
                     //Application.Current.Resources["BorderColor"]           = Color.FromHex("#669933
-                    //CardBackgroundColor
+                    //CardBackgroundColor  
                     Application.Current.Resources["CardBackgroundColor"]   = Color.FromHex("#64A437");
                     Application.Current.Resources["Grid"]                  = Color.FromHex("#Black");
-                    Application.Current.Resources["PageBackgroundColor"] = Color.FromHex("#73B365");
 
+                    Application.Current.Resources["PageBackgroundColor"] = Color.FromHex("#73B365");
+                    Application.Current.Resources["EntryBackgroundColor"] = Color.FromHex("#73B365");
 
                     break;
                 case 3:
                     Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("Black");
                     break;
-
-
             }
 
             //Application.Current.Resources.Remove("ButtonBackgroundColor");
