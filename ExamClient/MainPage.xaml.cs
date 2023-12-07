@@ -22,7 +22,6 @@ using System.Globalization;
 using ExamClient.Resources.Resx;
 using Microsoft.Maui.Controls.StyleSheets;
 using System.Reflection;
-using static Microsoft.Maui.Controls.Device;
 
 //using Microsoft.AspNetCore.Components.Navigation;
 
@@ -93,14 +92,42 @@ namespace Client
                     Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#7BC266");
                     //Application.Current.Resources["PageBackgroundColor"] = Color.FromHex("#64A437");
                     Application.Current.Resources["ShellTitle"] = Color.FromHex("#7BC266");
+                    Application.Current.Resources["EntryTextColor"] = Color.FromHex("#ffffff");
+
                     
                     //Application.Current.Resources["BorderColor"]           = Color.FromHex("#669933
                     //CardBackgroundColor  
-                    Application.Current.Resources["CardBackgroundColor"]   = Color.FromHex("#64A437");
+                    Application.Current.Resources["CardBackgroundColor"]   = Color.FromHex("#67BE5B");
                     Application.Current.Resources["Grid"]                  = Color.FromHex("#Black");
+                    
+                    Application.Current.Resources["PageBackgroundColor"] = Color.FromHex("#7FC676");
 
-                    Application.Current.Resources["PageBackgroundColor"] = Color.FromHex("#73B365");
-                    Application.Current.Resources["EntryBackgroundColor"] = Color.FromHex("#73B365");
+                    Application.Current.Resources["EntryBackgroundColor"] = Color.FromHex("#7FC676");
+
+
+
+
+
+
+
+                    //RegUserPage
+                    Application.Current.Resources["RegUserPage"] = Color.FromHex("#7FC676");
+
+                    Application.Current.Resources["RegUserEntry"] = Color.FromHex("#92D08A");
+
+                    Application.Current.Resources["RegUserStackLayout"] = Color.FromHex("#7FC676");
+
+                 
+                    //SettingPage
+                    Application.Current.Resources["SettingPage"] = Color.FromHex("#7FC676");
+
+
+                    Application.Current.Resources["SettingEntry"] = Color.FromHex("#92D08A");
+
+
+
+
+
 
                     break;
                 case 3:

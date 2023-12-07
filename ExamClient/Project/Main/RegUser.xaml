@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Client.Main.RegUser"
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
-             BackgroundColor="White"
+             BackgroundColor="{DynamicResource RegUserPage}"
              Loaded="ContentPage_Loaded"
-            Title="{x:Static resource:AppResources.Регистрация}">
+             Title="{x:Static resource:AppResources.Регистрация}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <ScrollView Grid.Row="0">
-            <StackLayout Padding="10" BackgroundColor="White" VerticalOptions="CenterAndExpand">
+            <StackLayout Padding="10" BackgroundColor="{DynamicResource RegUserStackLayout }" VerticalOptions="CenterAndExpand">
               
                 <Entry x:Name="nameEntry3"
                        FontSize="16"             
@@ -23,6 +23,7 @@
                        HorizontalOptions="CenterAndExpand"
                        WidthRequest="250"
                        Margin="0, 20, 0,0" 
+                       BackgroundColor="{DynamicResource RegUserEntry}"
                  />
 
                 <Entry x:Name="nameEntry"
@@ -33,17 +34,20 @@
                        HorizontalOptions="CenterAndExpand"
                        WidthRequest="250"
                        Margin="0, 20, 0,0" 
+                       BackgroundColor="{DynamicResource RegUserEntry}"
+
                  />
                 
                    <Entry x:Name="nameEntry9"
-                     FontSize="16"                                       
-                     Placeholder="{x:Static resource:AppResources.КодПочты} "
-                     TextChanged="nameEntry9_TextChanged"
+                     FontSize="16"   
+                      Placeholder="{x:Static resource:AppResources.КодПочты} "
+                      TextChanged="nameEntry9_TextChanged"
                       Keyboard="Text"
                       HorizontalOptions="CenterAndExpand"
                       WidthRequest="250"
                       Margin="0, 20, 0,0" 
-                    />
+                      BackgroundColor="{DynamicResource RegUserEntry}"
+                           />
                 
                 
                 <Entry x:Name="nameEntry1"
@@ -53,7 +57,9 @@
                        Keyboard="Text"
                        HorizontalOptions="CenterAndExpand"
                        WidthRequest="250"
-                       Margin="0, 20, 0,0"
+                       Margin="0, 20, 0,0" 
+                       BackgroundColor="{DynamicResource RegUserEntry}"
+
                 />
 
                 <Entry x:Name="nameEntry2"
@@ -64,8 +70,10 @@
                        HorizontalOptions="CenterAndExpand"
                        WidthRequest="250"
                        Margin="0, 20, 0,0" 
-                />
+                       BackgroundColor="{DynamicResource RegUserEntry}"
 
+                />
+                   
                 
 
                 <Image x:Name="Images" Loaded="Image_Loaded" Aspect="AspectFit" />
@@ -104,8 +112,8 @@
             </StackLayout>
         </ScrollView>
         <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10">
-            <Button Text="{x:Static resource:AppResources.Сохранить}" Clicked="SaveButtonClick" HorizontalOptions="FillAndExpand"/>
-            <Button Text="{x:Static resource:AppResources.Назад}" Clicked="GoBack" HorizontalOptions="FillAndExpand"/>
+            <Button Text="{x:Static resource:AppResources.Сохранить}" Clicked="SaveButtonClick" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource ButtonBackgroundColor}"/>
+            <Button Text="{x:Static resource:AppResources.Назад}" Clicked="GoBack" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource ButtonBackgroundColor}"/>
         </StackLayout>
     </Grid>
 </ContentPage>

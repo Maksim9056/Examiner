@@ -665,6 +665,7 @@ public partial class RegUser : ContentPage
                 }
                 else
                 {
+                    //
                     photo = await MediaPicker.Default.PickPhotoAsync();
                     byte[] imageBytes = System.IO.File.ReadAllBytes(photo.FullPath);
                     using (MemoryStream memoryStreams = new MemoryStream())
@@ -672,6 +673,7 @@ public partial class RegUser : ContentPage
                         Filles filles = new Filles(0,imageBytes);
 
                         Connect();
+                        //Застывает и весит
                         Filles = filles_Work.FillesSave(filles, ip_Adress.Ip_adressss);
                         if (Filles == null)
                         {

@@ -34,7 +34,7 @@
                            HorizontalOptions="FillAndExpand"   
                            TextChanged="nameEntry9_TextChanged"  
                            BackgroundColor="{DynamicResource EntryBackgroundColor}"  
-                           TextColor="{DynamicResource EntryTextColor}"/>
+                           TextColor="{DynamicResource ButtonTextColor}"/>
 
                     <Entry x:Name="nameEntry1"   
                            FontSize="22"   
@@ -45,7 +45,7 @@
                            Keyboard="Text"  
                            IsPassword="{DynamicResource IsPasswordEntry}"  
                            BackgroundColor="{DynamicResource EntryBackgroundColor}"  
-                           TextColor="{DynamicResource EntryTextColor}"/>
+                           TextColor="{DynamicResource ButtonTextColor}"/>
 
                     <StackLayout VerticalOptions="CenterAndExpand" Margin="30, 40">
                         <Button x:Name ="CounterLog"   
