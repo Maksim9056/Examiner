@@ -85,6 +85,9 @@ namespace Client
                     break;
                 case 2:
 
+
+                    
+
                     //Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#77c063");
 
                     //Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#b5de77");
@@ -98,13 +101,14 @@ namespace Client
                     //Application.Current.Resources["BorderColor"]           = Color.FromHex("#669933
                     //CardBackgroundColor  
                     Application.Current.Resources["CardBackgroundColor"]   = Color.FromHex("#67BE5B");
-                    Application.Current.Resources["Grid"]                  = Color.FromHex("#Black");
+                    Application.Current.Resources["Grid"]                  = Color.FromHex("#7FC676");
                     
                     Application.Current.Resources["PageBackgroundColor"] = Color.FromHex("#7FC676");
 
                     Application.Current.Resources["EntryBackgroundColor"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["BorderColor"] = Color.FromHex("#ffffff\"");
 
-
+                    
 
 
 
@@ -124,9 +128,14 @@ namespace Client
 
                     Application.Current.Resources["SettingEntry"] = Color.FromHex("#92D08A");
 
+                    //Backup
+                    Application.Current.Resources["PageBackup"] = Color.FromHex("#7FC676");
+                    
+                    Application.Current.Resources["BackupButtonBackgroundColor"] = Color.FromHex("#7BC266");
 
-
-
+                    //PageResverveOfCopyBackup
+                    Application.Current.Resources["PageResverveOfCopyBackup"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["ButtonResverveOfCopyBackup"] = Color.FromHex("#7BC266");
 
 
                     break;

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Client.Project.Main.Backup"
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+             BackgroundColor="{DynamicResource PageBackup}"
              Title="{x:Static resource:AppResources.Backup}"            
              >
 
@@ -25,6 +26,7 @@
                     HeightRequest="50" 
                     WidthRequest="320" 
                     Margin="0,140,0,0" 
+                    BackgroundColor="{DynamicResource BackupButtonBackgroundColor}"  
                     Padding="10" />
 
            
@@ -38,7 +40,10 @@
             VerticalOptions="End" 
             HorizontalOptions="FillAndExpand" 
             HeightRequest="50" 
-            Padding="10" />
+            Padding="10"
+            BackgroundColor="{DynamicResource BackupButtonBackgroundColor}"  
+
+            />
     </Grid>
 
 </ContentPage>

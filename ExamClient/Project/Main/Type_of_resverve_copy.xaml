@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Client.Project.Main.Type_of_resverve_copy"
              Title="{x:Static resource:AppResources.ВыборРезервнойКопии}"  
+             BackgroundColor="{DynamicResource PageResverveOfCopyBackup}"
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
              >
 
@@ -30,12 +31,12 @@
                                         FontSize="16"
                                         FontFamily="Arial"
                                         FontAttributes="Bold"
-                                        TextColor="Red"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center" />
                                 <Button Text="{x:Static resource:AppResources.Востановить}"                
                                         Command="{Binding EditCommand}"
-                                        CommandParameter="{Binding .}" Grid.Column="1" />
+                                        CommandParameter="{Binding .}" Grid.Column="1"            
+                                        BackgroundColor="{DynamicResource ButtonResverveOfCopyBackup}"/>
                                 <!--<Button Text="Удалить"
                                         Command="{Binding DelCommand}"
                                         CommandParameter="{Binding .}" Grid.Column="2"
@@ -46,9 +47,11 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Button Text="{x:Static resource:AppResources.Создать}"
-                    Clicked="CreateButtonClicked" Grid.Row="1" />
+                    Clicked="CreateButtonClicked" Grid.Row="1" 
+                    BackgroundColor="{DynamicResource ButtonResverveOfCopyBackup}"/>
             <Button Text="{x:Static resource:AppResources.Назад}"                        
-                    Clicked="GoBack" Grid.Row="2" />
+                    Clicked="GoBack" Grid.Row="2" 
+                    BackgroundColor="{DynamicResource ButtonResverveOfCopyBackup}"/>
         </Grid>
     </ContentPage.Content>
 

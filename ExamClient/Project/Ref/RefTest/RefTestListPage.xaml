@@ -30,7 +30,6 @@
                                         FontSize="16"
                                         FontFamily="Arial"
                                         FontAttributes="Bold"
-                                        TextColor="Red"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center" />
                                 <Button Text="{x:Static resource:AppResources.Редактировать}"  

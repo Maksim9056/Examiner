@@ -32,7 +32,7 @@
                                         FontSize="16"           
                                         FontFamily="Arial"   
                                         FontAttributes="Bold"   
-                                        TextColor="Red"   
+                                          
                                         HorizontalTextAlignment="Center"   
                                         VerticalTextAlignment="Center" />
                                 <CheckBox IsChecked="{Binding Answers.CorrectAnswers}" Grid.Column="1"   

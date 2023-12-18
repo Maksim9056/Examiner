@@ -19,12 +19,11 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Image Source="{Binding FlyoutIcon}"
-                       Margin="5"
-                       HeightRequest="45" />
+                       Margin="5" HeightRequest="45" />
                 <Label Grid.Column="1"
                        Text="{Binding Title}"
                        FontAttributes="Italic"
-                       VerticalTextAlignment="Center" />
+                       VerticalTextAlignment="Center"/>
             </Grid>
         </DataTemplate>
     </Shell.ItemTemplate>
