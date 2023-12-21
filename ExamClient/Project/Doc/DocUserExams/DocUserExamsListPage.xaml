@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"       
              x:Class="Client.Project.DocUserExamsListPage"     
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
-             Title="{x:Static resource:AppResources.Переченьэкзаменов}"     
+             Title="{x:Static resource:AppResources.Переченьэкзаменов}" 
+             BackgroundColor="{DynamicResource PageDocUserExam }"
+
              Loaded="ContentPageLoaded">
     
     <ContentPage.Content>
@@ -35,20 +37,31 @@
                                         VerticalTextAlignment="Center" />
                                 <Button Text="{x:Static resource:AppResources.Редактировать}"       
                                         Command="{Binding EditCommand}"       
-                                        CommandParameter="{Binding .}" Grid.Column="1" />
+                                        CommandParameter="{Binding .}" 
+                                        Grid.Column="1"
+                                        BackgroundColor="{DynamicResource PageDocUserExamButton }"
+                                        />
                                 <Button Text="{x:Static resource:AppResources.Удалить} "       
                                         Command="{Binding DelCommand}"       
-                                        CommandParameter="{Binding .}" Grid.Column="2"      
-                                        IsVisible="True" />
+                                        CommandParameter="{Binding .}" 
+                                        Grid.Column="2"      
+                                        IsVisible="True" 
+                                        BackgroundColor="{DynamicResource PageDocUserExamButton }"
+                                        />
                             </Grid>
                         </ViewCell> 
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView> 
             <Button Text="{x:Static resource:AppResources.Добавитьэкзамен}"     
-                    Clicked="CreateButtonClicked" Grid.Row="1" />
+                    Clicked="CreateButtonClicked" 
+                    Grid.Row="1"                                          
+                    BackgroundColor="{DynamicResource PageDocUserExamButton }"
+                    />
             <Button Text="{x:Static resource:AppResources.Назад}"       
-                    Clicked="GoBack" Grid.Row="2" />
+                    Clicked="GoBack" Grid.Row="2"                    
+                    BackgroundColor="{DynamicResource PageDocUserExamButton }"
+                    />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

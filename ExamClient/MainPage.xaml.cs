@@ -84,10 +84,6 @@ namespace Client
                 case 1:
                     break;
                 case 2:
-
-
-                    
-
                     //Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#77c063");
 
                     //Application.Current.Resources["ButtonBackgroundColor"] = Color.FromHex("#b5de77");
@@ -192,6 +188,19 @@ namespace Client
                     Application.Current.Resources["PageUserCreate"] = Color.FromHex("#7FC676");
                     Application.Current.Resources["PageUserEditorButton"] = Color.FromHex("#7BC266"); 
                     Application.Current.Resources["PageUserCreate1"] = Color.FromHex("#7FC676");
+                    //PageDocExamTestList
+                    Application.Current.Resources["PageDocExamTestList"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageDocExamTestListButton"] = Color.FromHex("#7BC266");
+                    //PageDocQuestionAnswer
+                    Application.Current.Resources["PageDocQuestionAnswer"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageDocQuestionAnswerButton"] = Color.FromHex("#7BC266");
+                    //PageDocTestQuestion
+                    Application.Current.Resources["PageDocTestQuestion"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageDocTestQuestionButton"] = Color.FromHex("#7BC266");
+                    //PageDocUserExam
+                    Application.Current.Resources["PageDocUserExam"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageDocUserExamButton"] = Color.FromHex("#7BC266");
+
 
                     break;
                 case 3:
