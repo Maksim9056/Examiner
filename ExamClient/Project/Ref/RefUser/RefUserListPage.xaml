@@ -5,6 +5,8 @@
              x:Class="Client.Project.RefUserListPage"
               xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
              Title="{x:Static resource:AppResources.СоздатьПользователя}"
+             BackgroundColor="{DynamicResource PageRefUserList }"
+
              Loaded="ContentPage_Loaded">
   
     <ContentPage.Content>
@@ -36,20 +38,32 @@
                                         VerticalTextAlignment="Center" />
                                 <Button Text="{x:Static resource:AppResources.Редактировать}"
                                         Command="{Binding EditCommand}"
-                                        CommandParameter="{Binding .}" Grid.Column="1" />
+                                        CommandParameter="{Binding .}"
+                                        Grid.Column="1"
+                                        BackgroundColor="{DynamicResource PageRefUserListButton }"
+                                        />
                                 <Button Text="{x:Static resource:AppResources.Удалить}"
                                         Command="{Binding DelCommand}"
-                                        CommandParameter="{Binding .}" Grid.Column="2"
-                                        IsVisible="True" />
+                                        CommandParameter="{Binding .}" 
+                                        Grid.Column="2"
+                                        IsVisible="True" 
+                                        BackgroundColor="{DynamicResource PageRefUserListButton }"
+                                        />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <Button Text="{x:Static resource:AppResources.Создать}"
-                    Clicked="CreateButtonClicked" Grid.Row="1" />
+                    Clicked="CreateButtonClicked" Grid.Row="1"
+                    BackgroundColor="{DynamicResource PageRefUserListButton }"
+
+                    />
             <Button Text="{x:Static resource:AppResources.Назад}"
-                    Clicked="GoBack" Grid.Row="2" />
+                    Clicked="GoBack" 
+                    Grid.Row="2"
+                    BackgroundColor="{DynamicResource PageRefUserListButton }"
+                    />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

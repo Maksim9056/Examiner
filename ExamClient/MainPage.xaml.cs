@@ -106,14 +106,8 @@ namespace Client
                     Application.Current.Resources["PageBackgroundColor"] = Color.FromHex("#7FC676");
 
                     Application.Current.Resources["EntryBackgroundColor"] = Color.FromHex("#7FC676");
-                    Application.Current.Resources["BorderColor"] = Color.FromHex("#ffffff\"");
 
-                    
-
-
-
-
-
+                    Application.Current.Resources["BorderColor"] = Color.FromHex("#ffffff");
                     //RegUserPage
                     Application.Current.Resources["RegUserPage"] = Color.FromHex("#7FC676");
 
@@ -135,8 +129,69 @@ namespace Client
 
                     //PageResverveOfCopyBackup
                     Application.Current.Resources["PageResverveOfCopyBackup"] = Color.FromHex("#7FC676");
+
                     Application.Current.Resources["ButtonResverveOfCopyBackup"] = Color.FromHex("#7BC266");
 
+                    //PageAnswerCreate
+                    Application.Current.Resources["PageAnswerCreate"] = Color.FromHex("#7FC676");
+
+                    Application.Current.Resources["PageAnswerCreateButton"] = Color.FromHex("#7BC266");
+
+                    //PageAnswerEditor
+                    Application.Current.Resources["PageAnswerEditor"] = Color.FromHex("#7FC676");
+
+                    Application.Current.Resources["PageAnswerEditorButton"] = Color.FromHex("#7BC266");
+                    //PageRefAnswerListPage
+
+                    Application.Current.Resources["PageRefAnswerListPage"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageRefAnswerListPageButton"] = Color.FromHex("#7BC266");
+                    //PageRefAnswerListPage
+                    Application.Current.Resources["PageRefAnswerListPage"] = Color.FromHex("#7FC676");
+                    //PageExamsCreate
+                    Application.Current.Resources["PageExamsCreate"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageExamsCreateButton"] = Color.FromHex("#7BC266");
+                    //PageExamsEditor
+                    Application.Current.Resources["PageExamsEditor"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageExamsEditorButton"] = Color.FromHex("#7BC266");
+                    //PageExamsEditor
+                    Application.Current.Resources["PageRefExamsListPage"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageRefExamsListPageButton"] = Color.FromHex("#7BC266");
+                    //PageQuestionCreate
+                    Application.Current.Resources["PageQuestionCreate"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageQuestionCreateButton"] = Color.FromHex("#7BC266");
+                    //PageQuestionEditor  
+                    Application.Current.Resources["PageQuestionEditor"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageQuestionEditorButton"] = Color.FromHex("#7BC266");
+                    //
+                    Application.Current.Resources["PageQuestionEditor"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageQuestionEditorButton"] = Color.FromHex("#7BC266");
+                    //PageRefQuestionListButton
+                    Application.Current.Resources["PageRefQuestionList"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageRefQuestionListButton"] = Color.FromHex("#7BC266");
+
+                    //PageRefTestList               
+                    Application.Current.Resources["PageRefTestList"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageRefTestListButton"] = Color.FromHex("#7BC266");
+                    //PageTestCreate               
+                    Application.Current.Resources["PageTestCreate"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageTestCreateButton"] = Color.FromHex("#7BC266");
+                    //  PageTestEditorButton
+                    Application.Current.Resources["PageTestEditor"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageTestEditorButton"] = Color.FromHex("#7BC266");
+                    //  PageRefUserList
+                    Application.Current.Resources["PageRefUserList"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageRefUserListButton"] = Color.FromHex("#7BC266");
+                    //PageUserCreate
+                    Application.Current.Resources["PageUserCreate"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageUserCreateButton"] = Color.FromHex("#7BC266");
+                    //PageUserEditor
+                    Application.Current.Resources["PageUserEditor"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageUserEditorButton"] = Color.FromHex("#7BC266");
+                    Application.Current.Resources["PageUserCreateButton1"] = Color.FromHex("#7BC266");
+                    //PageUserCreate
+                    Application.Current.Resources["PageUserCreate"] = Color.FromHex("#7FC676");
+                    Application.Current.Resources["PageUserEditorButton"] = Color.FromHex("#7BC266"); 
+                    Application.Current.Resources["PageUserCreate1"] = Color.FromHex("#7FC676");
 
                     break;
                 case 3:

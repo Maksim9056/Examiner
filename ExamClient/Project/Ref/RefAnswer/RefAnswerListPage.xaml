@@ -5,6 +5,8 @@
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
              Title="{x:Static resource:AppResources.СправочникОтветов}"   
              Loaded="ContentPage_Loaded"
+             BackgroundColor="{DynamicResource PageRefAnswerListPage}"
+
              >
     
 
@@ -37,22 +39,32 @@
                                         VerticalTextAlignment="Center" />
                                 <CheckBox IsChecked="{Binding Answers.CorrectAnswers}" Grid.Column="1"   
                                           HorizontalOptions="Center"   
-                                          VerticalOptions="Center" />
+                                          VerticalOptions="Center" 
+                                          BackgroundColor="{DynamicResource PageRefAnswerListPageButton}"
+                                          />
                                 <Button Text="{x:Static resource:AppResources.Редактировать}"   
                                         Command="{Binding EditCommand}"   
-                                        CommandParameter="{Binding .}" Grid.Column="2" />
+                                        CommandParameter="{Binding .}" Grid.Column="2" 
+                                                     BackgroundColor="{DynamicResource PageRefAnswerListPageButton}"
+                                        />
                                 <Button Text="{x:Static resource:AppResources.Удалить}"   
                                         Command="{Binding DelCommand}"   
                                         CommandParameter="{Binding .}" Grid.Column="3"   
-                                        IsVisible="True" />
+                                        IsVisible="True" 
+                                        BackgroundColor="{DynamicResource PageRefAnswerListPageButton}"
+
+                                        />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <Button Text="{x:Static resource:AppResources.Создать}"   
+                    BackgroundColor="{DynamicResource PageRefAnswerListPageButton}"
                     Clicked="CreateButtonClicked" Grid.Row="1" />
-            <Button Text="{x:Static resource:AppResources.Отмена}"   
+            <Button 
+                    Text="{x:Static resource:AppResources.Отмена}"   
+                    BackgroundColor="{DynamicResource PageRefAnswerListPageButton}"
                     Clicked="GoBack" Grid.Row="2" />
         </Grid>
     </ContentPage.Content>

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
              x:Class="Client.Project.RefExamsListPage"
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
-                             
+             BackgroundColor="{DynamicResource PageRefExamsListPage}"
+              
              Title="{x:Static resource:AppResources.СправочникЭкзаменов}"
              Loaded="ContentPage_Loaded">
 
@@ -33,22 +34,40 @@
                                         FontAttributes="Bold"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center" />
+                                
                                 <Button Text="{x:Static resource:AppResources.Редактировать}"  
                                         Command="{Binding EditCommand}"  
-                                        CommandParameter="{Binding .}" Grid.Column="1" />
+                                        CommandParameter="{Binding .}" Grid.Column="1" 
+                                        BackgroundColor="{DynamicResource PageRefExamsListPageButton}"
+
+                                        
+                                />
+                                
                                 <Button Text="{x:Static resource:AppResources.Удалить}"  
                                         Command="{Binding DelCommand}"  
                                         CommandParameter="{Binding .}" Grid.Column="2" 
-                                        IsVisible="True" />
+                                        IsVisible="True" 
+                                        BackgroundColor="{DynamicResource PageRefExamsListPageButton}"
+                                        
+                                />
+                                
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <Button Text="{x:Static resource:AppResources.Создать}"
-                    Clicked="CreateButtonClicked" Grid.Row="1" />
-            <Button Text="{x:Static resource:AppResources.Назад}"  
-                    Clicked="GoBack" Grid.Row="2" />
+                    Clicked="CreateButtonClicked" Grid.Row="1"
+                    BackgroundColor="{DynamicResource PageRefExamsListPageButton}"
+
+                    
+                    />
+            <Button 
+                Text="{x:Static resource:AppResources.Назад}"  
+                Clicked="GoBack" Grid.Row="2" 
+                BackgroundColor="{DynamicResource PageRefExamsListPageButton}"                    
+            />
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

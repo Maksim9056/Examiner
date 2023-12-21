@@ -3,7 +3,10 @@
         xmlns="http://schemas.microsoft.com/dotnet/2021/maui"     
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
         xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
-        Title="{x:Static resource:AppResources.Вопрос}">
+        Title="{x:Static resource:AppResources.Вопрос}"
+        BackgroundColor="{DynamicResource PageQuestionEditor }"
+     
+             >
     
     <ContentPage.Content>
         <Grid>
@@ -27,8 +30,14 @@
             </StackLayout>
 
             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Margin="10">
-                <Button Text="{x:Static resource:AppResources.Сохранить}" Clicked="SaveButtonClick" />
-                <Button Text="{x:Static resource:AppResources.Отмена}" Clicked="CancelButtonClick" />
+                <Button Text="{x:Static resource:AppResources.Сохранить}" Clicked="SaveButtonClick"      
+                        BackgroundColor="{DynamicResource PageQuestionEditorButton }" 
+                        />
+                <Button
+                    Text="{x:Static resource:AppResources.Отмена}"                       
+                    BackgroundColor="{DynamicResource PageQuestionEditorButton }" 
+                    Clicked="CancelButtonClick" 
+                    />
             </StackLayout>
         </Grid>
     </ContentPage.Content>
