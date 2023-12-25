@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Client.Users.Doc.DocAnswerQuestins.DocAnswerQuestins" 
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
-
+             BackgroundColor="{DynamicResource PageDocAnswerQuestins }"
              Title="{x:Static resource:AppResources.Ответы}">
 
     <ContentPage.Content>
@@ -19,14 +19,14 @@
                    FontSize="16"    
                    FontFamily="Arial"    
                    FontAttributes="Bold"    
-                   TextColor="Green"    
+                      
             />
 
             <Label Text="{x:Static resource:AppResources.Ответы}" Grid.Row="1"  
                    FontSize="20"    
                    FontFamily="Arial"    
                    FontAttributes="Bold"    
-                   TextColor="Purple"    
+                       
                    HorizontalTextAlignment="Center"    
                    VerticalTextAlignment="Center" />
 
@@ -46,7 +46,6 @@
                                        FontSize="16"    
                                        FontFamily="Arial"    
                                        FontAttributes="Bold"    
-                                       TextColor="Red"    
                                        HorizontalTextAlignment="Center"    
                                        VerticalTextAlignment="Center" />
                             </Grid>
@@ -55,8 +54,12 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button Text="{x:Static resource:AppResources.Назад}"      
-                    Clicked="GoBack" Grid.Row="3" />
+            <Button 
+             Text="{x:Static resource:AppResources.Назад}"  
+             BackgroundColor="{DynamicResource PageDocAnswerQuestinsButton  }"
+             Clicked="GoBack" 
+             Grid.Row="3" 
+            />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

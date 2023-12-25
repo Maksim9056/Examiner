@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Client.Users.Doc.DocTestsFromQuestions.DocTestsFromQuestions"
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
-
+             BackgroundColor="{DynamicResource PageDocTestsFromQuestions }"
              Title="{x:Static resource:AppResources.Тестыизвопросов}">
     <ContentPage.Content>
         <Grid>
@@ -29,7 +29,7 @@
                                         FontSize="16"
                                         FontFamily="Arial"
                                         FontAttributes="Bold"
-                                        TextColor="Red"
+                                        
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center" />
                                 
@@ -37,7 +37,7 @@
                                        FontSize="16"
                                        FontFamily="Arial"
                                        FontAttributes="Bold"
-                                       TextColor="Red"
+                                       
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center" />
                             </Grid>
@@ -47,6 +47,7 @@
             </ListView>
 
             <Button Text="{x:Static resource:AppResources.Назад}"
+                    BackgroundColor="{DynamicResource PageDocTestsFromQuestionsButton }"
                     Clicked="GoBack" Grid.Row="1" />
         </Grid>
     </ContentPage.Content>

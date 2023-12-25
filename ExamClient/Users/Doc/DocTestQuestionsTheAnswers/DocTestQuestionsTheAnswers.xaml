@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Client.Users.Doc.DocTestQuestionsTheAnswers.DocTestQuestionsTheAnswers"
              xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+             BackgroundColor="{DynamicResource PageDocTestQuestionsTheAnswers }"
+
              Title="{x:Static resource:AppResources.Тестовыевопросысответами}">
     
     
@@ -35,14 +37,14 @@
                                         FontSize="16"
                                         FontFamily="Arial"
                                         FontAttributes="Bold"
-                                        TextColor="Red"
+                                        
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center" />
                                     <Label  Grid.Column="1"
                                         FontSize="16"
                                         FontFamily="Arial"
                                         FontAttributes="Bold"
-                                        TextColor="Red "  />
+                                          />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Client.Users.DocTheExamisPersonal"
-             xmlns:resource="clr-namespace:ExamClient.Resources.Resx"
+             xmlns:resource="clr-namespace:ExamClient.Resources.Resx"       
+             BackgroundColor="{DynamicResource PageDocTheExamispersonal }"
+
              Title="{x:Static resource:AppResources.Выборэкзамена}"
              >
     
@@ -34,7 +36,7 @@
                                         FontSize="16"
                                         FontFamily="Arial"
                                         FontAttributes="Bold"
-                                        TextColor="Red"
+                                       
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center" />
 
@@ -43,7 +45,6 @@
                                        FontSize="16"
                                        FontFamily="Arial"
                                        FontAttributes="Bold"
-                                       TextColor="Red"
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center" />
 
