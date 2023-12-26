@@ -76,14 +76,13 @@ public partial class Settings : ContentPage
         {
         }
 
-           App s = new App();
         
        ((ListView)sender).SelectedItem = null;
     }
 
 
 
-    public void SaveButtonClicked(object sender, EventArgs e)
+    public  void SaveButtonClicked(object sender, EventArgs e)
     {
         try
         {
@@ -221,10 +220,22 @@ public partial class Settings : ContentPage
             DisplayAlert(AppResources.Ошибка, ex.Message, AppResources.Ок);
         }
 
+        ReloadApplication();
 
-        Navigation.PushAsync(new MainPage());
+
+        //Navigation.PushAsync(new MainPage());
     }
+    // Метод для полной перезагрузки приложения
+    async Task ReloadApplication()
+    {
+        Application.Current.MainPage = new AppShell();
 
+        // Очистка стека навигации (удаление всех страниц из стека)
+        await Navigation.PopToRootAsync();
+     
+        App.Current. MainPage = new AppShell();
+
+    }
     public async void CancelButtonClicked(object sender, EventArgs e)
     {
 
