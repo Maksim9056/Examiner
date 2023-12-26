@@ -177,8 +177,14 @@
   <data name="ВыборРезервнойКопии" xml:space="preserve">
     <value>Choosing a backup</value>
   </data>
+  <data name="Выборцвета" xml:space="preserve">
+    <value>Color selection:</value>
+  </data>
   <data name="Выборэкзамена" xml:space="preserve">
     <value>Exam Selection</value>
+  </data>
+  <data name="Выборязыка" xml:space="preserve">
+    <value>Language selection:</value>
   </data>
   <data name="Выбраннаяроль" xml:space="preserve">
     <value>Selected role:</value>

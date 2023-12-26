@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using ExamClient.Resources.Resx;
 using System.Globalization;
 using System.Net;
-
+using Microsoft.Maui.Controls; 
 namespace Client.Project;
 
 public partial class Settings : ContentPage
@@ -26,6 +26,18 @@ public partial class Settings : ContentPage
     Ip_adress ip_Adress = new Ip_adress();
 
 
+    public Dictionary<string, int> SettingColor = new Dictionary<string, int>();
+
+    public void RegColors()
+    {
+        SettingColor.Add("По умолчанию", 1);
+        SettingColor.Add("Default", 1);
+        SettingColor.Add("Зеленый", 2);
+        SettingColor.Add("Розовый", 3);
+        SettingColor.Add("Green", 2);
+        SettingColor.Add("Pink", 3);
+    }
+
     public Settings()
     {
 
@@ -34,10 +46,12 @@ public partial class Settings : ContentPage
         InitializeComponent();
 
         Reg();
+        RegColors();
         ip_Adress.CheckOS();
         AddressEntry.Text = ip_Adress.Ip;
         PortEntry.Text = ip_Adress.Port.ToString();
         List<RefUser> refUser = new List<RefUser>();
+                List<RefColors> RefColors = new List<RefColors>();
 
 
         switch (ip_Adress.language)
@@ -47,17 +61,37 @@ public partial class Settings : ContentPage
                 refUser.Add(refUser1);
                 refUser1 = new RefUser() { User = "Англиский" };
                 refUser.Add(refUser1);
+            
 
-                break;
+                        RefColors refColor = new RefColors() { Colors = "По умолчанию" };
+                        RefColors.Add(refColor);
+
+                        RefColors refColor1 = new RefColors() { Colors = "Зеленый" };
+                        RefColors.Add(refColor1);
+                        refColor1 = new RefColors() { Colors = "Розовый" };
+                        RefColors.Add(refColor1);
+             
+
+             break;
             case 2:
                 RefUser refUser2 = new RefUser() { User = "Russia" };
                 refUser.Add(refUser2);
                 refUser2 = new RefUser() { User = "English" };
                 refUser.Add(refUser2);
+
+                RefColors refColor4 = new RefColors() { Colors = "Default" };
+                RefColors.Add(refColor4);
+                refColor4 = new RefColors() { Colors = "Green" };
+                RefColors.Add(refColor4);
+                refColor4 = new RefColors() { Colors = "Pink" };
+                RefColors.Add(refColor4);
                 break;
 
         }
+
+
         SettingList.ItemsSource = refUser;
+        SettingListColor.ItemsSource = RefColors;
     }
 
     private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -129,6 +163,7 @@ public partial class Settings : ContentPage
                 {
                     ip_Adress.CheckOS();
                     end = ip_Adress.language;
+                    end2 = ip_Adress.ColorStyles;
                     File.Delete(path);
                 }
 
@@ -179,7 +214,7 @@ public partial class Settings : ContentPage
                     File.Delete(appDirectory + "\\Client.json");
                     using (FileStream fs = new FileStream(appDirectory + "\\Client.json", FileMode.OpenOrCreate))
                     {
-                        Seting seting = new Seting(AddressEntrys, PortEntrys, ip_Adress.language, 1);
+                        Seting seting = new Seting(AddressEntrys, PortEntrys, ip_Adress.language, ip_Adress.ColorStyles);
                         System.Text.Json.JsonSerializer.Serialize<Seting>(fs, seting);
                         //      Ip_adressss = _aFile.Ip_adress;
 
@@ -228,12 +263,12 @@ public partial class Settings : ContentPage
     // Метод для полной перезагрузки приложения
     async Task ReloadApplication()
     {
-        Application.Current.MainPage = new AppShell();
 
         // Очистка стека навигации (удаление всех страниц из стека)
         await Navigation.PopToRootAsync();
      
         App.Current. MainPage = new AppShell();
+
 
     }
     public async void CancelButtonClicked(object sender, EventArgs e)
@@ -276,4 +311,30 @@ public partial class Settings : ContentPage
         public string User { get; set; }
     }
 
+    public class RefColors
+    {
+        public string Colors { get; set; }
+    }
+
+    private void SettingListColor_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        if (e.SelectedItem == null)
+            return;
+        var selectedTestQuestion = (RefColors)e.SelectedItem;
+        int Int = 0;
+        int Int2 = 1;
+        if (SettingColor.TryGetValue(selectedTestQuestion.Colors, out var settingColor))
+        {
+            Int = settingColor;
+
+            ip_Adress.UpdateColors(AddressEntry.Text, int.Parse(PortEntry.Text), settingColor);
+        }
+        else
+        {
+
+        }
+
+
+       ((ListView)sender).SelectedItem = null;
+    }
 }

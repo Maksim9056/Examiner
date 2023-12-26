@@ -232,6 +232,113 @@ namespace Client
                 }
             }
         }
+
+
+        public void UpdateColors(string AddressEntrys, int PortEntrys, int settingColor)
+        {
+            CheckOS();
+            string fileName = "Client.json";
+
+            if (DeviceInfo.Platform == DevicePlatform.Android)
+            {
+                Console.WriteLine("Операционная система: Android");
+                Seting setting = new Seting(AddressEntrys, PortEntrys, language, settingColor);
+                // Преобразование в JSON-строку
+                string json = JsonConvert.SerializeObject(setting, Formatting.Indented);
+                // Создание и запись в JSON-файл
+                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), fileName);
+                File.WriteAllText(path, json);
+                // Чтение JSON-файла для проверки
+                string jsonFromFile = File.ReadAllText(path);
+                // Преобразование JSON-строки в объект Seting
+                Seting settingFromFile = JsonConvert.DeserializeObject<Seting>(jsonFromFile);
+                // Вывод данных из объекта settingFromFile для проверки
+                Console.WriteLine($"ColorStyles: {settingFromFile.ColorStyles}");
+            }
+            else if (DeviceInfo.Platform == DevicePlatform.WinUI)
+            {
+                string appDirectory = AppContext.BaseDirectory;
+                string filePath = Path.Combine(appDirectory, fileName);
+
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+
+                Seting setting = new Seting(AddressEntrys, PortEntrys, language, settingColor);
+                // Преобразование в JSON-строку
+                string json = JsonConvert.SerializeObject(setting, Formatting.Indented);
+                // Запись в файл
+                File.WriteAllText(filePath, json);
+                // Чтение JSON-файла для проверки
+                string jsonFromFile = File.ReadAllText(filePath);
+                // Преобразование JSON-строки в объект Seting
+                Seting settingFromFile = JsonConvert.DeserializeObject<Seting>(jsonFromFile);
+                // Вывод данных из объекта settingFromFile для проверки
+                Console.WriteLine($"ColorStyles: {settingFromFile.ColorStyles}");
+            }
+        }
+
+
+
+        //public void UpdateColors(string AddressEntrys, int PortEntrys, int settingColor)
+        //{
+        //    CheckOS();
+        //    if (DeviceInfo.Platform == DevicePlatform.Android)
+        //    {
+        //        Console.WriteLine("Операционная система: Android");
+        //        Seting seting = new Seting(AddressEntrys, PortEntrys, language, settingColor);
+        //        // Преобразование в JSON-строку
+        //        string json = JsonConvert.SerializeObject(seting, Formatting.Indented);
+        //        // Создание и запись в JSON-файл
+        //        string fileName = "Client.json";
+        //        string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), fileName);
+        //        if (File.Exists(path))
+        //        {
+        //            File.Delete(path);
+        //        }
+        //        File.WriteAllText(path, json);
+        //        // Чтение JSON-файла
+        //        string jsonFromFile = File.ReadAllText(path);
+        //        // Преобразование JSON-строки в объект Seting
+        //        Seting setingFromFile = JsonConvert.DeserializeObject<Seting>(jsonFromFile);
+        //        // Вывод данных из объекта setingFromFile
+        //        Console.WriteLine($"Ip_adress: {setingFromFile.Ip_adress}");
+        //        Console.WriteLine($"Port: {setingFromFile.Port}");
+        //        Console.WriteLine($"TypeSQL: {setingFromFile.TypeSQL}");
+        //        Console.WriteLine($"ColorStyles: {setingFromFile.ColorStyles}");
+        //    }
+        //    else if (DeviceInfo.Platform == DevicePlatform.WinUI)
+        //    {
+        //        string appDirectory = System.AppContext.BaseDirectory;
+        //        FileInfo fileInfo = new FileInfo(appDirectory + "\\Client.json");
+        //        // Если есть то загружаем настройки сервера если нет то создают
+        //        if (fileInfo.Exists)
+        //        {
+        //            File.Delete(appDirectory + "\\Client.json");
+
+        //            using (FileStream fs = new FileStream(appDirectory + "\\Client.json", FileMode.OpenOrCreate))
+        //            {
+        //                Seting seting = new Seting(AddressEntrys, PortEntrys, language, settingColor);
+        //                System.Text.Json.JsonSerializer.Serialize<Seting>(fs, seting);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            using (FileStream fileStream = new FileStream(appDirectory + "\\Client.json", FileMode.OpenOrCreate))
+        //            {
+        //                Seting connect_Server_ = new Seting(AddressEntrys, PortEntrys, language, settingColor);
+        //                System.Text.Json.JsonSerializer.Serialize<Seting>(fileStream, connect_Server_);
+        //            }
+
+        //            using (FileStream fileStream = new FileStream(appDirectory + "\\Client.json", FileMode.OpenOrCreate))
+        //            {
+        //                Seting aFile = System.Text.Json.JsonSerializer.Deserialize<Seting>(fileStream);
+        //            }
+
+        //        }
+        //    }
+        //}
     }
 }
 

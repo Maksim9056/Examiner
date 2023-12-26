@@ -23,7 +23,7 @@
                            BackgroundColor="{DynamicResource SettingEntry}"
                     />
                 </StackLayout>
-
+                <Label Text="{x:Static resource:AppResources.Выборязыка}" FontSize="25" FontAttributes="Bold" Margin="10,10,0,0" />
                 <ListView x:Name="SettingList"     
               Grid.Row="2" 
               RowHeight="30" 
@@ -50,6 +50,37 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
+                <Label Text="{x:Static resource:AppResources.Выборцвета}" FontSize="25" FontAttributes="Bold" Margin="10,10,0,0" />
+                <ListView x:Name="SettingListColor"     
+                 Grid.Row="2" 
+                 RowHeight="30" 
+                 ItemSelected="SettingListColor_ItemSelected"
+                          
+                 ItemsSource="{Binding RefColors}" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label 
+                       Text="{Binding Colors}"
+                       Grid.Column="0"    
+                       FontSize="16"    
+                       FontFamily="Arial"    
+                       FontAttributes="Bold"    
+                       HorizontalTextAlignment="Center"    
+                       VerticalTextAlignment="Center" 
+                      />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+                
                 <StackLayout  Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="End">
                     <Button Text="{x:Static resource:AppResources.Отмена}" 
                             FontSize="22" 

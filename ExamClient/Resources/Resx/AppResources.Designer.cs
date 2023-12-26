@@ -241,11 +241,29 @@ namespace ExamClient.Resources.Resx {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Выбор цвета:.
+        /// </summary>
+        internal static string Выборцвета {
+            get {
+                return ResourceManager.GetString("Выборцвета", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Выбор экзамена.
         /// </summary>
         internal static string Выборэкзамена {
             get {
                 return ResourceManager.GetString("Выборэкзамена", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выбор языка:.
+        /// </summary>
+        internal static string Выборязыка {
+            get {
+                return ResourceManager.GetString("Выборязыка", resourceCulture);
             }
         }
         
