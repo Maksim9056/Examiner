@@ -6,7 +6,8 @@ using System.Resources;
 using ExamClient.Resources.Resx;
 using Microsoft.Maui.Controls.StyleSheets;
 using System.Reflection;
- 
+using Microsoft.Maui.Controls;
+
 namespace Client.Main;
 
 public partial class Admin : ContentPage
@@ -175,12 +176,14 @@ public partial class Admin : ContentPage
 
             //  Navigation.PopAsync();
 
-          await   Navigation.PushAsync(new MainPage());
 
           Shedow();
 
-      
 
+            //await   Navigation.PushAsync(new MainPage());
+            await Navigation.PopToRootAsync();
+
+            App.Current.MainPage = new AppShell();
             // await Navigation.PopToRootAsync();
 
 
@@ -268,11 +271,7 @@ public partial class Admin : ContentPage
                 flyoutItemIMPL_admin.IsVisible = false;
             }
 
-            //var flyoutItemIMPL_user = Shell.Current?.Items.FirstOrDefault(item => item.Route.Equals("IMPL_userd"));
-            //if (flyoutItemIMPL_user != null)
-            //{
-            //    flyoutItemIMPL_user.IsVisible = false;
-            //}
+          
             var flyoutItemIMPL_test = Shell.Current?.Items.FirstOrDefault(item => item.Route.Equals("IMPL_test"));
             if (flyoutItemIMPL_test != null)
             {
@@ -298,14 +297,19 @@ public partial class Admin : ContentPage
                 flyoutItemIMPL_Answer.IsVisible = false;
             }
 
-      
+
             //var flyoutItemseting1 = Shell.Current?.Items.FirstOrDefault(item => item.Route.Equals("IMPL_seting"));
             //if (flyoutItemseting1 != null)
             //{
             //    flyoutItemseting1.IsVisible = true;
-            //}   
-            
-         
+            //}
+
+            var flyoutItemIMPL_user = Shell.Current?.Items.FirstOrDefault(item => item.Route.Equals("IMPL_userd"));
+            if (flyoutItemIMPL_user != null)
+            {
+                flyoutItemIMPL_user.IsVisible = false;
+            }
+
 
         }
         catch (Exception ex)
