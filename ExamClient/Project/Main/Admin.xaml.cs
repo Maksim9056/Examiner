@@ -1,13 +1,13 @@
 using ExamModels;
 using Microsoft.Maui.Controls;
 using System.Windows.Input;
-using Microsoft.Maui.Controls;
 using System.Resources;
 using ExamClient.Resources.Resx;
-using Microsoft.Maui.Controls.StyleSheets;
-using System.Reflection;
+using Client.Main;
+using Newtonsoft.Json;
+using System.Globalization;
+using System.Net;
 using Microsoft.Maui.Controls;
-
 namespace Client.Main;
 
 public partial class Admin : ContentPage
@@ -177,13 +177,18 @@ public partial class Admin : ContentPage
             //  Navigation.PopAsync();
 
 
-          Shedow();
+          //Shedow();
 
+            ReloadApplications();
+            //await Navigation.PopToRootAsync();
 
-            //await   Navigation.PushAsync(new MainPage());
-            await Navigation.PopToRootAsync();
+            //var mainPage = new MainPage();
+            //var navigationPage = new NavigationPage(mainPage); // Оборачиваем MainPage в NavigationPage, если необходимо
+            //Application.Current.MainPage = navigationPage;
 
-            App.Current.MainPage = new AppShell();
+            //ReloadApplication();
+
+            //App.Current.MainPage = new AppShell();
             // await Navigation.PopToRootAsync();
 
 
@@ -193,7 +198,7 @@ public partial class Admin : ContentPage
             //    navigationPage.Navigation.PopAsync();
             //}
         }
-        catch(Exception ex) 
+        catch (Exception ex) 
         {
         await    DisplayAlert(AppResources.Ошибка, ex.Message, AppResources.Ок);
 
@@ -201,62 +206,17 @@ public partial class Admin : ContentPage
 
     }
 
+    public  async Task ReloadApplications()
+    {
+
+        // Очистка стека навигации (удаление всех страниц из стека)
+        await Navigation.PopToRootAsync();
+
+        App.Current.MainPage = new AppShell();
 
 
-    //public  async void Shedow()
-    //{
-    //    try
-    //    {
-    //        var flyoutItemIMPL_admin = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_admin"));
-    //        if (flyoutItemIMPL_admin != null)
-    //        {
-    //            flyoutItemIMPL_admin.IsVisible = false;
-    //        }
+    }
 
-    //        var flyoutItemIMPL_user = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_user"));
-    //        if (flyoutItemIMPL_user != null)
-    //        {
-    //            flyoutItemIMPL_user.IsVisible = false;
-    //        }
-
-    //        var flyoutItemIMPL_test = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_test"));
-    //        if (flyoutItemIMPL_test != null)
-    //        {
-    //            flyoutItemIMPL_test.IsVisible = false;
-    //        }
-
-
-    //        var flyoutItemIMPL_Exams = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_Exams"));
-    //        if (flyoutItemIMPL_Exams != null)
-    //        {
-    //            flyoutItemIMPL_Exams.IsVisible = false;
-    //        }
-
-    //        var flyoutItemIMPL_Questions = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_Questions"));
-    //        if (flyoutItemIMPL_Questions != null)
-    //        {
-    //            flyoutItemIMPL_Questions.IsVisible = false;
-    //        }
-
-    //        var flyoutItemIMPL_Answer = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_Answer"));
-
-    //        if (flyoutItemIMPL_Answer != null)
-    //        {
-    //            flyoutItemIMPL_Answer.IsVisible = false;
-    //        }
-
-    //        var flyoutItemseting1 = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_seting"));
-    //        if (flyoutItemseting1 != null)
-    //        {
-    //            flyoutItemseting1.IsVisible = true;
-    //        }
-    //    }
-    //    catch( Exception ex)
-    //    {
-    //        await DisplayAlert("Ошибка", ex.Message, "Ок");
-
-    //    }
-    //}
 
 
 
@@ -304,11 +264,15 @@ public partial class Admin : ContentPage
             //    flyoutItemseting1.IsVisible = true;
             //}
 
-            var flyoutItemIMPL_user = Shell.Current?.Items.FirstOrDefault(item => item.Route.Equals("IMPL_userd"));
-            if (flyoutItemIMPL_user != null)
+            Device.BeginInvokeOnMainThread(() =>
             {
-                flyoutItemIMPL_user.IsVisible = false;
-            }
+                var flyoutItemIMPL_user = Shell.Current?.Items.FirstOrDefault(item => item.Route.Equals("IMPL_userd"));
+                if (flyoutItemIMPL_user != null)
+                {
+                    flyoutItemIMPL_user.IsVisible = false;
+                }
+            });
+
 
 
         }
@@ -488,3 +452,58 @@ public partial class Admin : ContentPage
 }
 
 
+
+//public  async void Shedow()
+//{
+//    try
+//    {
+//        var flyoutItemIMPL_admin = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_admin"));
+//        if (flyoutItemIMPL_admin != null)
+//        {
+//            flyoutItemIMPL_admin.IsVisible = false;
+//        }
+
+//        var flyoutItemIMPL_user = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_user"));
+//        if (flyoutItemIMPL_user != null)
+//        {
+//            flyoutItemIMPL_user.IsVisible = false;
+//        }
+
+//        var flyoutItemIMPL_test = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_test"));
+//        if (flyoutItemIMPL_test != null)
+//        {
+//            flyoutItemIMPL_test.IsVisible = false;
+//        }
+
+
+//        var flyoutItemIMPL_Exams = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_Exams"));
+//        if (flyoutItemIMPL_Exams != null)
+//        {
+//            flyoutItemIMPL_Exams.IsVisible = false;
+//        }
+
+//        var flyoutItemIMPL_Questions = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_Questions"));
+//        if (flyoutItemIMPL_Questions != null)
+//        {
+//            flyoutItemIMPL_Questions.IsVisible = false;
+//        }
+
+//        var flyoutItemIMPL_Answer = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_Answer"));
+
+//        if (flyoutItemIMPL_Answer != null)
+//        {
+//            flyoutItemIMPL_Answer.IsVisible = false;
+//        }
+
+//        var flyoutItemseting1 = Shell.Current.Items.FirstOrDefault(item => item.Route.Equals("IMPL_seting"));
+//        if (flyoutItemseting1 != null)
+//        {
+//            flyoutItemseting1.IsVisible = true;
+//        }
+//    }
+//    catch( Exception ex)
+//    {
+//        await DisplayAlert("Ошибка", ex.Message, "Ок");
+
+//    }
+//}
