@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ExamModels;
-using System.Collections.ObjectModel;
 using Client.Main;
 using static ExamModels.CommandCL;
 using ExamClient.Resources.Resx;

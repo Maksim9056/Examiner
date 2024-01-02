@@ -1063,17 +1063,22 @@ namespace ExamModels
 
         public Exams_Check Check(CheckUserTest userExams)
         {
-
-            using (MemoryStream memoryStream = new MemoryStream())
+            try
             {
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
 
-                //  CheckExam checkExam = new CheckExam(userExams);
-                JsonSerializer.Serialize<CheckUserTest>(memoryStream, userExams);
+                    //  CheckExam checkExam = new CheckExam(userExams);
+                    JsonSerializer.Serialize<CheckUserTest>(memoryStream, userExams);
 
 
-                Task.Run(async () => await command.CheckTest(Ip_adress.Ip_adresss, Encoding.Default.GetString(memoryStream.ToArray()), "054")).Wait();
+                    Task.Run(async () => await command.CheckTest(Ip_adress.Ip_adresss, Encoding.Default.GetString(memoryStream.ToArray()), "054")).Wait();
 
 
+                    return command.exams_Check;
+                }
+            }catch (Exception)
+            {
                 return command.exams_Check;
             }
         }
@@ -1165,7 +1170,7 @@ namespace ExamModels
 
                 if (Filles_Work_.Filles == null)
                 {
-                    //  Statisk = null;
+                    //  Statisk = null; 
 
                 }
                 else
@@ -1196,11 +1201,7 @@ namespace ExamModels
                     Task.Run(async () => await Filles_Work_.SelectFromFilles(Ip_adresss, Encoding.Default.GetString(memoryStream.ToArray()), "058")).Wait();
 
 
-                    if (Filles_Work_.Filles == null)
-                    {
-                        SelectFromFilles(Ip_adresss, user);
-
-                    }
+              
                     Filles = Filles_Work_.Filles;
 
                     files = Filles;

@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SendFiles.cs" />
     <Compile Include="ComandCL.cs" />
     <Compile Include="Global_class.cs" />
     <Compile Include="Model.cs" />

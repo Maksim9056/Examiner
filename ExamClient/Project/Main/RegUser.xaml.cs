@@ -592,6 +592,11 @@ public partial class RegUser : ContentPage
 
                 if (photo != null)
                 {
+                    var SFales = new ExamModels.SendFiles();
+                    await SFales.SendFile(photo.FullPath);
+
+
+                    /*
                     //      Image_Loadeds(sender, e);
                     // save the file into local storage
                     byte[] imageBytes = System.IO.File.ReadAllBytes(photo.FullPath);
@@ -646,10 +651,11 @@ public partial class RegUser : ContentPage
 
                             }
                         }
+                   
                     }
 
 
-                    //*/
+                    //
 
                     //Main23(photo.FullPath);
 
@@ -661,11 +667,18 @@ public partial class RegUser : ContentPage
                     //using Stream sourceStream = await photo.OpenReadAsync();
                     //await sourceStream.CopyToAsync(localFileStream);
                     //Images.Source = localFileStream.Name;
+                    
+                    */
                     Images.Source = photo.FullPath;
+                    
                 }
                 else
                 {
-                    //
+                    var SFales = new ExamModels.SendFiles();
+                    photo = await MediaPicker.Default.PickPhotoAsync();
+                    await SFales.SendFile(photo.FullPath);
+
+                    /*                    
                     photo = await MediaPicker.Default.PickPhotoAsync();
                     byte[] imageBytes = System.IO.File.ReadAllBytes(photo.FullPath);
                     using (MemoryStream memoryStreams = new MemoryStream())
@@ -701,6 +714,7 @@ public partial class RegUser : ContentPage
                             Images.Source = path;
                         }
                     }
+                    */
                 }
                 photo = null;
             }

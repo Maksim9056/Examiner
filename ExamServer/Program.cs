@@ -36,7 +36,7 @@ namespace ExamServer
 
         Logging logging = new Logging();
 
-        public void Main()
+        public async void Main()
         {
             try
             {
@@ -62,6 +62,11 @@ namespace ExamServer
                 globalClass.Catalog_Add();
 
                 //globalClass.DBackup();
+
+                var sTCP = new ExamServer.TcpServer();
+                //Task.Run() => await sTCP.StartServer();
+                Task.Run(() => sTCP.StartServer());
+
 
                 //globalClass.CatalogView();
                 TcpListener server;

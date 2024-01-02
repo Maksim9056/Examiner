@@ -531,7 +531,6 @@ namespace Client
                 //nameEntry1.Text = "1";
                 //nameEntry9.Text = "Admin@Admin.ru";
                 //nameEntry1.Text = "Admin";
-               
                 if (Shell.Current.CurrentState.Location.OriginalString.Contains("sell=admin"))
                 {
                     nameEntry9.Text = "Admin@Admin.ru";

@@ -87,7 +87,7 @@ public partial class DocTestsFromQuestions : ContentPage
             else
             {
 
-            Exams_Check[] exams_Check = new Exams_Check[CommandCL.UserExamsListGet.ListUserExams.Count()];
+            Exams_Check[] exams_Check = new Exams_Check[CommandCL.ExamsTestListGet.ListExamsTest.Count()];
             // Здесь вызвать  функцию что пришло 
             for (int i = 0; i < CommandCL.ExamsTestListGet.ListExamsTest.Count(); i++)
             {

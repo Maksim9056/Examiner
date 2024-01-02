@@ -73,10 +73,11 @@
                        BackgroundColor="{DynamicResource RegUserEntry}"
 
                 />
-                   
-                
 
-                <Image x:Name="Images" Loaded="Image_Loaded" Aspect="AspectFit" />
+
+                <!--<ImageButton x:Name="Images"   Clicked="Image_Loaded"   Aspect="AspectFit" BackgroundColor="Black"/>-->
+
+                <Image x:Name="Images"  Loaded="Image_Loaded" Aspect="AspectFit" />
 
                 <Label x:Name="header" Text="{x:Static resource:AppResources.ВыберитеРоль}"
                        FontSize="16"

@@ -1,7 +1,6 @@
 using ExamModels;
 using Client.Main;
 using Client.Users.Doc.DocPersonalAchievement;
-using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 //using Microsoft.Maui.Graphics.Platform;
 using Microsoft.Maui.Storage;
 using SkiaSharp;
@@ -13,6 +12,7 @@ using System.Windows.Input;
 using System.Xml.Linq;
 using Image = Microsoft.Maui.Controls.Image;
 using ExamClient.Resources.Resx;
+using Microsoft.Maui.Controls;
 
 namespace Client.Users;
 
@@ -260,13 +260,25 @@ public partial class Users : ContentPage
         // User
         //  ExamModels.User user
     }
+
+    public async Task ReloadApplicationss()
+    {
+
+        // Очистка стека навигации (удаление всех страниц из стека)
+        await Navigation.PopToRootAsync();
+
+        App.Current.MainPage = new AppShell();
+
+
+    }
     private void GoBack(object sender, EventArgs e)
     {
         //if (Application.Current.MainPage is NavigationPage navigationPage)
         //{
         //    navigationPage.Navigation.PopAsync();
         //}
-        Shell.Current.GoToAsync("logout");
+        //Shell.Current.GoToAsync("logout");
+        ReloadApplicationss();
     }
 
     private async void AchievementsButtonClicked(object sender, EventArgs e)
