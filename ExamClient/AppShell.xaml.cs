@@ -4,7 +4,6 @@ using ExamClient.Resources.Resx;
 using System.Globalization;
 using Microsoft.Maui.Controls.StyleSheets;
 using System.Reflection;
-using static Microsoft.Maui.Controls.Device;
 
 namespace Client
 {

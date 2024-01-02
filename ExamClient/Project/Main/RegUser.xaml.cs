@@ -1,6 +1,5 @@
 using ExamModels;
 using Microsoft.Maui.ApplicationModel.Communication;
-//using Microsoft.UI.Xaml.Controls;
 using System.Text.Json;
 using System.Text;
 using TextChangedEventArgs = Microsoft.Maui.Controls.TextChangedEventArgs;
@@ -24,6 +23,7 @@ namespace Client.Main;
 public partial class RegUser : ContentPage
 {
     Filles_Work filles_Work = new Filles_Work();
+
     Filles_Work_ filles_Work_ = new Filles_Work_();
 
     public RegUser()
@@ -593,6 +593,11 @@ public partial class RegUser : ContentPage
                 if (photo != null)
                 {
                     var SFales = new ExamModels.SendFiles();
+
+
+                    //byte[] imageBytes = System.IO.File.ReadAllBytes(photo.FullPath);
+
+                    //Task.Run(async () => await SFales.SendFile(photo.FullPath)).Wait();
                     await SFales.SendFile(photo.FullPath);
 
 
