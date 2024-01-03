@@ -170,8 +170,8 @@ public partial class Users : ContentPage
 
                     // image = Microsoft.Maui.Graphics.Platform.PlatformImage.FromStream(stream);
 
-                    System.IO.File.WriteAllBytes(path, files.Name); 
-                    ImageUser.Source  = path;
+                    System.IO.File.WriteAllBytes(filePaths, files.Name); 
+                    ImageUser.Source  = filePaths;
                     //     bitmap = BitmapFactory.DecodeByteArray(ms.GetByteArray(), 0, ms.GetByteArray().Length); // Исправленное создание объекта Bitmap из массива байтов
 
                     //var image = new Image();
