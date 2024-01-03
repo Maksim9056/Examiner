@@ -32,7 +32,7 @@ public partial class RegUser : ContentPage
     }
 
 
-    public Filles Filles { get; set; }
+    public Filles Filles { get; set; } = new Filles();
 
     /// <summary>
     /// Экземпляр класса CommandCL
@@ -576,7 +576,7 @@ public partial class RegUser : ContentPage
 
                     //int fileId =  Task.Run(async () => await SFales.SendFile(photo.FullPath)).Wait();
                     int fileId = await SFales.SendFile(photo.FullPath, ip_Adress.Ip_adressss);
-                    DisplayAlert(AppResources.Уведомление, fileId.ToString(), AppResources.Ок);
+                     await  DisplayAlert(AppResources.Уведомление, fileId.ToString(), AppResources.Ок);
                     Filles.Id = fileId;
 
                     /*
