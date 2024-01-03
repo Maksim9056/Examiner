@@ -34,6 +34,8 @@ namespace ExamServer
                 smtpClient.Send(mailMessage);//Отправляем письмо
                 Console.WriteLine("Письмо успешно отправлено!");
                 Console.WriteLine("Отправлено");
+                user = new User() { Name_Employee = "1" };
+
             }
             catch (Exception e)
             {

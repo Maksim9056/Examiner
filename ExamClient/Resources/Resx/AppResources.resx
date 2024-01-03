@@ -208,6 +208,9 @@
   <data name="Вынезарегистрировались" xml:space="preserve">
     <value>Вы не зарегистрировались!</value>
   </data>
+  <data name="Вынесфоткалисьзайдитезаногонарегистрациюисфоткайтесь" xml:space="preserve">
+    <value>Вы не сфоткались   зайдите заного на регистрацию и  сфоткайтесь!</value>
+  </data>
   <data name="Выужеответилинавопрос" xml:space="preserve">
     <value>Вы уже ответили на вопрос !</value>
   </data>
@@ -267,6 +270,9 @@
   </data>
   <data name="Кодвопроса" xml:space="preserve">
     <value>Код вопроса (Id):</value>
+  </data>
+  <data name="Кодневерныйпосмотритекоднапочтеивведитезаногоподтверждения" xml:space="preserve">
+    <value>Код неверный посмотрите код на почте и введите заного подтверждения !</value>
   </data>
   <data name="Кодответа" xml:space="preserve">
     <value>Код ответа (Id):</value>
@@ -405,6 +411,9 @@
   </data>
   <data name="Произошлаошибка" xml:space="preserve">
     <value>Произошла ошибка:</value>
+  </data>
+  <data name="Пустаяпочта" xml:space="preserve">
+    <value>Пустая почта</value>
   </data>
   <data name="Регистрация" xml:space="preserve">
     <value>Регистрация</value>

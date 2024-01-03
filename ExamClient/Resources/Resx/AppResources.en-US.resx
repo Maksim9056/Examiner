@@ -207,6 +207,9 @@
   <data name="Вынезарегистрировались" xml:space="preserve">
     <value>You haven't registered!</value>
   </data>
+  <data name="Вынесфоткалисьзайдитезаногонарегистрациюисфоткайтесь" xml:space="preserve">
+    <value>You didn't take a picture, go to the registration page and take a picture!</value>
+  </data>
   <data name="Выужеответилинавопрос" xml:space="preserve">
     <value>You have already answered the question !</value>
   </data>
@@ -266,6 +269,9 @@
   </data>
   <data name="Кодвопроса" xml:space="preserve">
     <value>Question Code (Id):</value>
+  </data>
+  <data name="Кодневерныйпосмотритекоднапочтеивведитезаногоподтверждения" xml:space="preserve">
+    <value>The code is incorrect, look at the code in the mail and enter the required confirmation!</value>
   </data>
   <data name="Кодответа" xml:space="preserve">
     <value>Response Code (Id):</value>
@@ -404,6 +410,9 @@
   </data>
   <data name="Произошлаошибка" xml:space="preserve">
     <value>An error occurred:</value>
+  </data>
+  <data name="Пустаяпочта" xml:space="preserve">
+    <value>Empty mail</value>
   </data>
   <data name="Регистрация" xml:space="preserve">
     <value>Registration</value>

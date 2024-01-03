@@ -331,6 +331,15 @@ namespace ExamClient.Resources.Resx {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы не сфоткались   зайдите заного на регистрацию и  сфоткайтесь!.
+        /// </summary>
+        internal static string Вынесфоткалисьзайдитезаногонарегистрациюисфоткайтесь {
+            get {
+                return ResourceManager.GetString("Вынесфоткалисьзайдитезаногонарегистрациюисфоткайтесь", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вы уже ответили на вопрос !.
         /// </summary>
         internal static string Выужеответилинавопрос {
@@ -507,6 +516,15 @@ namespace ExamClient.Resources.Resx {
         internal static string Кодвопроса {
             get {
                 return ResourceManager.GetString("Кодвопроса", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Код неверный посмотрите код на почте и введите заного подтверждения !.
+        /// </summary>
+        internal static string Кодневерныйпосмотритекоднапочтеивведитезаногоподтверждения {
+            get {
+                return ResourceManager.GetString("Кодневерныйпосмотритекоднапочтеивведитезаногоподтверждения", resourceCulture);
             }
         }
         
@@ -921,6 +939,15 @@ namespace ExamClient.Resources.Resx {
         internal static string Произошлаошибка {
             get {
                 return ResourceManager.GetString("Произошлаошибка", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Пустая почта.
+        /// </summary>
+        internal static string Пустаяпочта {
+            get {
+                return ResourceManager.GetString("Пустаяпочта", resourceCulture);
             }
         }
         

@@ -17,6 +17,7 @@ using System.Net.Sockets;
 using Microsoft.Maui.Controls;
 using System.Buffers.Text;
 using ExamClient.Resources.Resx;
+using MetalPerformanceShadersGraph;
 
 namespace Client.Main;
 
@@ -79,12 +80,17 @@ public partial class RegUser : ContentPage
     public ExamModels.Mail Mails = new ExamModels.Mail();
 
 
+
     /// <summary>
     /// Id картинки пользователя
     /// </summary>
     public  int Id_Filles { get; set; }
 
+    public bool IsAdmin { get; set; } = false;
 
+
+
+    public int confirmation_code { get; set; }
     async public   void Connect()
     {
         try
@@ -158,12 +164,12 @@ public partial class RegUser : ContentPage
             }
             if (галочка == null)
             {
-                await DisplayAlert(AppResources.Уведомление, AppResources.Сервервыключенилинедоступен,AppResources.Ок);
+                await DisplayAlert(AppResources.Уведомление, AppResources.Сервервыключенилинедоступен, AppResources.Ок);
                 return;
             }
             if (Password1 == null || Password1 == "")
             {
-                await DisplayAlert(AppResources.Уведомление,AppResources.Парольнаподтверждениенезаполнен, AppResources.Ок);
+                await DisplayAlert(AppResources.Уведомление, AppResources.Парольнаподтверждениенезаполнен, AppResources.Ок);
             }
             if (Password == null || Password == "")
             {
@@ -175,132 +181,104 @@ public partial class RegUser : ContentPage
             }
             if (Roles == null)
             {
-                await DisplayAlert(AppResources.Уведомление, AppResources.Незаполненоразрешение,AppResources.Ок);
+                await DisplayAlert(AppResources.Уведомление, AppResources.Незаполненоразрешение, AppResources.Ок);
             }
 
 
-            //if (Email.Default.IsComposeSupported)
-            //{
-
-            //    string subject = "Hello friends!";
-            //    string body = "Kod 45";
-            //    string[] recipients = new[] { "bobreczovm@inbox.ru", Mail };
-
-            //    var message = new EmailMessage
-            //    {
-            //        Subject = subject,
-            //        Body = body,
-
-            //        BodyFormat = EmailBodyFormat.PlainText,
-            //        To = new List<string>(recipients)
-            //    };
-
-            //    // string picturePath = Path.Combine(FileSystem.CacheDirectory, "memories.jpg");
-
-            //    //   message.Attachments.Add(new EmailAttachment(picturePath));
-
-            //    await Email.Default.ComposeAsync(message);
-            //}
-
-             if (Mail == null || Mail == "")
+            if (Filles == null)
             {
+                await DisplayAlert(AppResources.Уведомление, AppResources.Вынесфоткалисьзайдитезаногонарегистрациюисфоткайтесь, AppResources.Ок);
 
-                await DisplayAlert(AppResources.Уведомление, AppResources.Почтанезаполнена , AppResources.Ок);
-            }
-             if (!Regex.IsMatch(Mail, "@."))
-            {
-                await DisplayAlert(AppResources.Уведомление,   AppResources.Некорректныйадресэлектроннойпочты, AppResources.Ок);
             }
             else
             {
 
-                ExamModels.User user = new ExamModels.User() { Employee_Mail = Mail, Name_Employee = User_Name };
+                
+                if (Mail == null || Mail == "")
+                {
 
-                User users = Mails.RegUserMail(user, ip_Adress.Ip_adressss);
-                //User users;
+                    await DisplayAlert(AppResources.Уведомление, AppResources.Почтанезаполнена, AppResources.Ок);
+                }
+                if (!Regex.IsMatch(Mail, "@."))
+                {
+                    await DisplayAlert(AppResources.Уведомление, AppResources.Некорректныйадресэлектроннойпочты, AppResources.Ок);
+                }
+                else
+                {
 
-                //using (MemoryStream memoryStream = new MemoryStream())
-                //{
-
-                //    //Backap backap = new Backap();
-                //    JsonSerializer.Serialize<User>(memoryStream, user);
-
-                //    Task.Run(async () => await Mails.MailTravels.RegUser("192.168.1.170", Encoding.Default.GetString(memoryStream.ToArray()), "062")).Wait();
-
-
-                //    users = Mails.MailTravels.User;
-                //}
-
-
-
-
-                //if (users.Employee_Mail == CodMail)
-                    if (true)
+                    if (IsAdmin == false)
                     {
 
 
 
+                        ExamModels.User user = new ExamModels.User() { Employee_Mail = Mail, Name_Employee = User_Name };
 
-                    //if (Filles == null)
-                        if (true)
+                        User users = Mails.RegUserMail(user, ip_Adress.Ip_adressss);
+                        confirmation_code = Convert.ToInt32(users.Name_Employee);
+                        IsAdmin = true;
+                    }
+
+                    if (CodMail == "")
+                    {
+                        await DisplayAlert(AppResources.Уведомление, AppResources.Пустаяпочта, AppResources.Ок);
+
+                    }
+                    else
+                    {
+                        if (confirmation_code == Convert.ToInt32(CodMail))
                         {
-                            ////Image_Loaded(sender, e);
-                            //}
-                            //else
-                            //{
-
 
                             using (MemoryStream Reg_user_Dispons = new MemoryStream())
-                        {
-                            CommandCL command = new CommandCL();
-                            string FileFS = "";
-                            using (MemoryStream fs = new MemoryStream())
                             {
-                                int Fi = 0;
-                                if (Filles != null)
+                                CommandCL command = new CommandCL();
+                                string FileFS = "";
+                                using (MemoryStream fs = new MemoryStream())
                                 {
-                                    Fi = Filles.Id;
+                                    int Fi = 0;
+                                    if (Filles != null)
+                                    {
+                                        Fi = Filles.Id;
+                                    }
+
+                                    Regis_users tom = new Regis_users(0, User_Name, Password, Roles, Mail, Filles.Id);
+                                    JsonSerializer.Serialize<Regis_users>(fs, tom);
+                                    FileFS = Encoding.Default.GetString(fs.ToArray());
                                 }
-                                Regis_users tom = new Regis_users(0, User_Name, Password, Roles, Mail, Fi);
-                                JsonSerializer.Serialize<Regis_users>(fs, tom);
-                                FileFS = Encoding.Default.GetString(fs.ToArray());
-                            }
-                            Task.Run(async () => await command.Reg_User(ip_Adress.Ip_adressss, FileFS, "002")).Wait();
-                            var Message = CommandCL.Travel_Regis_users_message;
-                            // Остальной код для фильтрации по имени
-                            if (Message == null)
-                            {
-                                await DisplayAlert(AppResources.Уведомление, AppResources.Вынезарегистрировались, AppResources.Ок);
-                            }
-                            else
-                            {
-                                await DisplayAlert(AppResources.Уведомление, AppResources.Вызарегистрировались, AppResources.Ок);
+                                Task.Run(async () => await command.Reg_User(ip_Adress.Ip_adressss, FileFS, "002")).Wait();
+                                var Message = CommandCL.Travel_Regis_users_message;
+                                // Остальной код для фильтрации по имени
+                                if (Message == null)
+                                {
+                                    await DisplayAlert(AppResources.Уведомление, AppResources.Вынезарегистрировались, AppResources.Ок);
+                                }
+                                else
+                                {
+                                    await DisplayAlert(AppResources.Уведомление, AppResources.Вызарегистрировались, AppResources.Ок);
 
 
+                                }
+                                nameEntry3.Text = null;
+                                nameEntry.Text = null;
+                                nameEntry1.Text = null;
+                                nameEntry2.Text = null;
+                                await Navigation.PopAsync();
                             }
-                            nameEntry3.Text = null;
-                            nameEntry.Text = null;
-                            nameEntry1.Text = null;
-                            nameEntry2.Text = null;
-                            await Navigation.PopAsync();
+                        }
+                        else
+                        {
+                            await DisplayAlert(AppResources.Уведомление, AppResources.Кодневерныйпосмотритекоднапочтеивведитезаногоподтверждения, AppResources.Ок);
+
+
                         }
                     }
                 }
-                else
-                {
-                    await DisplayAlert("Ошибка", "0", "Ок");
-
-                }
             }
         }
-           
-        
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            await DisplayAlert(AppResources.Ошибка, AppResources.Сообщение + ex.Message + "\n" +AppResources.Помощь + ex.HelpLink, AppResources.Ок);
+            await DisplayAlert(AppResources.Ошибка, AppResources.Сообщение + ex.Message + "\n" + AppResources.Помощь + ex.HelpLink, AppResources.Ок);
 
         }
-
     }
     /// <summary>
     ///Регестрация и проверки 
@@ -600,7 +578,7 @@ public partial class RegUser : ContentPage
                     //int fileId =  Task.Run(async () => await SFales.SendFile(photo.FullPath)).Wait();
                     int fileId = await SFales.SendFile(photo.FullPath);
                     DisplayAlert(AppResources.Уведомление, fileId.ToString(), AppResources.Ок);
-
+                    Filles.Id = fileId;
 
                     /*
                     //      Image_Loadeds(sender, e);
@@ -686,7 +664,7 @@ public partial class RegUser : ContentPage
                     int fileId = await SFales.SendFile(photo.FullPath);
                     Images.Source = photo.FullPath;
                     DisplayAlert(AppResources.Уведомление, fileId.ToString(), AppResources.Ок);
-
+                    Filles.Id = fileId;
 
                     /*                    
                     photo = await MediaPicker.Default.PickPhotoAsync();
