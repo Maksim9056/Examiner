@@ -8,9 +8,9 @@ namespace ExamModels
     public class SendFiles
     {
         private const int Port = 9596;
-        private  string serverIpAddress = "192.168.1.204";
+        private string serverIpAddress = "192.168.1.204";
 
-        public async Task<int> SendFile(string filePath,string ip)
+        public async Task<int> SendFile(string filePath, string ip)
         {
             try
             {
@@ -19,10 +19,10 @@ namespace ExamModels
                 using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 using (NetworkStream stream = client.GetStream())
                 {
-                    await SendFileContents(fileStream, stream);
-                    int receivedId = await ReceiveFileId(stream);
+                    await SendFileSize(fileStream, stream); // Отправка размера файла
+                    await SendFileContents(fileStream, stream); // Отправка содержимого файла
+                    int receivedId = await ReceiveFileId(stream); // Получение ID файла
                     return receivedId;
-                    //return -4;
                 }
             }
             catch (IOException ex)
@@ -39,6 +39,31 @@ namespace ExamModels
             {
                 Console.WriteLine($"Необработанное исключение при отправке файла: {ex.Message}");
                 return -3;
+            }
+        }
+
+        private async Task SendFileSize(FileStream fileStream, NetworkStream stream)
+        {
+            try
+            {
+                long fileSize = fileStream.Length;
+                byte[] fileSizeBytes = BitConverter.GetBytes(fileSize);
+
+                Console.WriteLine("Отправка размера файла...");
+                await stream.WriteAsync(fileSizeBytes, 0, fileSizeBytes.Length);
+                Console.WriteLine("Размер файла успешно отправлен.");
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"Ошибка ввода-вывода при отправке размера файла: {ex.Message}");
+            }
+            catch (SocketException ex)
+            {
+                Console.WriteLine($"Ошибка сокета: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Необработанное исключение при отправке размера файла: {ex.Message}");
             }
         }
 
@@ -68,7 +93,6 @@ namespace ExamModels
             {
                 Console.WriteLine($"Необработанное исключение при отправке файла: {ex.Message}");
             }
-
         }
 
         private async Task<int> ReceiveFileId(NetworkStream stream)

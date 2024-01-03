@@ -12,10 +12,10 @@ namespace ExamServer
     public class TcpServer
     {
         private TcpListener listener;
-        private  int Port = 9596;
-        private  string serverIpAddress = "192.168.1.204";
+        private int Port = 9596;
+        private string serverIpAddress = "192.168.1.204";
 
-        public async Task StartServer(string IP_adres,int port)
+        public async Task StartServer(string IP_adres, int port)
         {
             try
             {
@@ -42,16 +42,21 @@ namespace ExamServer
             {
                 using NetworkStream stream = client.GetStream();
                 using MemoryStream memoryStream = new MemoryStream();
+
+                // Получение количества байт для чтения
+                byte[] sizeBytes = new byte[sizeof(long)];
+                await stream.ReadAsync(sizeBytes, 0, sizeBytes.Length);
+                long fileSize = BitConverter.ToInt64(sizeBytes, 0);
+
                 byte[] buffer = new byte[8192];
                 int bytesRead;
+                long bytesReceived = 0;
 
-                while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                // Чтение данных файла
+                while (bytesReceived < fileSize && (bytesRead = await stream.ReadAsync(buffer, 0, (int)Math.Min(buffer.Length, fileSize - bytesReceived))) > 0)
                 {
                     await memoryStream.WriteAsync(buffer, 0, bytesRead);
-                    if (stream.DataAvailable == false)
-                    {
-                        break;
-                    }
+                    bytesReceived += bytesRead;
                 }
 
                 byte[] receivedData = memoryStream.ToArray();
@@ -64,10 +69,9 @@ namespace ExamServer
                 Console.WriteLine($"Отправлен файл от сервера: Id - {filles.Id}");
 
                 int responseInt = filles.Id;
-                byte[] intBytes = BitConverter.GetBytes(responseInt); 
-                    
+                byte[] intBytes = BitConverter.GetBytes(responseInt);
 
-                // Проверяем, что соединение все еще открыто перед отправкой
+                // Проверка соединения перед отправкой ID обратно клиенту
                 if (client.Connected && stream.CanWrite)
                 {
                     await SendIdToClient(stream, intBytes);

@@ -2138,25 +2138,41 @@ namespace ExamServerData
         {
             try
             {
-
-                Filles filles = null;
                 using (ApplicationContext db = new ApplicationContext())
                 {
-                    // создаем два объекта User
+                    if (filless.Id == 0)
+                    {
+                        db.Filles.Add(filless);
+                        db.SaveChanges();
 
+                        // После сохранения новой записи, возвращаем её
+                        return filless;
+                    }
+                    else
+                    {
+                        var existingRecord = db.Filles.FirstOrDefault(ue => ue.Id == filless.Id);
+                        if (existingRecord != null)
+                        {
+                            // Если ID не равен нулю и запись с таким ID существует,
+                            // обновляем существующую запись и возвращаем её
+                            db.Entry(existingRecord).CurrentValues.SetValues(filless);
+                            db.SaveChanges();
 
-
-                    db.Filles.AddRange(filless);
-                    db.SaveChanges();
-
-                    filles = db.Filles.FirstOrDefault(ue =>ue.Name == filless.Name);
+                            return existingRecord;
+                        }
+                        else
+                        {
+                            // Если запись с указанным ID не найдена, не выполняем обновление
+                            Console.WriteLine("Запись с указанным ID не найдена.");
+                            return null;
+                        }
+                    }
                 }
-                return filles;
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message.ToString());
-
+                // В случае ошибки возвращаем null или выполняем другие действия
             }
             return null;
         }
