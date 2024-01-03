@@ -8,12 +8,13 @@ namespace ExamModels
     public class SendFiles
     {
         private const int Port = 9596;
-        private readonly string serverIpAddress = "192.168.1.204";
+        private  string serverIpAddress = "192.168.1.204";
 
-        public async Task<int> SendFile(string filePath)
+        public async Task<int> SendFile(string filePath,string ip)
         {
             try
             {
+                serverIpAddress = ip;
                 using (TcpClient client = new TcpClient(serverIpAddress, Port))
                 using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 using (NetworkStream stream = client.GetStream())

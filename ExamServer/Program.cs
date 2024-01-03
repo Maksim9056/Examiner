@@ -36,6 +36,7 @@ namespace ExamServer
 
         Logging logging = new Logging();
 
+        static public Int32 ColorPort { get; set; }
         public async void Main()
         {
             try
@@ -65,7 +66,7 @@ namespace ExamServer
 
                 var sTCP = new ExamServer.TcpServer();
                 //Task.Run() => await sTCP.StartServer();
-                Task.Run(() => sTCP.StartServer());
+                Task.Run(() => sTCP.StartServer(Ip_Adress, ColorPort));
 
 
                 //globalClass.CatalogView();
@@ -305,14 +306,14 @@ namespace ExamServer
                         Ip_Adress = _aFile.Ip_adress;
                         port = _aFile.Port;
                         GlobalClass.TypeSQL = _aFile.TypeSQL;
-                   
+                        ColorPort = _aFile.ColorStyles;
                     }
                 }
                 else
                 {
                     using (FileStream fileStream = new FileStream(path + "\\Server.json", FileMode.OpenOrCreate))
                     {
-                        Seting connect_Server_ = new Seting(IPAddress.Loopback.ToString(), 9595, 1, 1);
+                        Seting connect_Server_ = new Seting(IPAddress.Loopback.ToString(), 9595, 1, 9596);
                         JsonSerializer.Serialize<Seting>(fileStream, connect_Server_);
 
                     }
@@ -324,6 +325,7 @@ namespace ExamServer
                         Ip_Adress = aFile.Ip_adress;
                         port = aFile.Port;
                         GlobalClass.TypeSQL = aFile.TypeSQL;
+                        ColorPort = aFile.ColorStyles;
 
 
 

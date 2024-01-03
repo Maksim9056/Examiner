@@ -17,7 +17,6 @@ using System.Net.Sockets;
 using Microsoft.Maui.Controls;
 using System.Buffers.Text;
 using ExamClient.Resources.Resx;
-using MetalPerformanceShadersGraph;
 
 namespace Client.Main;
 
@@ -576,7 +575,7 @@ public partial class RegUser : ContentPage
                     //byte[] imageBytes = System.IO.File.ReadAllBytes(photo.FullPath);
 
                     //int fileId =  Task.Run(async () => await SFales.SendFile(photo.FullPath)).Wait();
-                    int fileId = await SFales.SendFile(photo.FullPath);
+                    int fileId = await SFales.SendFile(photo.FullPath, ip_Adress.Ip_adressss);
                     DisplayAlert(AppResources.Уведомление, fileId.ToString(), AppResources.Ок);
                     Filles.Id = fileId;
 
@@ -661,7 +660,7 @@ public partial class RegUser : ContentPage
                     var SFales = new ExamModels.SendFiles();
                     photo = await MediaPicker.Default.PickPhotoAsync();
                     //await SFales.SendFile(photo.FullPath);
-                    int fileId = await SFales.SendFile(photo.FullPath);
+                    int fileId = await SFales.SendFile(photo.FullPath, ip_Adress.Ip_adressss);
                     Images.Source = photo.FullPath;
                     DisplayAlert(AppResources.Уведомление, fileId.ToString(), AppResources.Ок);
                     Filles.Id = fileId;

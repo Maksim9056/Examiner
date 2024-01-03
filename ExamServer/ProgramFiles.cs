@@ -12,13 +12,15 @@ namespace ExamServer
     public class TcpServer
     {
         private TcpListener listener;
-        private const int Port = 9596;
-        private readonly string serverIpAddress = "192.168.1.204";
+        private  int Port = 9596;
+        private  string serverIpAddress = "192.168.1.204";
 
-        public async Task StartServer()
+        public async Task StartServer(string IP_adres,int port)
         {
             try
             {
+                serverIpAddress = IP_adres;
+                Port = port;
                 listener = new TcpListener(IPAddress.Parse(serverIpAddress), Port);
                 listener.Start();
 
