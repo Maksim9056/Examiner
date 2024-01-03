@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ExamServer
@@ -61,7 +62,8 @@ namespace ExamServer
                 Console.WriteLine($"Отправлен файл от сервера: Id - {filles.Id}");
 
                 int responseInt = filles.Id;
-                byte[] intBytes = BitConverter.GetBytes(responseInt);
+                byte[] intBytes = BitConverter.GetBytes(responseInt); 
+                    
 
                 // Проверяем, что соединение все еще открыто перед отправкой
                 if (client.Connected && stream.CanWrite)

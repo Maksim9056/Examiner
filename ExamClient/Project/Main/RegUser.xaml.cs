@@ -597,7 +597,7 @@ public partial class RegUser : ContentPage
 
                     //byte[] imageBytes = System.IO.File.ReadAllBytes(photo.FullPath);
 
-                    //Task.Run(async () => await SFales.SendFile(photo.FullPath)).Wait();
+                    //int fileId =  Task.Run(async () => await SFales.SendFile(photo.FullPath)).Wait();
                     int fileId = await SFales.SendFile(photo.FullPath);
                     DisplayAlert(AppResources.Уведомление, fileId.ToString(), AppResources.Ок);
 
