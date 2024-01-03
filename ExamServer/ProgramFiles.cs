@@ -4,8 +4,6 @@ using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ExamServer
@@ -13,40 +11,33 @@ namespace ExamServer
     public class TcpServer
     {
         private TcpListener listener;
-        private const int Port = 9596; // Порт, который будет прослушиваться
-        private readonly string serverIpAddress = "192.168.1.204"; // IP-адрес сервера
-
+        private const int Port = 9596;
+        private readonly string serverIpAddress = "192.168.1.204";
 
         public async Task StartServer()
         {
             try
             {
-               listener = new TcpListener(IPAddress.Parse(serverIpAddress), Port);
-              listener.Start();
+                listener = new TcpListener(IPAddress.Parse(serverIpAddress), Port);
+                listener.Start();
 
                 while (true)
                 {
-
                     TcpClient client = await listener.AcceptTcpClientAsync();
                     _ = Task.Run(() => HandleClientAsync(client));
-
-                    //Task.Run(() => HandleClientAsync(client)).Wait();
                 }
-            } 
+            }
             catch (Exception ex)
             {
                 Console.WriteLine($"Ошибка: {ex.Message}");
             }
         }
 
-
         private async Task HandleClientAsync(TcpClient client)
         {
             try
             {
                 using NetworkStream stream = client.GetStream();
-
-                // Используем MemoryStream для записи полученных данных в память
                 using MemoryStream memoryStream = new MemoryStream();
                 byte[] buffer = new byte[8192];
                 int bytesRead;
@@ -54,10 +45,14 @@ namespace ExamServer
                 while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
                 {
                     await memoryStream.WriteAsync(buffer, 0, bytesRead);
+                    if (stream.DataAvailable == false)
+                    {
+                        break;
+                    }
                 }
 
-                // Получаем массив байтов из MemoryStream
                 byte[] receivedData = memoryStream.ToArray();
+                // Обработка полученных данных (receivedData) на сервере
 
                 Filles vFiles = new Filles(0, receivedData);
                 GlobalClass @class = new GlobalClass();
@@ -65,25 +60,58 @@ namespace ExamServer
 
                 Console.WriteLine($"Отправлен файл от сервера: Id - {filles.Id}");
 
-                // Предположим, что responseInt - это ваше число типа int
-                int responseInt = filles.Id; // Например, какое-то число
-
-                // Преобразуем int в массив байтов
+                int responseInt = filles.Id;
                 byte[] intBytes = BitConverter.GetBytes(responseInt);
 
-                // Отправляем массив байтов обратно клиенту
-                await stream.WriteAsync(intBytes, 0, intBytes.Length);
-
-
-
-                // Можно использовать receivedData по вашему усмотрению
-                Console.WriteLine($"Получены данные размером: {receivedData.Length} байт");
-
-                //client.Close();
+                // Проверяем, что соединение все еще открыто перед отправкой
+                if (client.Connected && stream.CanWrite)
+                {
+                    await SendIdToClient(stream, intBytes);
+                    Console.WriteLine($"Отправлен ID файла обратно клиенту: {responseInt}");
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка отправки ID: Соединение закрыто или не может быть записано");
+                }
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"Ошибка ввода-вывода: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                // Отправка информации об ошибке клиенту
+                await SendErrorToClient(client.GetStream(), ex.Message);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка: {ex.Message}");
+                Console.WriteLine($"Необработанное исключение: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+            }
+        }
+
+        private async Task SendIdToClient(NetworkStream stream, byte[] intBytes)
+        {
+            try
+            {
+                await stream.WriteAsync(intBytes, 0, intBytes.Length);
+                Console.WriteLine("Отправлен ID файла обратно клиенту");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка отправки ID: {ex.Message}");
+            }
+        }
+
+        private async Task SendErrorToClient(NetworkStream stream, string errorMessage)
+        {
+            try
+            {
+                byte[] errorBytes = System.Text.Encoding.UTF8.GetBytes(errorMessage);
+                await stream.WriteAsync(errorBytes, 0, errorBytes.Length);
+                Console.WriteLine("Ошибка отправлена клиенту");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка отправки ошибки клиенту: {ex.Message}");
             }
         }
     }

@@ -598,7 +598,8 @@ public partial class RegUser : ContentPage
                     //byte[] imageBytes = System.IO.File.ReadAllBytes(photo.FullPath);
 
                     //Task.Run(async () => await SFales.SendFile(photo.FullPath)).Wait();
-                    await SFales.SendFile(photo.FullPath);
+                    int fileId = await SFales.SendFile(photo.FullPath);
+                    DisplayAlert(AppResources.Уведомление, fileId.ToString(), AppResources.Ок);
 
 
                     /*
@@ -681,7 +682,11 @@ public partial class RegUser : ContentPage
                 {
                     var SFales = new ExamModels.SendFiles();
                     photo = await MediaPicker.Default.PickPhotoAsync();
-                    await SFales.SendFile(photo.FullPath);
+                    //await SFales.SendFile(photo.FullPath);
+                    int fileId = await SFales.SendFile(photo.FullPath);
+                    Images.Source = photo.FullPath;
+                    DisplayAlert(AppResources.Уведомление, fileId.ToString(), AppResources.Ок);
+
 
                     /*                    
                     photo = await MediaPicker.Default.PickPhotoAsync();
