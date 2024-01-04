@@ -1194,25 +1194,16 @@ namespace ExamModels
             {
                 using (MemoryStream memoryStream = new MemoryStream())
                 {
-
-                    Filles files = null;
+                    //Filles files = null;
                     JsonSerializer.Serialize<Filles>(memoryStream, user);
-
                     Task.Run(async () => await Filles_Work_.SelectFromFilles(Ip_adresss, Encoding.Default.GetString(memoryStream.ToArray()), "058")).Wait();
-
-
-              
                     Filles = Filles_Work_.Filles;
-
-                    files = Filles;
+                    //files = Filles;
                     // return files;
                 }
-
-
             }
             catch (Exception)
             {
-
             }
             return Filles_Work_.Filles;
         }

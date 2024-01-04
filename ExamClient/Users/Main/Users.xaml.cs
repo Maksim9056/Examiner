@@ -68,20 +68,16 @@ public partial class Users : ContentPage
         {
             NameUser.Text = name.Name_Employee;
             string IPAdress = Connect();
-            var file = filles_Work.SelectFromFilles(IPAdress, filles);
+            Filles file = filles_Work.SelectFromFilles(IPAdress, filles);
 
-            if (filles_Work.Filles == null)
+            if (file == null)
             {
                 //Images(name, filles);
             }
             else
             {
-
-
                 files = filles_Work.Filles;
-                Image();
-
-
+                Image(file);
             }
         }
         catch(Exception)
@@ -121,15 +117,11 @@ public partial class Users : ContentPage
 
 
 
-    public void Image()
+    public async void Image(Filles vfilles)
     {
         try
         {
-
-
-
-            string path = System.AppContext.BaseDirectory + "\\путь_к_файлу.jpg";
-
+            string path = System.AppContext.BaseDirectory + "путь_к_файлу.jpg";
 
             // Создание потока на основе массива байт изображения
 
@@ -151,65 +143,93 @@ public partial class Users : ContentPage
             }
             else if (DeviceInfo.Platform == DevicePlatform.Android)
             {
-                string paths = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "путь_к_файлу.png");
-                string filePath = Path.Combine(Path.GetTempPath(), "путь_к_файлу.");
 
-               // Создание объекта Bitmap из MemoryStream
+                string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Files_"+ vfilles.Id + ".jpg");
 
-         //       Bitmap bitmap;
-     
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
+
+                using (FileStream stream = new FileStream(filePath, FileMode.CreateNew))
+                {
+                    await stream.WriteAsync(vfilles.Name, 0, vfilles.Name.Length);
+
+                }
+                    // Установка пути к файлу как источник изображения для ImageUser
+                    ImageUser.Source = ImageSource.FromFile(filePath);
+
+
+                //string paths = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "путь_к_файлу.png");
+                //string filePath = Path.Combine(Path.GetTempPath(), "путь_к_файлу.");
+
+                // Создание объекта Bitmap из MemoryStream
+
+                //       Bitmap bitmap;
+
 
                 // Преобразование в объект Bitmap
 
-                string filePaths = Path.Combine(Path.GetTempPath(), "image.jpg"); // 
-              
+                //string filePaths = Path.Combine(Path.GetTempPath(), "image.jpg"); // 
+                //string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "image.jpg");
 
-                using (MemoryStream stream = new MemoryStream(files.Name))
-                {
+                //if (System.IO.File.Exists(filePath))
+                //    {
+                //        // Удаление файла
+                //        System.IO.File.Delete(filePath);
+                //    }
+
+                //using (MemoryStream stream = new MemoryStream(vfilles.Name))
+                //{
+                //    // Запись данных из MemoryStream в файл
+                //    System.IO.File.WriteAllBytes(filePath, stream.ToArray());
+
+                //    // Установка пути к файлу как источник изображения для ImageUser
+                //    ImageUser.Source = filePath;
 
 
-                    // image = Microsoft.Maui.Graphics.Platform.PlatformImage.FromStream(stream);
+                // image = Microsoft.Maui.Graphics.Platform.PlatformImage.FromStream(stream);
+                //System.IO.File.WriteAllBytes(filePath, files.Name); 
+                //ImageUser.Source  = filePath;
+                //     bitmap = BitmapFactory.DecodeByteArray(ms.GetByteArray(), 0, ms.GetByteArray().Length); // Исправленное создание объекта Bitmap из массива байтов
 
-                    System.IO.File.WriteAllBytes(filePaths, files.Name); 
-                    ImageUser.Source  = filePaths;
-                    //     bitmap = BitmapFactory.DecodeByteArray(ms.GetByteArray(), 0, ms.GetByteArray().Length); // Исправленное создание объекта Bitmap из массива байтов
+                //var image = new Image();
+                //image.Source = ImageSource.FromFile(filePath);
 
-                    //var image = new Image();
-                    //image.Source = ImageSource.FromFile(filePath);
+                //   File.WriteAllText(paths, files.Name.ToString());
+                //var sd   = File.ReadAllText(paths);
+                //   ImageUser.Source = sd;
 
-
-
-                    if (System.IO.File.Exists(paths))
-                    {
-                        // Удаление файла
-                        System.IO.File.Delete(paths);
-                    }
-
-                    //   File.WriteAllText(paths, files.Name.ToString());
-                    //var sd   = File.ReadAllText(paths);
-                    //   ImageUser.Source = sd;
-
-                }
+                //}
             }
             else if (DeviceInfo.Platform == DevicePlatform.WinUI)
             {
 
-                using (MemoryStream memoryStream = new MemoryStream(files.Name))
+                using (MemoryStream memoryStream = new MemoryStream(vfilles.Name))
                 {
+                    // Убедитесь, что путь к файлу существует
+                    //if (!System.IO.Directory.Exists(directoryPath))
+                    //{
+                    //    System.IO.Directory.CreateDirectory(directoryPath);
+                    //}
+
                     // Сохранение изображения на диск
+                    string path2 = System.IO.Path.Combine(System.AppContext.BaseDirectory, "image.jpg");
 
-
-                    if (System.IO.File.Exists(path))
+                    // Удаление файла, если он существует
+                    if (System.IO.File.Exists(path2))
                     {
-                        // Удаление файла
-                        System.IO.File.Delete(path);
+                        System.IO.File.Delete(path2);
                     }
 
-                    using (FileStream fileStream = new FileStream(path, FileMode.OpenOrCreate))
+                    using (FileStream fileStream = new FileStream(path2, FileMode.Create))
                     {
+                        // Копирование данных из MemoryStream в FileStream
                         memoryStream.CopyTo(fileStream);
                     }
-                    ImageUser.Source = path;
+
+                    // Установка источника изображения
+                    ImageUser.Source = path2;
                 }
 
 
