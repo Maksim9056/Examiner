@@ -1187,6 +1187,33 @@ namespace ExamModels
             return null;
         }
 
+        public async Task<Filles> SelectFromFillesAsync(string Ip_adresss, Filles user)
+        {
+            try
+            {
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    // Сериализуем объект Filles в memoryStream
+                    JsonSerializer.Serialize<Filles>(memoryStream, user);
+                    // Получаем массив байт из memoryStream и конвертируем его в строку с помощью кодировки
+                    string serializedData = Encoding.UTF8.GetString(memoryStream.ToArray());
+
+                    // Вызываем асинхронный метод SelectFromFilles, предполагая, что он устанавливает Filles_Work_.Filles
+                    await Filles_Work_.SelectFromFilles(Ip_adresss, serializedData, "058");
+
+                    // Возвращаем результат после завершения операции
+                    return Filles_Work_.Filles;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Обработка исключения
+                Console.WriteLine($"Ошибка при вызове SelectFromFillesAsync: {ex.Message}");
+                // Можно выбросить исключение для обработки его выше
+                throw;
+            }
+        }
+
 
         public Filles SelectFromFilles(string Ip_adresss, Filles user)
         {

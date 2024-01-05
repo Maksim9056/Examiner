@@ -1000,6 +1000,35 @@ namespace ExamServer
             }
         }
 
+        //public void SelectFromFilles(byte[] arg1, GlobalClass @class, NetworkStream stream, Logging logging, Mail mail)
+        //{
+        //    try
+        //    {
+        //        Filles CrTest = JsonSerializer.Deserialize<Filles>(arg1);
+        //        Filles filless = @class.SelectFromFilles(CrTest);
+
+        //        using (MemoryStream ms = new MemoryStream())
+        //        {
+        //            // Сериализация объекта filless в поток ms
+        //            JsonSerializer.Serialize<Filles>(ms, filless);
+
+        //            // Получение массива байтов из потока ms
+        //            byte[] serializedData = ms.ToArray();
+
+        //            // Отправка сначала размера массива, затем самого массива
+        //            byte[] dataLength = BitConverter.GetBytes(serializedData.Length);
+        //            stream.Write(dataLength, 0, dataLength.Length);
+        //            stream.Write(serializedData, 0, serializedData.Length);
+        //        }
+
+        //        logging.Insert("", StatusType.Success, Действия.SelectFromFilles, "");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        logging.Insert("Ошибка", StatusType.Error, Действия.SelectFromFilles, ex.Message);
+        //        Console.WriteLine(ex.Message.ToString());
+        //    }
+        //}
 
 
         public void SelectFromFilles(byte[] arg1, GlobalClass @class, NetworkStream stream, Logging logging, Mail mail)
@@ -1017,7 +1046,7 @@ namespace ExamServer
                     // JsonSerializer.Serialize<Filles>(stream, filles);
                     JsonSerializer.Serialize<Filles>(ms, filless);
 
-                     stream.Write(ms.ToArray(), 0, ms.ToArray().Length);
+                    stream.Write(ms.ToArray(), 0, ms.ToArray().Length);
 
                 }
                 logging.Insert("", StatusType.Success, Действия.SelectFromFilles, "");
@@ -1031,7 +1060,7 @@ namespace ExamServer
             }
         }
 
-  
+
         /// <summary>
         /// Просмотр резервной копии которая существует
         /// </summary>

@@ -2182,21 +2182,15 @@ namespace ExamServerData
         {
             try
             {
-
-                Filles filles = null;
                 using (ApplicationContext db = new ApplicationContext())
                 {
-                    // создаем два объекта User
-
-
-                    return filles = db.Filles.FirstOrDefault(ue => ue.Id == filless.Id); 
+                    return db.Filles.FirstOrDefault(ue => ue.Id == filless.Id);
                 }
-                 ;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message.ToString());
-
+                // В случае ошибки возвращаем null или выполняем другие действия
             }
             return null;
         }

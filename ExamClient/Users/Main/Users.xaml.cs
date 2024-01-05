@@ -62,33 +62,66 @@ public partial class Users : ContentPage
         return null;
     }
     
-    public void Images(Regis_users name, Filles filles)
+    //public void Images(Regis_users name, Filles filles)
+    //{
+    //    try
+    //    {
+    //        NameUser.Text = name.Name_Employee;
+    //        string IPAdress = Connect();
+    //        Filles file = filles_Work.SelectFromFilles(IPAdress, filles);
+
+    //        if (file == null)
+    //        {
+    //            //Images(name, filles);
+    //        }
+    //        else
+    //        {
+    //            files = filles_Work.Filles;
+    //            Image(file);
+    //        }
+    //    }
+    //    catch(Exception)
+    //    {
+
+    //    }
+    //}
+
+    public  async Task Images(Regis_users user, Filles selectedFiles)
     {
         try
         {
-            NameUser.Text = name.Name_Employee;
-            string IPAdress = Connect();
-            Filles file = filles_Work.SelectFromFilles(IPAdress, filles);
-
-            if (file == null)
+            if (user != null && selectedFiles != null)
             {
-                //Images(name, filles);
+                NameUser.Text = user.Name_Employee;
+                string ipAddress = Connect();
+                //Filles file = filles_Work.SelectFromFilles(ipAddress, selectedFiles);
+                Filles file = await filles_Work.SelectFromFillesAsync(ipAddress, selectedFiles);
+
+                if (file != null)
+                {
+                    files = filles_Work.Filles;
+                    Image(file);
+                }
             }
             else
             {
-                files = filles_Work.Filles;
-                Image(file);
+                // Обработка случая, когда user или selectedFiles равны null
             }
         }
-        catch(Exception)
+        catch (Exception ex)
         {
-
+            // Здесь лучше зарегистрировать ошибку или вывести ее в консоль/журнал для последующего анализа
+            DisplayAlert(AppResources.Ошибка, AppResources.Сообщение + ex.Message + "\n" + AppResources.Помощь + ex.HelpLink, AppResources.Ок);
         }
     }
+
+
+
     public Users(Regis_users name )
     {
         try
-        {
+        {   
+
             InitializeComponent();
 
             regis_Users = name;
@@ -107,8 +140,10 @@ public partial class Users : ContentPage
             Images(name,filles);
 
 
+
+
         }
-        catch(Exception)
+        catch (Exception)
         {
 
         }
@@ -136,8 +171,12 @@ public partial class Users : ContentPage
                     // Удаление файла
                     System.IO.File.Delete(paths);
                 }
+                using (MemoryStream memoryStream = new MemoryStream(vfilles.Name))
+                {
+                    // ваш код обработки
+                    File.WriteAllText(paths, files.Name.ToString());
+                }
 
-                File.WriteAllText(paths, files.Name.ToString());
                 ImageUser.Source = File.ReadAllText(paths);
 
             }
@@ -153,11 +192,11 @@ public partial class Users : ContentPage
 
                 using (FileStream stream = new FileStream(filePath, FileMode.CreateNew))
                 {
-                    await stream.WriteAsync(vfilles.Name, 0, vfilles.Name.Length);
-
+                    await stream.WriteAsync(vfilles.Name, 0, vfilles.Name.Length).ConfigureAwait(false);
                 }
-                    // Установка пути к файлу как источник изображения для ImageUser
-                    ImageUser.Source = ImageSource.FromFile(filePath);
+
+                // Установка пути к файлу как источник изображения для ImageUser
+                ImageUser.Source = ImageSource.FromFile(filePath);
 
 
                 //string paths = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "путь_к_файлу.png");

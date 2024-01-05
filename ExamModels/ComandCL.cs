@@ -1759,6 +1759,62 @@ namespace ExamModels
             return string.Empty;
         }
 
+        public async Task<String> SendClassFiles(string server, string fs, string command)
+        {
+            try
+            {
+                using (TcpClient client = new TcpClient(server, 9595))
+                using (NetworkStream stream = client.GetStream())
+                {
+                    byte[] data = System.Text.Encoding.UTF8.GetBytes(command + fs);
+                    await stream.WriteAsync(data, 0, data.Length);
+
+                    byte[] dataSizeBuffer = new byte[4];
+                    await stream.ReadAsync(dataSizeBuffer, 0, dataSizeBuffer.Length);
+
+                    int dataSize = BitConverter.ToInt32(dataSizeBuffer, 0);
+
+                    byte[] receivedBytes = new byte[dataSize];
+                    int totalBytesRead = 0;
+
+                    // Чтение данных, пока не достигнем ожидаемого размера
+                    while (totalBytesRead < dataSize)
+                    {
+                        int bytesRead = await stream.ReadAsync(receivedBytes, totalBytesRead, dataSize - totalBytesRead);
+                        if (bytesRead == 0)
+                        {
+                            throw new IOException("Не удалось прочитать все данные");
+                        }
+                        totalBytesRead += bytesRead;
+                    }
+                    Filles filles = new Filles(0, receivedBytes);
+                    String sadd;
+                    using (MemoryStream add = new MemoryStream())
+                    {
+                        JsonSerializer.Serialize<Filles>(add, filles);
+                        sadd = System.Text.Encoding.UTF8.GetString(add.ToArray());
+                    }
+
+                    return sadd; // Создание объекта Filles с полученными байтами
+                }
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine($"Exception: {e.Message}");
+            }
+            catch (SocketException e)
+            {
+                Console.WriteLine($"SocketException: {e.Message}");
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine($"IOException: {e.Message}");
+            }
+
+            return null;
+        }
+
+
 
         public class SaveTest
         {
@@ -1991,37 +2047,86 @@ namespace ExamModels
             }
 
 
-            public async Task<string> SelectFromFilles(string server, string fs, string command)
+            public async Task<Filles> SelectFromFilles(string server, string fs, string command)
             {
-
                 try
                 {
                     CommandCL ClassInstance = new CommandCL();
 
-                    string responseDat = await ClassInstance.SendClass(server, fs, command);
+                    string responseDat = await ClassInstance.SendClass(server, fs, command); // Укажите нужную кодировку здесь
                     if (string.IsNullOrEmpty(responseDat))
                     {
                         return null;
                     }
                     else
                     {
+                        // Проверяем, что полученные данные действительно представляют объект Filles
+                        if (responseDat.StartsWith("{") && responseDat.EndsWith("}"))
+                        {
+                            // Явно указываем кодировку десериализации JSON
+                            Filles exams_Check = JsonSerializer.Deserialize<Filles>(responseDat, new JsonSerializerOptions { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All) });
 
-                        Filles exams_Check = JsonSerializer.Deserialize<Filles>(responseDat);
-
-                        Filles = exams_Check;
+                            // Предполагаю, что здесь должно быть что-то вроде Filles_Work_.Filles, чтобы установить значение
+                            Filles = exams_Check;
+                            return exams_Check;
+                        }
+                        else
+                        {
+                            // Обработка случая, когда ответ не содержит данные Filles
+                            Console.WriteLine("Полученные данные не соответствуют объекту Filles.");
+                            return null;
+                        }
                     }
                 }
                 catch (SocketException e)
                 {
                     Console.WriteLine($"SocketException: {e.Message}");
-
+                    throw;
                 }
                 catch (ArgumentNullException e)
                 {
                     Console.WriteLine($"Exception: {e.Message}");
+                    throw;
                 }
-                return string.Empty;
+                catch (JsonException e)
+                {
+                    Console.WriteLine($"JsonException: {e.Message}");
+                    throw;
+                }
             }
+
+
+            //public async Task<string> SelectFromFilles(string server, string fs, string command)
+            //{
+
+            //    try
+            //    {
+            //        CommandCL ClassInstance = new CommandCL();
+
+            //        string responseDat = await ClassInstance.SendClass(server, fs, command);
+            //        if (string.IsNullOrEmpty(responseDat))
+            //        {
+            //            return null;
+            //        }
+            //        else
+            //        {
+
+            //            Filles exams_Check = JsonSerializer.Deserialize<Filles>(responseDat);
+
+            //            Filles = exams_Check;
+            //        }
+            //    }
+            //    catch (SocketException e)
+            //    {
+            //        Console.WriteLine($"SocketException: {e.Message}");
+
+            //    }
+            //    catch (ArgumentNullException e)
+            //    {
+            //        Console.WriteLine($"Exception: {e.Message}");
+            //    }
+            //    return string.Empty;
+            //}
         }
 
 
