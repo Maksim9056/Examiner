@@ -188,29 +188,40 @@ namespace ExamModels
 
         private async Task<Filles> ReceiveFile(NetworkStream stream)
         {
-            Console.WriteLine("Ожидание файл от сервера...");
+            Console.WriteLine("Ожидание файла от сервера...");
 
-            // Получение размера файла
-            byte[] sizeBytes = new byte[sizeof(long)]; // размер int в байтах
-            await stream.ReadAsync(sizeBytes, 0, sizeBytes.Length);
-            long fileSize = BitConverter.ToInt64(sizeBytes, 0);
-            MemoryStream memoryStream = new MemoryStream();
-
-            byte[] buffer = new byte[8192];
-            int bytesRead;
-            long bytesReceived = 0;
-
-            while (bytesReceived < fileSize && (bytesRead = await stream.ReadAsync(buffer, 0, (int)Math.Min(buffer.Length, fileSize - bytesReceived))) > 0)
+            try
             {
-                await memoryStream.WriteAsync(buffer, 0, bytesRead);
-                bytesReceived += bytesRead;
+                // Получение размера файла
+                byte[] sizeBytes = new byte[sizeof(long)]; // размер int в байтах
+                await stream.ReadAsync(sizeBytes, 0, sizeBytes.Length);
+                long fileSize = BitConverter.ToInt64(sizeBytes, 0);
+                MemoryStream memoryStream = new MemoryStream();
+
+                byte[] buffer = new byte[8192];
+                int bytesRead;
+                long bytesReceived = 0;
+
+                while (bytesReceived < fileSize && (bytesRead = await stream.ReadAsync(buffer, 0, (int)Math.Min(buffer.Length, fileSize - bytesReceived))) > 0)
+                {
+                    await memoryStream.WriteAsync(buffer, 0, bytesRead);
+                    bytesReceived += bytesRead;
+                }
+
+                // Попытка десериализации
+                //Filles receivedId = JsonSerializer.Deserialize<Filles>(memoryStream.ToArray());
+                Filles receivedId = new Filles(0, memoryStream.ToArray());
+
+                //Filles receivedId = Filles.ConvertFromBytes(memoryStream.ToArray());
+                Console.WriteLine($"Получен файл от сервера: {receivedId}");
+                return receivedId;
             }
-
-            Filles receivedId = JsonSerializer.Deserialize<Filles>(memoryStream.ToArray());
-
-            //Filles receivedId = Filles.ConvertFromBytes(memoryStream.ToArray());
-            Console.WriteLine($"Получен файл от сервера: {receivedId}");
-            return receivedId;
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при получении файла: {ex.Message}");
+                // Можно обработать исключение здесь, например, вернуть null или другое значение по умолчанию
+                return null;
+            }
         }
 
     }

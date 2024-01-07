@@ -155,8 +155,8 @@ namespace ExamServer
         private async Task SendFilesToClient(NetworkStream stream, Filles vfile)
         {
             //byte[] intBytes = vfile.ConvertToBytes();
-            MemoryStream memoryStream = new MemoryStream();
-            JsonSerializer.Serialize<Filles>(memoryStream, vfile);
+            MemoryStream memoryStream = new MemoryStream(vfile.Name);
+            //JsonSerializer.Serialize<Filles>(memoryStream, vfile);
             byte[] intBytes = memoryStream.ToArray();
             byte[] fileSizeBytes = BitConverter.GetBytes(intBytes.Length);
 

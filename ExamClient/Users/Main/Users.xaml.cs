@@ -100,6 +100,8 @@ public partial class Users : ContentPage
                 FilesTravels filesTravels = new FilesTravels();
                 Filles file = await filesTravels.SelectFromFilles(ipAddress, selectedFiles,Commands.DownloadFile);
 
+                file.Id = user.Id;
+
                 if (file != null)
                 {
                     files = filles_Work.Filles;
@@ -193,7 +195,7 @@ public partial class Users : ContentPage
                     System.IO.File.Delete(filePath);
                 }
 
-                using (FileStream stream = new FileStream(filePath, FileMode.CreateNew))
+                using (FileStream stream = new FileStream(filePath, FileMode.OpenOrCreate))
                 {
                     await stream.WriteAsync(vfilles.Name, 0, vfilles.Name.Length).ConfigureAwait(false);
                 }
@@ -264,7 +266,7 @@ public partial class Users : ContentPage
                         System.IO.File.Delete(path2);
                     }
 
-                    using (FileStream fileStream = new FileStream(path2, FileMode.Create))
+                    using (FileStream fileStream = new FileStream(path2, FileMode.OpenOrCreate))
                     {
                         // Копирование данных из MemoryStream в FileStream
                         memoryStream.CopyTo(fileStream);
