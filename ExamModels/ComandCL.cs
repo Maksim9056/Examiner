@@ -2222,6 +2222,105 @@ namespace ExamModels
 
 
         }
+
+        public class FilesTravels
+        {
+
+            //public async Task<string> SendClassToServer(string vServerIP, string vClassJSON, int vCommand)
+            //{
+            //    try
+            //    {
+            //        using (TcpClient client = new TcpClient(vServerIP, Ports.FilePort))
+            //        using (NetworkStream stream = client.GetStream())
+            //        {
+            //            byte[] data = System.Text.Encoding.UTF8.GetBytes(vServerIP + vClassJSON);
+            //            await stream.WriteAsync(data, 0, data.Length);
+
+            //            StringBuilder completeMessage = new StringBuilder();
+            //            byte[] readingData = new byte[256];
+            //            int numberOfBytesRead = 0;
+
+            //            do
+            //            {
+            //                numberOfBytesRead = await stream.ReadAsync(readingData, 0, readingData.Length);
+            //                completeMessage.Append(Encoding.UTF8.GetString(readingData, 0, numberOfBytesRead));
+            //            }
+            //            while (stream.DataAvailable);
+
+            //            string responseDat = completeMessage.ToString();
+            //            return responseDat;
+            //        }
+            //    }
+            //    catch (ArgumentNullException e)
+            //    {
+            //        Console.WriteLine($"Exception: {e.Message}");
+            //    }
+            //    catch (SocketException e)
+            //    {
+            //        Console.WriteLine($"SocketException: {e.Message}");
+            //    }
+
+            //    return string.Empty;
+            //}
+
+
+            public async Task<Filles> SelectFromFilles(string vServerIP, Filles vClass, int vCommand)
+            {
+                try
+                {
+                    SendToServers sendToServers = new SendToServers();  
+                    string vClassJSON;
+                    using (MemoryStream memoryStream = new MemoryStream())
+                    {
+                        await JsonSerializer.SerializeAsync(memoryStream, vClass);
+                        vClassJSON = Encoding.UTF8.GetString(memoryStream.ToArray());
+                    }
+
+                    object responseObj = await sendToServers.SendToServer(vServerIP, vCommand, vClassJSON); // Укажите нужную кодировку здесь
+                    Filles responseDat = (Filles)responseObj;
+                    return responseDat;
+                    //if (string.IsNullOrEmpty(responseDat))
+                    //{
+                    //return null;
+                    //}
+                    //else
+                    //{
+                    //    // Проверяем, что полученные данные действительно представляют объект Filles
+                    //    if (responseDat.StartsWith("{") && responseDat.EndsWith("}"))
+                    //    {
+                    //        // Явно указываем кодировку десериализации JSON
+                    //        Filles exams_Check = JsonSerializer.Deserialize<Filles>(responseDat, new JsonSerializerOptions { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All) });
+
+                    //        // Предполагаю, что здесь должно быть что-то вроде Filles_Work_.Filles, чтобы установить значение
+                    //        return exams_Check;
+                    //    }
+                    //    else
+                    //    {
+                    //        // Обработка случая, когда ответ не содержит данные Filles
+                    //        Console.WriteLine("Полученные данные не соответствуют объекту Filles.");
+                    //        return null;
+                    //    }
+                    //}
+                }
+                catch (SocketException e)
+                {
+                    Console.WriteLine($"SocketException: {e.Message}");
+                    throw;
+                }
+                catch (ArgumentNullException e)
+                {
+                    Console.WriteLine($"Exception: {e.Message}");
+                    throw;
+                }
+                catch (JsonException e)
+                {
+                    Console.WriteLine($"JsonException: {e.Message}");
+                    throw;
+                }
+            }
+
+        }
+
     }
 }
 

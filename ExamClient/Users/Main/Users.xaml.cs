@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using Image = Microsoft.Maui.Controls.Image;
 using ExamClient.Resources.Resx;
 using Microsoft.Maui.Controls;
+using static ExamModels.CommandCL;
 
 namespace Client.Users;
 
@@ -95,7 +96,9 @@ public partial class Users : ContentPage
                 NameUser.Text = user.Name_Employee;
                 string ipAddress = Connect();
                 //Filles file = filles_Work.SelectFromFilles(ipAddress, selectedFiles);
-                Filles file = await filles_Work.SelectFromFillesAsync(ipAddress, selectedFiles);
+                //Filles file = await filles_Work.SelectFromFillesAsync(ipAddress, selectedFiles);
+                FilesTravels filesTravels = new FilesTravels();
+                Filles file = await filesTravels.SelectFromFilles(ipAddress, selectedFiles,Commands.DownloadFile);
 
                 if (file != null)
                 {

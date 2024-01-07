@@ -569,14 +569,15 @@ public partial class RegUser : ContentPage
 
                 if (photo != null)
                 {
-                    var SFales = new ExamModels.SendFiles();
+                    var SFales = new ExamModels.SendToServers();
 
 
                     //byte[] imageBytes = System.IO.File.ReadAllBytes(photo.FullPath);
 
                     //int fileId =  Task.Run(async () => await SFales.SendFile(photo.FullPath)).Wait();
-                    int fileId = await SFales.SendFile(photo.FullPath, ip_Adress.Ip_adressss);
-                     await  DisplayAlert(AppResources.Уведомление, fileId.ToString(), AppResources.Ок);
+                    object fileIdObj = await SFales.SendToServer(ip_Adress.Ip_adressss, Commands.UploadFile, photo.FullPath);
+                    int fileId = (int)fileIdObj;
+                    await DisplayAlert(AppResources.Уведомление, fileId.ToString(), AppResources.Ок);
                     Filles.Id = fileId;
 
                     /*
@@ -657,10 +658,11 @@ public partial class RegUser : ContentPage
                 }
                 else
                 {
-                    var SFales = new ExamModels.SendFiles();
+                    var SFales = new ExamModels.SendToServers();
                     photo = await MediaPicker.Default.PickPhotoAsync();
                     //await SFales.SendFile(photo.FullPath);
-                    int fileId = await SFales.SendFile(photo.FullPath, ip_Adress.Ip_adressss);
+                    object fileIdObj = await SFales.SendToServer( ip_Adress.Ip_adressss, Commands.UploadFile, photo.FullPath);
+                    int fileId = (int)fileIdObj;
                     Images.Source = photo.FullPath;
                     DisplayAlert(AppResources.Уведомление, fileId.ToString(), AppResources.Ок);
                     Filles.Id = fileId;

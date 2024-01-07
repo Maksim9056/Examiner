@@ -4,8 +4,11 @@ using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
 
 namespace ExamServer
 {
@@ -41,45 +44,41 @@ namespace ExamServer
             try
             {
                 using NetworkStream stream = client.GetStream();
-                using MemoryStream memoryStream = new MemoryStream();
 
-                // Получение количества байт для чтения
+                // Получение команды
+                byte[] commandBytes = new byte[sizeof(int)];
+                await stream.ReadAsync(commandBytes, 0, commandBytes.Length);
+                int command = BitConverter.ToInt32(commandBytes, 0);
+                Console.WriteLine($"Получена команда от клиента: {command}");
+
+                // Получение размера файла
                 byte[] sizeBytes = new byte[sizeof(long)];
                 await stream.ReadAsync(sizeBytes, 0, sizeBytes.Length);
                 long fileSize = BitConverter.ToInt64(sizeBytes, 0);
 
-                byte[] buffer = new byte[8192];
-                int bytesRead;
-                long bytesReceived = 0;
-
-                // Чтение данных файла
-                while (bytesReceived < fileSize && (bytesRead = await stream.ReadAsync(buffer, 0, (int)Math.Min(buffer.Length, fileSize - bytesReceived))) > 0)
+                switch (command)
                 {
-                    await memoryStream.WriteAsync(buffer, 0, bytesRead);
-                    bytesReceived += bytesRead;
-                }
+                    case Commands.UploadFile:
 
-                byte[] receivedData = memoryStream.ToArray();
-                // Обработка полученных данных (receivedData) на сервере
+                        byte[] receivedData = await ReceiveDataAsync(stream, fileSize);
 
-                Filles vFiles = new Filles(0, receivedData);
-                GlobalClass @class = new GlobalClass();
-                Filles filles = @class.SaveUsersImage(vFiles);
+                        // Обработка полученных данных (receivedData) на сервере
+                        Filles filles = await ProcessReceivedDataAsync(receivedData);
 
-                Console.WriteLine($"Отправлен файл от сервера: Id - {filles.Id}");
+                        Console.WriteLine($"Отправлен файл от сервера: Id - {filles.Id}");
 
-                int responseInt = filles.Id;
-                byte[] intBytes = BitConverter.GetBytes(responseInt);
+                        // Отправка ID файла обратно клиенту
+                        await SendIdToClient(stream, filles.Id);
+                        break;
+                    case Commands.DownloadFile:
+                        byte[] receivedDataClass = await ReceiveDataAsync(stream, fileSize);
 
-                // Проверка соединения перед отправкой ID обратно клиенту
-                if (client.Connected && stream.CanWrite)
-                {
-                    await SendIdToClient(stream, intBytes);
-                    Console.WriteLine($"Отправлен ID файла обратно клиенту: {responseInt}");
-                }
-                else
-                {
-                    Console.WriteLine("Ошибка отправки ID: Соединение закрыто или не может быть записано");
+                        // Обработка полученных данных (receivedData) на сервере
+                        Filles vFiless = await ProcessReceivedDataAsync2(receivedDataClass);
+
+                        // Отправка файла обратно клиенту
+                        await SendFilesToClient(stream, vFiless);
+                        break;
                 }
             }
             catch (IOException ex)
@@ -95,9 +94,88 @@ namespace ExamServer
                 Console.WriteLine($"StackTrace: {ex.StackTrace}");
             }
         }
-
-        private async Task SendIdToClient(NetworkStream stream, byte[] intBytes)
+        private async Task<byte[]> ReceiveDataAsync(NetworkStream stream, long fileSize)
         {
+            using MemoryStream memoryStream = new MemoryStream();
+
+            byte[] buffer = new byte[8192];
+            int bytesRead;
+            long bytesReceived = 0;
+
+            while (bytesReceived < fileSize && (bytesRead = await stream.ReadAsync(buffer, 0, (int)Math.Min(buffer.Length, fileSize - bytesReceived))) > 0)
+            {
+                await memoryStream.WriteAsync(buffer, 0, bytesRead);
+                bytesReceived += bytesRead;
+            }
+
+            return memoryStream.ToArray();
+        }
+        private async Task<Filles> ProcessReceivedDataAsync2(byte[] receivedData)
+        {
+            Filles filles = null;
+
+            try
+            {
+                // Обработка полученных данных (receivedData) на сервере
+                string vClassJSON = Encoding.Default.GetString(receivedData);
+                Filles vFiless = JsonSerializer.Deserialize<Filles>(vClassJSON);
+                GlobalClass @class = new GlobalClass();
+                filles = await Task.Run(() => @class.SelectFromFilles(vFiless));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка обработки данных: {ex.Message}");
+                // Можно добавить обработку ошибки обработки данных здесь
+            }
+
+            return filles;
+        }
+
+
+        private async Task<Filles> ProcessReceivedDataAsync(byte[] receivedData)
+        {
+            Filles filles = null;
+
+            try
+            {
+                // Обработка полученных данных (receivedData) на сервере
+                Filles vFiles = new Filles(0, receivedData);
+                GlobalClass @class = new GlobalClass();
+                filles = await Task.Run(() => @class.SaveUsersImage(vFiles));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка обработки данных: {ex.Message}");
+                // Можно добавить обработку ошибки обработки данных здесь
+            }
+
+            return filles;
+        }
+
+        private async Task SendFilesToClient(NetworkStream stream, Filles vfile)
+        {
+            //byte[] intBytes = vfile.ConvertToBytes();
+            MemoryStream memoryStream = new MemoryStream();
+            JsonSerializer.Serialize<Filles>(memoryStream, vfile);
+            byte[] intBytes = memoryStream.ToArray();
+            byte[] fileSizeBytes = BitConverter.GetBytes(intBytes.Length);
+
+            try
+            {
+                await stream.WriteAsync(fileSizeBytes, 0, fileSizeBytes.Length);
+                await stream.WriteAsync(intBytes, 0, intBytes.Length);
+                Console.WriteLine("Отправлен файл обратно клиенту");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка отправки : {ex.Message}");
+            }
+        }
+
+        private async Task SendIdToClient(NetworkStream stream, int fileId)
+        {
+            byte[] intBytes = BitConverter.GetBytes(fileId);
+
             try
             {
                 await stream.WriteAsync(intBytes, 0, intBytes.Length);
@@ -111,9 +189,10 @@ namespace ExamServer
 
         private async Task SendErrorToClient(NetworkStream stream, string errorMessage)
         {
+            byte[] errorBytes = System.Text.Encoding.UTF8.GetBytes(errorMessage);
+
             try
             {
-                byte[] errorBytes = System.Text.Encoding.UTF8.GetBytes(errorMessage);
                 await stream.WriteAsync(errorBytes, 0, errorBytes.Length);
                 Console.WriteLine("Ошибка отправлена клиенту");
             }

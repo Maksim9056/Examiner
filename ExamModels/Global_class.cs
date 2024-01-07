@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 //using System.ComponentModel;
 //using System.Linq;
 //using System.Runtime.CompilerServices;
@@ -9,9 +11,22 @@ using System.Collections.Generic;
 
 namespace ExamModels
 {
-   
-    
-    
+
+    public static class Commands
+    {
+        public const int UploadFile = 1;
+        public const int DownloadFile = 2;
+        // Добавьте другие команды по необходимости
+    }
+
+    public static class Ports
+    {
+        public const int MainPort = 9595;
+        public const int FilePort = 9596;
+        // Добавьте другие команды по необходимости
+    }
+
+
     public class Backap
     {
       public  string[] Strings {  get; set; }
@@ -39,6 +54,28 @@ namespace ExamModels
             Id = id;
             Name = name;
         }
+
+        public byte[] ConvertToBytes()
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                bf.Serialize(ms, this); // Сериализация объекта в поток
+                return ms.ToArray(); // Возвращаем массив байтов из потока
+            }
+        }
+
+        // Для десериализации объекта из массива байтов, если это нужно
+        public static Filles ConvertFromBytes(byte[] bytes)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream(bytes))
+            {
+                ms.Position = 0; // Установка позиции потока в начало
+                return (Filles)bf.Deserialize(ms); // Десериализация из потока байтов
+            }
+        }
+
     }
 
     [Serializable]
