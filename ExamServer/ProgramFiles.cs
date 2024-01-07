@@ -164,7 +164,7 @@ namespace ExamServer
             {
                 await stream.WriteAsync(fileSizeBytes, 0, fileSizeBytes.Length);
                 await stream.WriteAsync(intBytes, 0, intBytes.Length);
-                Console.WriteLine("Отправлен файл обратно клиенту");
+                Console.WriteLine($"Отправлен файл обратно клиенту: {vfile.Name.Length}");
             }
             catch (Exception ex)
             {

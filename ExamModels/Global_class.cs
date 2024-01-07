@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 //using System.ComponentModel;
 //using System.Linq;
 //using System.Runtime.CompilerServices;
@@ -36,19 +39,28 @@ namespace ExamModels
             Strings = strings;
         }
     }
-    
-    
-    [Serializable]
 
+
+    [Serializable]
     public class Filles
     {
         public Filles() { }
+
         /// <summary>
         /// Id Filles
         /// </summary>
         public int Id { get; set; }
 
+        // Преобразование массива байтов Name в строку Base64 для сериализации в JSON
+        //public string NameBase64
+        //{
+        //    get => Convert.ToBase64String(Name);
+        //    set => Name = Convert.FromBase64String(value);
+        //}
+
+        //[JsonIgnore] // Игнорирование поля Name при сериализации JSON
         public byte[] Name { get; set; }
+
         public Filles(int id, byte[] name)
         {
             Id = id;
@@ -57,25 +69,16 @@ namespace ExamModels
 
         public byte[] ConvertToBytes()
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            using (MemoryStream ms = new MemoryStream())
-            {
-                bf.Serialize(ms, this); // Сериализация объекта в поток
-                return ms.ToArray(); // Возвращаем массив байтов из потока
-            }
+            string json = JsonSerializer.Serialize(this); // Сериализация объекта в формат JSON
+            return Encoding.Default.GetBytes(json); // Преобразование строки JSON в массив байтов с использованием UTF-8
         }
 
         // Для десериализации объекта из массива байтов, если это нужно
         public static Filles ConvertFromBytes(byte[] bytes)
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            using (MemoryStream ms = new MemoryStream(bytes))
-            {
-                ms.Position = 0; // Установка позиции потока в начало
-                return (Filles)bf.Deserialize(ms); // Десериализация из потока байтов
-            }
+            string jsonString = Encoding.Default.GetString(bytes); // Преобразование массива байтов в строку с использованием UTF-8
+            return JsonSerializer.Deserialize<Filles>(jsonString); // Десериализация из строки JSON
         }
-
     }
 
     [Serializable]

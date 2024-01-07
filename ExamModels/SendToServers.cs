@@ -213,7 +213,7 @@ namespace ExamModels
                 Filles receivedId = new Filles(0, memoryStream.ToArray());
 
                 //Filles receivedId = Filles.ConvertFromBytes(memoryStream.ToArray());
-                Console.WriteLine($"Получен файл от сервера: {receivedId}");
+                Console.WriteLine($"Получен файл от сервера: {receivedId.Name.Length}");
                 return receivedId;
             }
             catch (Exception ex)
