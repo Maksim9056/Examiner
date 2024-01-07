@@ -100,11 +100,11 @@ public partial class Users : ContentPage
                 FilesTravels filesTravels = new FilesTravels();
                 Filles file = await filesTravels.SelectFromFilles(ipAddress, selectedFiles,Commands.DownloadFile);
 
-                file.Id = user.Id;
 
                 if (file != null)
                 {
                     files = filles_Work.Filles;
+                    file.Id = user.Id;
                     Image(file);
                 }
             }
@@ -187,7 +187,7 @@ public partial class Users : ContentPage
             }
             else if (DeviceInfo.Platform == DevicePlatform.Android)
             {
-
+                /*
                 string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Files_"+ vfilles.Id + ".jpg");
 
                 if (System.IO.File.Exists(filePath))
@@ -201,7 +201,13 @@ public partial class Users : ContentPage
                 }
 
                 // Установка пути к файлу как источник изображения для ImageUser
-                ImageUser.Source = ImageSource.FromFile(filePath);
+                //ImageUser.Source = ImageSource.FromFile(filePath);
+                */
+
+                var imageSource = ImageSource.FromStream(() => new MemoryStream(vfilles.Name));
+                // Установка источника изображения
+                ImageUser.Source = imageSource;
+
 
 
                 //string paths = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "путь_к_файлу.png");
@@ -248,7 +254,7 @@ public partial class Users : ContentPage
             }
             else if (DeviceInfo.Platform == DevicePlatform.WinUI)
             {
-
+                /*
                 using (MemoryStream memoryStream = new MemoryStream(vfilles.Name))
                 {
                     // Убедитесь, что путь к файлу существует
@@ -272,9 +278,15 @@ public partial class Users : ContentPage
                         memoryStream.CopyTo(fileStream);
                     }
 
+
+                    //ImageUser.Source = path2;
+                }  
+                */
+                
+                    var imageSource = ImageSource.FromStream(() => new MemoryStream(vfilles.Name));
                     // Установка источника изображения
-                    ImageUser.Source = path2;
-                }
+                    ImageUser.Source = imageSource;
+
 
 
 
