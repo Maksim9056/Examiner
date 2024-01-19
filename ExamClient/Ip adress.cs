@@ -115,10 +115,14 @@ namespace Client
                     ////Path = Path.GetDirectoryName(assemblyPath);
                     //string path = Directory.GetCurrentDirectory();
                     ////var d = Environment.ProcessPath;
+                    //                   string appDirectory = System.AppContext.BaseDirectory;
+
                     //string currentDirectory = Environment.CurrentDirectory;
                     //Console.WriteLine($"Текущая рабочая директория: {currentDirectory}");
-                    string appDirectory = System.AppContext.BaseDirectory;
+              
+                    string appDirectory =  System.IO.Path.GetTempPath(); 
 
+                    //string appDirectory = System.AppContext.BaseDirectory;
                     FileInfo fileInfo = new FileInfo(appDirectory + "\\Client.json");
 
                     // Если есть то загружаем настройки сервера если нет то создают
@@ -203,7 +207,7 @@ namespace Client
             }
             else if (DeviceInfo.Platform == DevicePlatform.WinUI)
             {
-                string appDirectory = System.AppContext.BaseDirectory;
+                string appDirectory = System.IO.Path.GetTempPath();
                 FileInfo fileInfo = new FileInfo(appDirectory + "\\Client.json");
                 // Если есть то загружаем настройки сервера если нет то создают
                 if (fileInfo.Exists)
@@ -257,7 +261,7 @@ namespace Client
             }
             else if (DeviceInfo.Platform == DevicePlatform.WinUI)
             {
-                string appDirectory = AppContext.BaseDirectory;
+                string appDirectory = System.IO.Path.GetTempPath();
                 string filePath = Path.Combine(appDirectory, fileName);
 
                 if (File.Exists(filePath))

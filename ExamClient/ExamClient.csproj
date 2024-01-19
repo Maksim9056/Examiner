@@ -11,7 +11,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>Client</ApplicationTitle>
+		<ApplicationTitle>Экзаменатор</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.client</ApplicationId>
@@ -35,12 +35,12 @@
 	  <DefaultLanguage>ru-ru</DefaultLanguage>
 	  <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
 	  <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-	  <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+	  <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
 	  <GenerateTestArtifacts>True</GenerateTestArtifacts>
-	  <AppInstallerUri>C:\Development\1</AppInstallerUri>
+	  <AppInstallerUri>C:\Development\Examiner\ExamClient\bin\Release\net7.0-windows10.0.19041.0\win10-x64\publish</AppInstallerUri>
 	  <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
 	  <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-	  <PackageCertificateThumbprint>BEF73E01BD418C2ADF997967AC4ACEB138C4F939</PackageCertificateThumbprint>
+	  <PackageCertificateThumbprint>01851C972B00552A2CBCC030A18D228EC0DBD25C</PackageCertificateThumbprint>
 	  <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
 	  <NeutralLanguage>ru-RU</NeutralLanguage>
 	</PropertyGroup>
@@ -73,7 +73,7 @@
 
 		<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\mipmap\appicon.png" ForegroundFile="Resources\mipmap\appicon.png" Color="#512BD4" />
 
 		<!-- App icon for Android -->
 		<MauiIcon Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'" Include="Resources\AppIcon\appicon2.png" Color="#512BD4" TintColor="#FFFFFF" AdaptiveIcon="True" ForegroundScale="0.45" />

@@ -204,7 +204,7 @@ public partial class Settings : ContentPage
                 ////var d = Environment.ProcessPath;
                 //string currentDirectory = Environment.CurrentDirectory;
                 //Console.WriteLine($"Текущая рабочая директория: {currentDirectory}");
-                string appDirectory = System.AppContext.BaseDirectory;
+                string appDirectory = System.IO.Path.GetTempPath();
 
                 FileInfo fileInfo = new FileInfo(appDirectory + "\\Client.json");
                 ip_Adress.CheckOS();
