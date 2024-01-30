@@ -323,6 +323,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Platforms\Android\Resources\drawable\" />
+	  <Folder Include="Resources\Document\" />
 	</ItemGroup>
 
 	<ItemGroup>
