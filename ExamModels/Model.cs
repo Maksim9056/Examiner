@@ -178,11 +178,40 @@ namespace ExamModels
                 {
                     aUserList = CommandCL.UserListGet.ListUser;
                 }
+                //List<User> aUserList = new List<User>();
+                do
+                {
+                    Task.Run(async () => await command.GetUserList(Ip_adress.Ip_adresss, "", "016")).Wait();
+
+                    if (CommandCL.UserListGet == null)
+                    {
+                        aUserList = null;
+                    }
+                    else
+                    {
+                        aUserList = CommandCL.UserListGet.ListUser;
+                    }
+
+                } while (CommandCL.UserListGet == null);
+
                 return aUserList;
             }catch (Exception)
             {
                 List<User> aUserList = new List<User>();
+                do
+                {
+                    Task.Run(async ()  => await command.GetUserList(Ip_adress.Ip_adresss, "", "016")).Wait();
 
+                    if (CommandCL.UserListGet == null)
+                    {
+                        aUserList = null;
+                    }
+                    else
+                    {
+                        aUserList = CommandCL.UserListGet.ListUser;
+                    }
+
+                } while (CommandCL.UserListGet == null);
 
                 return aUserList;
             }

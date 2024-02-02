@@ -1097,8 +1097,10 @@ namespace ExamModels
         }
 
         // Проццедура отправки 016
-        async public Task GetUserList(String server, string fs, string command)
-        {
+        async public Task<UserList> GetUserList(String server, string fs, string command)
+        {                
+            UserList msgUserList = new UserList();
+
             try
             {
                 using (TcpClient client = new TcpClient(server, 9595))
@@ -1121,24 +1123,24 @@ namespace ExamModels
                     }
                     while (stream.DataAvailable);
                     responseDat = completeMessage.ToString();
-
                     if (string.IsNullOrEmpty(responseDat))
                     {
                     }
                     else
                     {
-                        UserList msgUserList = JsonSerializer.Deserialize<UserList>(responseDat);
+                         msgUserList = JsonSerializer.Deserialize<UserList>(responseDat);
                         if (msgUserList == null)
                         {
                         }
                         else
                         {
-                            UserListGet = msgUserList;
+                          return    UserListGet = msgUserList;
                         }
                         //Получили данные в строке и десеризовали класс Searh_Friends
                         //_Name searh_Friends = JsonSerializer.Deserialize<_Name>(responseDat);
                         //id_Friends = searh_Friends;
                     }
+                    return msgUserList;
 
                 }
             }
@@ -1150,6 +1152,11 @@ namespace ExamModels
             {
                 //MessageBox.Show("SocketException: {0}", e.Message);
             }
+            catch(Exception)
+            {
+
+            }
+            return msgUserList;
         }
 
 
