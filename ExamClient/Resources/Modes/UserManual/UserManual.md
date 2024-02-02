@@ -115,13 +115,14 @@
 5. **Выбор цвета:**
    - В разделе "Выбор цвета" выберите цвет, который будет применяться при сохранении.
   - "По умолчанию" - цвет, который применяется только после перезапуска приложения.
+  -  <div style="text-align: left;">
+<img src="https://github.com/Maksim9056/Examiner/assets/108364585/544b389d-ac23-48fb-b1b4-b4b25b875413" width="300" />
+</div>
+- "Зеленый" - цвет, который применяется при сохранении.
 <div style="text-align: left;">
 <img src="https://github.com/Maksim9056/Examiner/assets/108364585/aafe1a77-b534-4382-b3cf-c93bcbbd9eda"  width="300" />
 </div>
- - "Зеленый" - цвет, который применяется при сохранении.
- <div style="text-align: left;">
-<img src="https://github.com/Maksim9056/Examiner/assets/108364585/c462fe26-3d18-46dc-aff8-43451a2b3ce3" width="300" />
-</div>
+
  - "Розовый" - цвет, который также применяется при сохранении.
 <div style="text-align: left;">
 <img src="https://github.com/Maksim9056/Examiner/assets/108364585/eccc3981-7c19-41cb-9b38-9105788fd355" width="300" />
