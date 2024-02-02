@@ -95,7 +95,7 @@
 2. **Страница Настройки:**
 - В меню выберите "Настройки" для перехода на страницу с настройками.
 <div style="text-align: left;">
-<img src="https://github.com/Maksim9056/Examiner/assets/108364585/c462fe26-3d18-46dc-aff8-43451a2b3ce3" alt="Достижения" width="300" />
+<img src="https://github.com/Maksim9056/Examiner/assets/108364585/544b389d-ac23-48fb-b1b4-b4b25b875413" alt="Достижения" width="300" />
 </div>
 
 3. **Адрес сервера и порт:**
@@ -106,7 +106,7 @@
     
    - Порт по умолчанию - 9995 (оставьте без изменений).
 <div style="text-align: left;">
-<img src="https://github.com/Maksim9056/Examiner/assets/108364585/c462fe26-3d18-46dc-aff8-43451a2b3ce3" alt="Достижения" width="300" />
+<img src="https://github.com/Maksim9056/Examiner/assets/108364585/544b389d-ac23-48fb-b1b4-b4b25b875413" alt="Достижения" width="300" />
 </div>
 
 4. **Выбор языка:**
