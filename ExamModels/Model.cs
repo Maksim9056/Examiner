@@ -164,19 +164,28 @@ namespace ExamModels
         // Метод для получения списка пользователей
         public List<User> GetUserList()
         {
-            List<User> aUserList = new List<User>();
-
-            Task.Run(async () => await command.GetUserList(Ip_adress.Ip_adresss, "", "016")).Wait();
-
-            if (CommandCL.UserListGet == null)
+            try
             {
-                aUserList = null;
-            }
-            else
+                List<User> aUserList = new List<User>();
+
+                Task.Run(async () => await command.GetUserList(Ip_adress.Ip_adresss, "", "016")).Wait();
+
+                if (CommandCL.UserListGet == null)
+                {
+                    aUserList = null;
+                }
+                else
+                {
+                    aUserList = CommandCL.UserListGet.ListUser;
+                }
+                return aUserList;
+            }catch (Exception)
             {
-                aUserList = CommandCL.UserListGet.ListUser;
+                List<User> aUserList = new List<User>();
+
+
+                return aUserList;
             }
-            return aUserList;
         }
 
 
@@ -1047,17 +1056,24 @@ namespace ExamModels
 
         public Exams_Check CheckExams(ExamModels.UserExams UserExams)
         {
-            using (MemoryStream memoryStream = new MemoryStream())
+            try
             {
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
 
-                CheckExam checkExam = new CheckExam(UserExams);
-                JsonSerializer.Serialize<CheckExam>(memoryStream, checkExam);
+                    CheckExam checkExam = new CheckExam(UserExams);
+                    JsonSerializer.Serialize<CheckExam>(memoryStream, checkExam);
 
 
-                Task.Run(async () => await command.CheckClass(Ip_adress.Ip_adresss, Encoding.Default.GetString(memoryStream.ToArray()), "053")).Wait();
+                    Task.Run(async () => await command.CheckClass(Ip_adress.Ip_adresss, Encoding.Default.GetString(memoryStream.ToArray()), "053")).Wait();
 
 
-                return command.exams_Check1;
+                    return command.exams_Check1;
+                }
+            }
+            catch (Exception)
+            {
+                return command.exams_Check;
             }
         }
 
