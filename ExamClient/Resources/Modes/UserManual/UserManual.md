@@ -56,6 +56,7 @@
  <div style="text-align: left;">
 <img src="https://github.com/Maksim9056/Examiner/assets/108364585/dc9f8e64-2721-4f38-b0f0-5b33be557e76" alt="Ответы на вопрос" width="300" />
 </div>
+
    - После ответа на все вопросы, нажмите "Закончить тест".
  <div style="text-align: left;">
 <img src="https://github.com/Maksim9056/Examiner/assets/108364585/92a87c94-8c30-420a-aff3-a383bf9872d5" alt="Ответы на вопрос" width="300" />
@@ -98,12 +99,13 @@
 </div>
 
 3. **Адрес сервера и порт:**
-   - Заполните поле "Адрес" значением
-     ```
-      46.39.245.154.
-     ```  
+    - Заполните поле "Адрес" значением
+   ```
+    46.39.245.154.
+   ```
+    
    - Порт по умолчанию - 9995 (оставьте без изменений).
- <div style="text-align: left;">
+<div style="text-align: left;">
 <img src="https://github.com/Maksim9056/Examiner/assets/108364585/c462fe26-3d18-46dc-aff8-43451a2b3ce3" alt="Достижения" width="300" />
 </div>
 
