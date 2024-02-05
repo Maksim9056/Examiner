@@ -75,7 +75,7 @@ public partial class DocTheExamisPersonal : ContentPage
             for (int i = 0; i < CommandCL.UserExamsListGet.ListUserExams.Count(); i++)
             {
 
-                if (exams_Check[i].save_Results.Count() == 0|| exams_Check[i].save_Results == null)
+                if (exams_Check[i] == null)
                 {
 
                     var refUserExams = new RefUserExams { UserExams = CommandCL.UserExamsListGet.ListUserExams[i], EditCommand = " " };

@@ -19,6 +19,8 @@ namespace ExamModels
     {
         public const int UploadFile = 1;
         public const int DownloadFile = 2;
+        public const int UploadFiles = 3;
+
         // Добавьте другие команды по необходимости
     }
 

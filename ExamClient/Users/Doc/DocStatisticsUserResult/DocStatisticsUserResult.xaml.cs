@@ -2,6 +2,8 @@
 using ExamModels;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Compatibility;
+using System.Net.Mail;
+using System.Net;
 using System.Windows.Input;
 
 namespace Client.Users.Doc.DocStatisticsUserResult;
@@ -305,6 +307,10 @@ public partial class DocStatisticsUserResult : ContentPage
         //DataTable.Add(janeAgeLabel, 1, 2);
         //DataTable.Add(janeGenderLabel, 2, 2);
     }
+
+
+
+
     private async void GoBack(object sender, EventArgs e)
     {
         //if (Application.Current.MainPage is NavigationPage navigationPage)
@@ -343,5 +349,45 @@ public partial class DocStatisticsUserResult : ContentPage
         public ExamModels.UserExams UserExams { get; set; }
         public string EditCommand { get; set; }
         public Command DelCommand { get; set; }
+    }
+
+    private void SendResultsByEmail(object sender, EventArgs e)
+    {
+        TakeScreenshotAsync();
+
+
+    }
+    public async Task TakeScreenshotAsync()
+    {
+        if (Screenshot.Default.IsCaptureSupported)
+        {
+            IScreenshotResult screen = await Screenshot.Default.CaptureAsync();
+
+            Stream stream = await screen.OpenReadAsync();
+
+            var imageSource = ImageSource.FromStream(() => stream);
+
+            SmtpClient smtpClient = new SmtpClient("46.39.245.154");//Адрес сервиса
+                                                                    //smtpClient.EnableSsl = true;
+            smtpClient.Credentials = new NetworkCredential("info@экзаменатор.москва", "951951Ss!");
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("info@экзаменатор.москва");//От кого сообщение
+                                                                          //mailMessage.To.Add("info@экзаменатор.москва");
+            mailMessage.To.Add(CurrrentUser.Employee_Mail);//Кому отправить
+            mailMessage.Subject = $"Результаты";//Тема
+
+            mailMessage.Body = "Код подтверждения 1";//Текс тписьма
+                                                     // Добавление файла в качестве вложения
+            //Attachment attachment = new Attachment(filePath);
+            //mailMessage.Attachments.Add(attachment);
+            try
+            {
+                smtpClient.Send(mailMessage);//Отправляем письмо
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }

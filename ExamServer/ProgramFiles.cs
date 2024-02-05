@@ -1,6 +1,7 @@
 ﻿using ExamModels;
 using ExamServerData;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -79,6 +80,11 @@ namespace ExamServer
                         // Отправка файла обратно клиенту
                         await SendFilesToClient(stream, vFiless);
                         break;
+                    case Commands.UploadFiles:
+
+
+                        break;
+
                 }
             }
             catch (IOException ex)
@@ -110,6 +116,7 @@ namespace ExamServer
 
             return memoryStream.ToArray();
         }
+
         private async Task<Filles> ProcessReceivedDataAsync2(byte[] receivedData)
         {
             Filles filles = null;

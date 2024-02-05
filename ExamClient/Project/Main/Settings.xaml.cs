@@ -18,7 +18,7 @@ public partial class Settings : ContentPage
 
     public void Reg()
     {
-        SettingLanguage.Add("Росcкий", 1);
+        SettingLanguage.Add("Русcкий", 1);
         SettingLanguage.Add("Англиский", 2);
         SettingLanguage.Add("Russia", 1);
         SettingLanguage.Add("English", 2);
@@ -57,7 +57,7 @@ public partial class Settings : ContentPage
         switch (ip_Adress.language)
         {
             case 1:
-                RefUser refUser1 = new RefUser() { User = "Росcкий" };
+                RefUser refUser1 = new RefUser() { User = "Русcкий" };
                 refUser.Add(refUser1);
                 refUser1 = new RefUser() { User = "Англиский" };
                 refUser.Add(refUser1);

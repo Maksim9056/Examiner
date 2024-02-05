@@ -8,6 +8,7 @@
             >
     <ContentPage.Content>
 
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -23,9 +24,19 @@
                     </Grid.ColumnDefinitions>
                 </Grid>
             </ScrollView>
-            
-            
-            
+
+            <Button   
+                Grid.Row="1"    
+             Text="Отправить результаты на почту"
+             BackgroundColor="{DynamicResource PageDocStatisticsUserResultButton }"
+             Clicked="SendResultsByEmail"
+             VerticalOptions="End"
+             HorizontalOptions="FillAndExpand"
+             HeightRequest="50"
+              Margin="0,0,0,50"
+             Padding="0"/>
+
+
             <Button Grid.Row="3"
                     Text="{x:Static resource:AppResources.Назад}"
                     BackgroundColor="{DynamicResource PageDocStatisticsUserResultButton }"
@@ -34,7 +45,7 @@
                     VerticalOptions="End"
                     HorizontalOptions="FillAndExpand"
                     HeightRequest="50"
-                    Padding="10"/>
+                    Padding="5"/>
         </Grid>
 
     </ContentPage.Content>

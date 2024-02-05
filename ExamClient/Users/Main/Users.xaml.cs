@@ -116,7 +116,7 @@ public partial class Users : ContentPage
         catch (Exception ex)
         {
             // Здесь лучше зарегистрировать ошибку или вывести ее в консоль/журнал для последующего анализа
-            DisplayAlert(AppResources.Ошибка, AppResources.Сообщение + ex.Message + "\n" + AppResources.Помощь + ex.HelpLink, AppResources.Ок);
+          await  DisplayAlert(AppResources.Ошибка, AppResources.Сообщение + ex.Message + "\n" + AppResources.Помощь + ex.HelpLink, AppResources.Ок);
         }
     }
 
