@@ -1163,20 +1163,20 @@ namespace ExamServer
         public void MailResult(byte[] arg1, GlobalClass @class, NetworkStream stream, Logging logging, Mail mail)
         {
             User user = JsonSerializer.Deserialize<User>(arg1);
-            Filles filles = null;
+            Filles filles = new Filles { Id =1};
             filles.Id = user.Email.Id;
             Filles filles1 = @class.SelectFromFilles(filles);
             string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-            appDirectory = Path.Combine(appDirectory, "MailTravelExaminer");
+            appDirectory = Path.Combine(appDirectory);
 
-            if (!Directory.Exists(appDirectory))
+            if (!Directory.Exists(appDirectory + "\\MailTravelExaminer"))
             {
-                Directory.CreateDirectory(appDirectory);
+                Directory.CreateDirectory(appDirectory +"\\MailTravelExaminer");
                 Console.WriteLine("Папка Downloads успешно создана.");
             }
-
-            appDirectory = Path.Combine(appDirectory,$"Результаты{Guid.NewGuid().ToString()}.jpg");
+            appDirectory = appDirectory+$"\\MailTravelExaminer\\Результаты{Guid.NewGuid().ToString()}.jpg";
+            //appDirectory = Path.Combine(appDirectory,);
             File.WriteAllBytes(appDirectory, filles1.Name);
 
 

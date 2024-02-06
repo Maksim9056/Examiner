@@ -46,6 +46,13 @@ namespace ExamServer
             return user;
         }
 
+        /// <summary>
+        /// Отправляет письмо для пользователя с результатами
+        /// </summary>
+        /// <param name="User"></param>
+        /// <param name="mailUser"></param>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public User RegUserMails(string User, string mailUser, string filePath)
         {
             User user = new User();
@@ -56,10 +63,12 @@ namespace ExamServer
             mailMessage.From = new MailAddress("info@экзаменатор.москва");//От кого сообщение
                                                                           //mailMessage.To.Add("info@экзаменатор.москва");
             mailMessage.To.Add(mailUser);//Кому отправить
-            mailMessage.Subject = $"Подтверждение почты {User}";//Тема
+            mailMessage.Subject = $"Результат {User}";//Тема
 
-            mailMessage.Body = "Отправка результотов";//Текс тписьма
+            mailMessage.Body = "Отправка результатов";//Текс письма
+            //Добавляем  файлик в Attachment для добавления в письмо
             Attachment attachment = new Attachment(filePath);
+            //Добавляем Attachment в письмо  отправки 
             mailMessage.Attachments.Add(attachment);
             try
             {

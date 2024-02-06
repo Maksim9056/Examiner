@@ -407,6 +407,7 @@ public partial class DocStatisticsUserResult : ContentPage
                 var imageSource = ImageSource.FromStream(() => stream);
                 //Imafe.Source = imageSource;
                 string appDirectory = "";
+                ///Блок для уникальный даты сейчас
                 List<string> list = new List<string>();
                 DateTime dateTime = DateTime.Now;
 
@@ -440,9 +441,14 @@ public partial class DocStatisticsUserResult : ContentPage
                         DATE += list[i].ToString();
                     }
                 }
+                ///Заканчиваеться 
+                
+
+                //Блок с проверкой
                 if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
 #if ANDROID
+//Для пути в dowload и там для сохранения
                     appDirectory = Android.OS.Environment.GetExternalStoragePublicDirectory(type: Android.OS.Environment.DirectoryDownloads).AbsolutePath;
 #endif
                 }
@@ -470,16 +476,20 @@ public partial class DocStatisticsUserResult : ContentPage
                 {
                     Console.WriteLine("Файл не существует.");
                 }
+                //Используем память  для конвертации типа удобно
                 MemoryStream memoryStream = new MemoryStream();
                 stream.CopyTo(memoryStream);
 
+                //Сохраняем скриншот
                 File.WriteAllBytes(downloadsPath, memoryStream.ToArray());
 
-
+                //Сохраняем скриншот  на сервер  для сохранения
                 object fileIdObj = await SFales.SendToServer(ip_Adress.Ip_adressss,ExamModels. Commands.UploadFile, downloadsPath);
+                //Получаем id скриншота с результатми
                 int fileId = (int)fileIdObj;
 
-   
+                //Отправляем на сервер
+                TravelMailResult(fileId, ip_Adress.Ip_adressss);
 
                 //Filles.Id = fileId;
             }
@@ -490,6 +500,11 @@ public partial class DocStatisticsUserResult : ContentPage
         }
     }  
 
+    /// <summary>
+    /// Для отправки на  сервер для почты 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="Ip_adressss"></param>
     public void TravelMailResult(int id, string Ip_adressss)
     {
         try
