@@ -1375,6 +1375,22 @@ namespace ExamModels
                 return user;
             }
         }
+
+        public void UserTravelMailResult(ExamModels.User user, string ip_Adress)
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+
+                //Backap backap = new Backap();
+                JsonSerializer.Serialize<User>(memoryStream, user);
+
+                Task.Run(async () => await MailTravels.RegUser(ip_Adress, Encoding.Default.GetString(memoryStream.ToArray()), "063")).Wait();
+
+
+                user = MailTravels.User;
+                //return user;
+            }
+        }
     }
 
 

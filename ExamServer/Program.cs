@@ -195,6 +195,7 @@ namespace ExamServer
                 FDictCommands.Add("060", new Action<byte[], GlobalClass, NetworkStream, Logging, Mail>(command.Restoring_a_backup)); //Востановить из резервной копии
                 FDictCommands.Add("061", new Action<byte[], GlobalClass, NetworkStream, Logging, Mail>(command.CatalogView)); //Просмотр резервной копии которая существует
                 FDictCommands.Add("062", new Action<byte[], GlobalClass, NetworkStream, Logging, Mail>(command.Mail)); //Почта
+                FDictCommands.Add("063", new Action<byte[], GlobalClass, NetworkStream, Logging, Mail>(command.MailResult)); //Почта отправка результатов
 
 
 

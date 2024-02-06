@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.Json;
 using static ExamModels.CheckMail_and_Password;
 using static ExamServer.Logging;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ExamServer
 {
@@ -1157,6 +1158,39 @@ namespace ExamServer
             }
         }
 
+
+
+        public void MailResult(byte[] arg1, GlobalClass @class, NetworkStream stream, Logging logging, Mail mail)
+        {
+            User user = JsonSerializer.Deserialize<User>(arg1);
+            Filles filles = null;
+            filles.Id = user.Email.Id;
+            Filles filles1 = @class.SelectFromFilles(filles);
+            string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            appDirectory = Path.Combine(appDirectory, "MailTravelExaminer");
+
+            if (!Directory.Exists(appDirectory))
+            {
+                Directory.CreateDirectory(appDirectory);
+                Console.WriteLine("Папка Downloads успешно создана.");
+            }
+
+            appDirectory = Path.Combine(appDirectory,$"Результаты{Guid.NewGuid().ToString()}.jpg");
+            File.WriteAllBytes(appDirectory, filles1.Name);
+
+
+            mail.RegUserMails(user.Name_Employee, user.Employee_Mail, appDirectory);
+            //var users = mail.RegUserMail(user.Name_Employee, user.Employee_Mail);
+
+
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+
+            //    JsonSerializer.Serialize<User>(stream, users);
+            //    // stream.Write(ms.ToArray(), 0, ms.ToArray().Length);
+            //}
+        }
         // if(strings == null)
         //{
 
