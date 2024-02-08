@@ -126,7 +126,6 @@
 </div>
 
 - "Зеленый" - цвет, который применяется при сохранении.
-
 <div style="text-align: left;">
 <img src="https://github.com/Maksim9056/Examiner/assets/108364585/aafe1a77-b534-4382-b3cf-c93bcbbd9eda"  width="300" />
 </div>
