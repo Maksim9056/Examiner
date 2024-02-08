@@ -70,7 +70,7 @@
    - Просмотрите оценку и детали результатов.
    - Отправка результатов на почту.
  <div style="text-align: left;">
-<img src="https://github.com/Maksim9056/Examiner/assets/108364585/3103346b-b395-49fa-a2d7-d52e5c7b6f0e" alt="Статистика" width="300" />
+<img src="https://github.com/Maksim9056/Examiner/assets/108364585/b54b9cb0-ac77-4ba8-9fc3-9971345220b8" alt="Статистика" width="300" />
 </div>
 
  <div style="text-align: left;">
