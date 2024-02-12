@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -402,6 +403,7 @@ namespace ExamModels
     /// <summary>
     /// Ответ
     /// </summary>
+    /// 
     public class Answer
     {
         public int Id { get; set; }
