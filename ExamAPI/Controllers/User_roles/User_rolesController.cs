@@ -8,11 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using ExamAPI.Data;
 using ExamModels;
 using ExamModels;
+using Microsoft.AspNetCore.Cors;
 
 namespace ExamAPI.Controllers.User_roles
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class User_rolesController : ControllerBase
     {
         private readonly ExamAPIContext _context;
@@ -26,14 +28,14 @@ namespace ExamAPI.Controllers.User_roles
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ExamModels.User_roles>>> GetUser_roles()
         {
-            return await _context.User_roles.ToListAsync();
+            return await _context.User_Roles.ToListAsync();
         }
 
         // GET: api/User_roles/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ExamModels.User_roles>> GetUser_roles(int id)
         {
-            var user_roles = await _context.User_roles.FindAsync(id);
+            var user_roles = await _context.User_Roles.FindAsync(id);
 
             if (user_roles == null)
             {
@@ -79,7 +81,7 @@ namespace ExamAPI.Controllers.User_roles
         [HttpPost]
         public async Task<ActionResult<ExamModels.User_roles>> PostUser_roles(ExamModels.User_roles user_roles)
         {
-            _context.User_roles.Add(user_roles);
+            _context.User_Roles.Add(user_roles);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetUser_roles", new { id = user_roles.Id }, user_roles);
@@ -89,13 +91,13 @@ namespace ExamAPI.Controllers.User_roles
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser_roles(int id)
         {
-            var user_roles = await _context.User_roles.FindAsync(id);
+            var user_roles = await _context.User_Roles.FindAsync(id);
             if (user_roles == null)
             {
                 return NotFound();
             }
 
-            _context.User_roles.Remove(user_roles);
+            _context.User_Roles.Remove(user_roles);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -103,7 +105,7 @@ namespace ExamAPI.Controllers.User_roles
 
         private bool User_rolesExists(int id)
         {
-            return _context.User_roles.Any(e => e.Id == id);
+            return _context.User_Roles.Any(e => e.Id == id);
         }
     }
 }

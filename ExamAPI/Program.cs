@@ -1,14 +1,27 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ExamAPI.Data;
+using Microsoft.AspNetCore.Builder;
+
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDbContext<ExamAPIContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ExamAPIContext") ?? throw new InvalidOperationException("Connection string 'ExamAPIContext' not found.")));
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+// Добавляем политику CORS без блокировок
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -24,6 +37,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+// Включаем CORS с политикой без блокировок
+app.UseCors("AllowAll");
 
 app.MapControllers();
 

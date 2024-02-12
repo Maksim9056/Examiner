@@ -7,11 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ExamAPI.Data;
 using ExamModels;
+using Microsoft.AspNetCore.Cors;
 
 namespace ExamAPI.Controllers.Save_results
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowSpecificOrigin")]
+
     public class Save_resultsController : ControllerBase
     {
         private readonly ExamAPIContext _context;
@@ -25,14 +28,14 @@ namespace ExamAPI.Controllers.Save_results
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ExamModels.Save_results>>> GetSave_results()
         {
-            return await _context.Save_results.ToListAsync();
+            return await _context.Save_Results.ToListAsync();
         }
 
         // GET: api/Save_results/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ExamModels.Save_results>> GetSave_results(int id)
         {
-            var save_results = await _context.Save_results.FindAsync(id);
+            var save_results = await _context.Save_Results.FindAsync(id);
 
             if (save_results == null)
             {
@@ -78,7 +81,7 @@ namespace ExamAPI.Controllers.Save_results
         [HttpPost]
         public async Task<ActionResult<ExamModels.Save_results>> PostSave_results(ExamModels.Save_results save_results)
         {
-            _context.Save_results.Add(save_results);
+            _context.Save_Results.Add(save_results);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetSave_results", new { id = save_results.Id }, save_results);
@@ -88,13 +91,13 @@ namespace ExamAPI.Controllers.Save_results
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSave_results(int id)
         {
-            var save_results = await _context.Save_results.FindAsync(id);
+            var save_results = await _context.Save_Results.FindAsync(id);
             if (save_results == null)
             {
                 return NotFound();
             }
 
-            _context.Save_results.Remove(save_results);
+            _context.Save_Results.Remove(save_results);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +105,7 @@ namespace ExamAPI.Controllers.Save_results
 
         private bool Save_resultsExists(int id)
         {
-            return _context.Save_results.Any(e => e.Id == id);
+            return _context.Save_Results.Any(e => e.Id == id);
         }
     }
 }

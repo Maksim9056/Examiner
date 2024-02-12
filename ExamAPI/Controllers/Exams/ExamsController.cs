@@ -7,11 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ExamAPI.Data;
 using ExamModels;
+using Microsoft.AspNetCore.Cors;
 
 namespace ExamAPI.Controllers.Exams
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowSpecificOrigin")]
+
     public class ExamsController : ControllerBase
     {
         private readonly ExamAPIContext _context;

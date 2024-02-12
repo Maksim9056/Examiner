@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExamAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [EnableCors("AllowSpecificOrigin")]
+
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]

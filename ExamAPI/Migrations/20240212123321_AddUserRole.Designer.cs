@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExamAPI.Migrations
 {
     [DbContext(typeof(ExamAPIContext))]
-    [Migration("20240212085717_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240212123321_AddUserRole")]
+    partial class AddUserRole
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

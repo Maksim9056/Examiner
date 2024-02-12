@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ExamAPI.Data;
 using ExamModels;
+using Microsoft.AspNetCore.Cors;
 
 namespace ExamAPI.Controllers.ExamsTest
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class ExamsTestsController : ControllerBase
     {
         private readonly ExamAPIContext _context;

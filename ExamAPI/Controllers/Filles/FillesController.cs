@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ExamAPI.Data;
 using ExamModels;
+using Microsoft.AspNetCore.Cors;
 
 namespace ExamAPI.Controllers.Filles
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class FillesController : ControllerBase
     {
         private readonly ExamAPIContext _context;
