@@ -9,8 +9,7 @@ namespace ExamAPI.Data
 {
     public class ExamAPIContext : DbContext
     {
-        public ExamAPIContext (DbContextOptions<ExamAPIContext> options)
-            : base(options)
+        public ExamAPIContext (DbContextOptions<ExamAPIContext> options) : base(options)
         {
         }
         public DbSet<Roles> Roles { get; set; } = null!;
