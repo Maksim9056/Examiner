@@ -24,6 +24,7 @@ namespace ExamAPI.Controllers.Roles
         }
 
         // GET: api/Roles
+        [Route("GET")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ExamModels.Roles>>> GetRoles()
         {
@@ -31,7 +32,7 @@ namespace ExamAPI.Controllers.Roles
         }
 
         // GET: api/Roles/5
-        [HttpGet("{id}")]
+        [HttpGet("GETId/{id}")]
         public async Task<ActionResult<ExamModels.Roles>> GetRoles(int id)
         {
             var roles = await _context.Roles.FindAsync(id);
@@ -46,7 +47,8 @@ namespace ExamAPI.Controllers.Roles
 
         // PUT: api/Roles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        //[Route("api/[controller]/PUT/")]
+        [HttpPut("PUTId/{id}")]
         public async Task<IActionResult> PutRoles(int id, ExamModels.Roles roles)
         {
             if (id != roles.Id)
@@ -77,6 +79,7 @@ namespace ExamAPI.Controllers.Roles
 
         // POST: api/Roles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Route("POST")]
         [HttpPost]
         public async Task<ActionResult<ExamModels.Roles>> PostRoles(ExamModels.Roles roles)
         {
@@ -87,7 +90,7 @@ namespace ExamAPI.Controllers.Roles
         }
 
         // DELETE: api/Roles/5
-        [HttpDelete("{id}")]
+        [HttpDelete("DELETE/{id}")]        
         public async Task<IActionResult> DeleteRoles(int id)
         {
             var roles = await _context.Roles.FindAsync(id);

@@ -75,7 +75,7 @@ namespace ExamAPI.Controllers.User
             return NoContent();
         }
 
-        // POST: api/Users
+        // POST: api/POST/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<ExamModels.User>> PostUser(ExamModels.User user)
@@ -86,7 +86,7 @@ namespace ExamAPI.Controllers.User
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/Users/DELETE/5
         [HttpDelete("/{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {

@@ -23,7 +23,7 @@ namespace ExamAPI.Controllers
             _context = context;
         }
 
-        // GET: api/Answers
+        // GET: api/Answers/GET
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Answer>>> GetAnswer()
         {
