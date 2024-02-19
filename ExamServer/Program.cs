@@ -37,6 +37,7 @@ namespace ExamServer
         Logging logging = new Logging();
 
         static public Int32 ColorPort { get; set; }
+
         public async void Main()
         {
             try
