@@ -24,14 +24,14 @@ namespace ExamAPI.Controllers.Options
         }
 
         // GET: api/Options
-        [HttpGet]
+        [HttpGet("GET")]
         public async Task<ActionResult<IEnumerable<ExamModels.Options>>> GetOptions()
         {
             return await _context.Options.ToListAsync();
         }
 
         // GET: api/Options/5
-        [HttpGet("{id}")]
+        [HttpGet("GETId/{id}")]
         public async Task<ActionResult<ExamModels.Options>> GetOptions(int id)
         {
             var options = await _context.Options.FindAsync(id);
@@ -46,7 +46,7 @@ namespace ExamAPI.Controllers.Options
 
         // PUT: api/Options/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("PUTId/{id}")]
         public async Task<IActionResult> PutOptions(int id, ExamModels.Options options)
         {
             if (id != options.Id)
@@ -77,7 +77,7 @@ namespace ExamAPI.Controllers.Options
 
         // POST: api/Options
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("POST")]
         public async Task<ActionResult<ExamModels.Options>> PostOptions(ExamModels.Options options)
         {
             _context.Options.Add(options);
@@ -87,7 +87,7 @@ namespace ExamAPI.Controllers.Options
         }
 
         // DELETE: api/Options/5
-        [HttpDelete("{id}")]
+        [HttpDelete("DELETE/{id}")]
         public async Task<IActionResult> DeleteOptions(int id)
         {
             var options = await _context.Options.FindAsync(id);

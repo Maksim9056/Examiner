@@ -25,14 +25,14 @@ namespace ExamAPI.Controllers.Save_results
         }
 
         // GET: api/Save_results
-        [HttpGet]
+        [HttpGet("GET")]
         public async Task<ActionResult<IEnumerable<ExamModels.Save_results>>> GetSave_results()
         {
             return await _context.Save_Results.ToListAsync();
         }
 
         // GET: api/Save_results/5
-        [HttpGet("{id}")]
+        [HttpGet("GETId/{id}")]
         public async Task<ActionResult<ExamModels.Save_results>> GetSave_results(int id)
         {
             var save_results = await _context.Save_Results.FindAsync(id);
@@ -47,7 +47,7 @@ namespace ExamAPI.Controllers.Save_results
 
         // PUT: api/Save_results/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("PUTId/{id}")]
         public async Task<IActionResult> PutSave_results(int id, ExamModels.Save_results save_results)
         {
             if (id != save_results.Id)
@@ -78,7 +78,7 @@ namespace ExamAPI.Controllers.Save_results
 
         // POST: api/Save_results
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("POST")]
         public async Task<ActionResult<ExamModels.Save_results>> PostSave_results(ExamModels.Save_results save_results)
         {
             _context.Save_Results.Add(save_results);
@@ -88,7 +88,7 @@ namespace ExamAPI.Controllers.Save_results
         }
 
         // DELETE: api/Save_results/5
-        [HttpDelete("{id}")]
+        [HttpDelete("DELETE/{id}")]
         public async Task<IActionResult> DeleteSave_results(int id)
         {
             var save_results = await _context.Save_Results.FindAsync(id);

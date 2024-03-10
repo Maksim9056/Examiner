@@ -23,14 +23,14 @@ namespace ExamAPI.Controllers.Test
         }
 
         // GET: api/Tests
-        [HttpGet]
+        [HttpGet("GET")]
         public async Task<ActionResult<IEnumerable<ExamModels.Test>>> GetTest()
         {
             return await _context.Test.ToListAsync();
         }
 
         // GET: api/Tests/5
-        [HttpGet("{id}")]
+        [HttpGet("GETId/{id}")]
         public async Task<ActionResult<ExamModels.Test>> GetTest(int id)
         {
             var test = await _context.Test.FindAsync(id);
@@ -45,7 +45,7 @@ namespace ExamAPI.Controllers.Test
 
         // PUT: api/Tests/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("PUTId/{id}")]
         public async Task<IActionResult> PutTest(int id, ExamModels.Test test)
         {
             if (id != test.Id)
@@ -76,7 +76,7 @@ namespace ExamAPI.Controllers.Test
 
         // POST: api/Tests
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("POST")]
         public async Task<ActionResult<ExamModels.Test>> PostTest(ExamModels.Test test)
         {
             _context.Test.Add(test);
@@ -86,7 +86,7 @@ namespace ExamAPI.Controllers.Test
         }
 
         // DELETE: api/Tests/5
-        [HttpDelete("{id}")]
+        [HttpDelete("DELETE/{id}")]
         public async Task<IActionResult> DeleteTest(int id)
         {
             var test = await _context.Test.FindAsync(id);

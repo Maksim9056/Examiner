@@ -24,14 +24,14 @@ namespace ExamAPI.Controllers.Filles
         }
 
         // GET: api/Filles
-        [HttpGet]
+        [HttpGet("GET")]
         public async Task<ActionResult<IEnumerable<ExamModels.Filles>>> GetFilles()
         {
             return await _context.Filles.ToListAsync();
         }
 
         // GET: api/Filles/5
-        [HttpGet("{id}")]
+        [HttpGet("GETId/{id}")]
         public async Task<ActionResult<ExamModels.Filles>> GetFilles(int id)
         {
             var filles = await _context.Filles.FindAsync(id);
@@ -46,7 +46,7 @@ namespace ExamAPI.Controllers.Filles
 
         // PUT: api/Filles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("PUTId/{id}")]
         public async Task<IActionResult> PutFilles(int id, ExamModels.Filles filles)
         {
             if (id != filles.Id)
@@ -77,7 +77,7 @@ namespace ExamAPI.Controllers.Filles
 
         // POST: api/Filles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("POST")]
         public async Task<ActionResult<ExamModels.Filles>> PostFilles(ExamModels.Filles filles)
         {
             _context.Filles.Add(filles);
@@ -87,7 +87,7 @@ namespace ExamAPI.Controllers.Filles
         }
 
         // DELETE: api/Filles/5
-        [HttpDelete("{id}")]
+        [HttpDelete("DELETE/{id}")]
         public async Task<IActionResult> DeleteFilles(int id)
         {
             var filles = await _context.Filles.FindAsync(id);

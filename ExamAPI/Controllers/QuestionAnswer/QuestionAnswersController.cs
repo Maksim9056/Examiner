@@ -24,14 +24,14 @@ namespace ExamAPI.Controllers.QuestionAnswer
         }
 
         // GET: api/QuestionAnswers
-        [HttpGet]
+        [HttpGet("GET")]
         public async Task<ActionResult<IEnumerable<ExamModels.QuestionAnswer>>> GetQuestionAnswer()
         {
             return await _context.QuestionAnswer.ToListAsync();
         }
 
         // GET: api/QuestionAnswers/5
-        [HttpGet("{id}")]
+        [HttpGet("GETId/{id}")]
         public async Task<ActionResult<ExamModels.QuestionAnswer>> GetQuestionAnswer(int id)
         {
             var questionAnswer = await _context.QuestionAnswer.FindAsync(id);
@@ -46,7 +46,7 @@ namespace ExamAPI.Controllers.QuestionAnswer
 
         // PUT: api/QuestionAnswers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("PUTId/{id}")]
         public async Task<IActionResult> PutQuestionAnswer(int id, ExamModels.QuestionAnswer questionAnswer)
         {
             if (id != questionAnswer.Id)
@@ -77,7 +77,7 @@ namespace ExamAPI.Controllers.QuestionAnswer
 
         // POST: api/QuestionAnswers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("POST")]
         public async Task<ActionResult<ExamModels.QuestionAnswer>> PostQuestionAnswer(ExamModels.QuestionAnswer questionAnswer)
         {
             _context.QuestionAnswer.Add(questionAnswer);
@@ -87,7 +87,7 @@ namespace ExamAPI.Controllers.QuestionAnswer
         }
 
         // DELETE: api/QuestionAnswers/5
-        [HttpDelete("{id}")]
+        [HttpDelete("DELETE/{id}")]
         public async Task<IActionResult> DeleteQuestionAnswer(int id)
         {
             var questionAnswer = await _context.QuestionAnswer.FindAsync(id);

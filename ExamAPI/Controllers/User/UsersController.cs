@@ -24,14 +24,14 @@ namespace ExamAPI.Controllers.User
         }
 
         // GET: api/Users
-        [HttpGet]
+        [HttpGet("GET")]
         public async Task<ActionResult<IEnumerable<ExamModels.User>>> GetUser()
         {
             return await _context.Users.ToListAsync();
         }
 
         // GET: api/Users/5
-        [HttpGet("{id}")]
+        [HttpGet("GETId/{id}")]
         public async Task<ActionResult<ExamModels.User>> GetUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -46,7 +46,7 @@ namespace ExamAPI.Controllers.User
 
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("PUTId/{id}")]
         public async Task<IActionResult> PutUser(int id, ExamModels.User user)
         {
             if (id != user.Id)
@@ -77,7 +77,7 @@ namespace ExamAPI.Controllers.User
 
         // POST: api/POST/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("POST")]
         public async Task<ActionResult<ExamModels.User>> PostUser(ExamModels.User user)
         {
             _context.Users.Add(user);
@@ -87,7 +87,7 @@ namespace ExamAPI.Controllers.User
         }
 
         // DELETE: api/Users/DELETE/5
-        [HttpDelete("/{id}")]
+        [HttpDelete("DELETE/{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
