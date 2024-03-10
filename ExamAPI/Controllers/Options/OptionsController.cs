@@ -27,14 +27,14 @@ namespace ExamAPI.Controllers.Options
         [HttpGet("GET")]
         public async Task<ActionResult<IEnumerable<ExamModels.Options>>> GetOptions()
         {
-            return await _context.Options.ToListAsync();
+            return await _context.Options.Include(u => u.Id_Test).Include(u => u.Id_Answer).Include(u => u.Questions).Include(u => u.Questions_Id).ToListAsync();
         }
 
         // GET: api/Options/5
         [HttpGet("GETId/{id}")]
         public async Task<ActionResult<ExamModels.Options>> GetOptions(int id)
         {
-            var options = await _context.Options.FindAsync(id);
+            var options = await _context.Options.Include(u => u.Id_Test).Include(u => u.Id_Answer).Include(u => u.Questions).Include(u => u.Questions_Id).FirstOrDefaultAsync(u => u.Id == id);
 
             if (options == null)
             {

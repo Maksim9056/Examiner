@@ -28,14 +28,14 @@ namespace ExamAPI.Controllers.User_roles
         [HttpGet("GET")]
         public async Task<ActionResult<IEnumerable<ExamModels.User_roles>>> GetUser_roles()
         {
-            return await _context.User_Roles.ToListAsync();
+            return await _context.User_Roles.Include(u => u.User_id).Include(u => u.Id_roles).ToListAsync();
         }
 
         // GET: api/User_roles/5
         [HttpGet("GETId/{id}")]
         public async Task<ActionResult<ExamModels.User_roles>> GetUser_roles(int id)
         {
-            var user_roles = await _context.User_Roles.FindAsync(id);
+            var user_roles = await _context.User_Roles.Include(u => u.User_id).Include(u => u.Id_roles).FirstOrDefaultAsync(u => u.Id == id);
 
             if (user_roles == null)
             {

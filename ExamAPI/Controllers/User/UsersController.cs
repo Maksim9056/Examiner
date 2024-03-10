@@ -27,15 +27,16 @@ namespace ExamAPI.Controllers.User
         [HttpGet("GET")]
         public async Task<ActionResult<IEnumerable<ExamModels.User>>> GetUser()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users.Include(u => u.Email).ToListAsync();
+            //return await _context.Users.ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("GETId/{id}")]
         public async Task<ActionResult<ExamModels.User>> GetUser(int id)
-        {
-            var user = await _context.Users.FindAsync(id);
-
+        {/*.Include(u => u.Email).ToListAsync()*/
+            //var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users.Include(u => u.Email).FirstOrDefaultAsync(u => u.Id == id);
             if (user == null)
             {
                 return NotFound();

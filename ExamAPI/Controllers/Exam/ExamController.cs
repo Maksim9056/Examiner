@@ -26,14 +26,14 @@ namespace ExamAPI.Controllers.Exam
         [HttpGet("GET")]
         public async Task<ActionResult<IEnumerable<ExamModels.Exam>>> GetExam()
         {
-            return await _context.Exam.ToListAsync();
+            return await _context.Exam.Include(u => u.Exams).Include(u => u.Questtion).Include(u => u.User).ToListAsync();
         }
 
         // GET: api/Exam/5
         [HttpGet("GETId/{id}")]
         public async Task<ActionResult<ExamModels.Exam>> GetExam(int id)
         {
-            var exam = await _context.Exam.FindAsync(id);
+            var exam = await _context.Exam.Include(u => u.Exams).Include(u => u.Questtion).Include(u => u.User).FirstOrDefaultAsync(u => u.Id == id); 
 
             if (exam == null)
             {

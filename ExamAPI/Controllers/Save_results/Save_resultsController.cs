@@ -28,14 +28,14 @@ namespace ExamAPI.Controllers.Save_results
         [HttpGet("GET")]
         public async Task<ActionResult<IEnumerable<ExamModels.Save_results>>> GetSave_results()
         {
-            return await _context.Save_Results.ToListAsync();
+            return await _context.Save_Results.Include(u => u.User_id).Include(u => u.Name_Test).Include(u => u.Questions).Include(u => u.Exam_id).ToListAsync();
         }
 
         // GET: api/Save_results/5
         [HttpGet("GETId/{id}")]
         public async Task<ActionResult<ExamModels.Save_results>> GetSave_results(int id)
         {
-            var save_results = await _context.Save_Results.FindAsync(id);
+            var save_results = await _context.Save_Results.Include(u => u.User_id).Include(u => u.Name_Test).Include(u => u.Questions).Include(u => u.Exam_id).FirstOrDefaultAsync(u => u.Id == id);
 
             if (save_results == null)
             {
