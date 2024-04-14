@@ -1,5 +1,10 @@
+using ExamModels;
 using ExamWeb.Client.Pages;
 using ExamWeb.Components;
+using ExamWeb.Components.Pages;
+using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Hosting;
+using System.ComponentModel;
 
 namespace ExamWeb
 {
@@ -13,9 +18,19 @@ namespace ExamWeb
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents()
                 .AddInteractiveWebAssemblyComponents();
+            builder.Services.AddHttpClient();
+            builder.Services.AddCors();
+            builder.Services.AddScoped<ExamWeb.Components.Pages.Home>();
+            builder.Services.AddScoped<ExamWeb.Components.Pages.Weather>();
+            //Для будущих  страниц
+            //builder.Services.AddScoped<.GroupChats>();
+            //builder.Services.AddScoped<ListChatsAll>();
+            //builder.Services.AddScoped<Friends>();
+            builder.Services.AddScoped<Component>();
 
             var app = builder.Build();
-
+            // Передаем значение для параметра Название
+          
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -28,11 +43,11 @@ namespace ExamWeb
                 app.UseHsts();
             }
 
+     
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
             app.UseAntiforgery();
-
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode()
                 .AddInteractiveWebAssemblyRenderMode()

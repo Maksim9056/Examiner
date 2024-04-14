@@ -1,7 +1,38 @@
 ﻿@page "/"
+@rendermode InteractiveServer
+@inject Home Homes
 
-<PageTitle>Home</PageTitle>
+@if (urlAddres != null)
+{
+    <Authorization @urlAddres="urlAddres" />
 
-<h1>Hello, world!</h1>
+}
+@code{
+    [Parameter]
+    public string urlAddres { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
 
-Welcome to your new app.
+
+            if (Homes == null)
+            {
+
+            }
+            else
+            {
+                if (Homes.urlAddres != null)
+                {
+                    urlAddres = Homes.urlAddres;
+               
+                }
+
+            }
+        }
+        catch(Exception)
+        {
+            
+        }
+    }
+}
