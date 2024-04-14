@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExamAPI.Migrations
 {
     [DbContext(typeof(ExamAPIContext))]
-    [Migration("20240212123321_AddUserRole")]
-    partial class AddUserRole
+    [Migration("20240314131213_YourMigrationName")]
+    partial class YourMigrationName
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -281,7 +281,7 @@ namespace ExamAPI.Migrations
 
                     b.HasIndex("User_idId");
 
-                    b.ToTable("Save_results");
+                    b.ToTable("Save_Results");
                 });
 
             modelBuilder.Entity("ExamModels.Test", b =>
@@ -356,7 +356,7 @@ namespace ExamAPI.Migrations
 
                     b.HasIndex("EmailId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("ExamModels.UserExams", b =>
@@ -402,7 +402,7 @@ namespace ExamAPI.Migrations
 
                     b.HasIndex("User_idId");
 
-                    b.ToTable("User_roles");
+                    b.ToTable("User_Roles");
                 });
 
             modelBuilder.Entity("ExamModels.Exam", b =>

@@ -1,12 +1,29 @@
-#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER app
+# Используем базовый образ ASP.NET среды выполнения
+#FROM mcr.microsoft.com/dotnet/runtime:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-bookworm-slim AS base
 WORKDIR /app
 EXPOSE 8080
-EXPOSE 8081
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+# Устанавливаем PostgreSQL
+RUN apt-get update && \
+    apt-get install -y postgresql postgresql-contrib && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Добавляем конфигурацию для PostgreSQL
+RUN echo "host all all 0.0.0.0/0 md5" >> /etc/postgresql/15/main/pg_hba.conf && \
+    echo "listen_addresses = '*'" >> /etc/postgresql/15/main/postgresql.conf && \
+    echo "port = 5432" >> /etc/postgresql/15/main/postgresql.conf
+
+# Задаем пароль для пользователя postgres
+RUN service postgresql start && \
+    su - postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD '1';\"" && \
+    su - postgres -c "psql -c \"CREATE DATABASE testd32;\"" && \
+    su - postgres -c "psql -c \"GRANT ALL PRIVILEGES ON DATABASE testd32 TO postgres;\""
+
+
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0-bookworm-slim AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["ExamAPI/ExamAPI.csproj", "ExamAPI/"]

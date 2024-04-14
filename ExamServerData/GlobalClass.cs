@@ -619,7 +619,7 @@ namespace ExamServerData
                     }
 
 
-
+                    
                     string Email = "info@экзаменатор.москва";
                     DateTime dateTime = DateTime.Now;
                     var data = $"{dateTime:F}";
@@ -742,7 +742,7 @@ namespace ExamServerData
             }
         }
 
-
+        
         /// <summary>
         /// Проверка  почты пароля  авторизация  и проверяет по почте есть ли пользователь  
         /// </summary>

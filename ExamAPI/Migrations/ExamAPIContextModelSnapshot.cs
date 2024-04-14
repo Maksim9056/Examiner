@@ -278,7 +278,7 @@ namespace ExamAPI.Migrations
 
                     b.HasIndex("User_idId");
 
-                    b.ToTable("Save_results");
+                    b.ToTable("Save_Results");
                 });
 
             modelBuilder.Entity("ExamModels.Test", b =>
@@ -353,7 +353,7 @@ namespace ExamAPI.Migrations
 
                     b.HasIndex("EmailId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("ExamModels.UserExams", b =>
@@ -399,7 +399,7 @@ namespace ExamAPI.Migrations
 
                     b.HasIndex("User_idId");
 
-                    b.ToTable("User_roles");
+                    b.ToTable("User_Roles");
                 });
 
             modelBuilder.Entity("ExamModels.Exam", b =>

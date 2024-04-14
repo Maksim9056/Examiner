@@ -11,6 +11,7 @@ namespace ExamAPI.Data
     {
         public ExamAPIContext (DbContextOptions<ExamAPIContext> options) : base(options)
         {
+            Database.EnsureCreated();
         }
         public DbSet<Roles> Roles { get; set; } = null!;
         public DbSet<User_roles> User_Roles { get; set; } = null!;

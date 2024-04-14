@@ -31,6 +31,19 @@ namespace ExamAPI.Controllers.User
             //return await _context.Users.ToListAsync();
         }
 
+        // GET: api/Users/email,password
+        [HttpGet("GETCheckPassword/{email,password}")]
+        public async Task<ActionResult<ExamModels.User>> GetUserCheckPassword(string email,string password)
+        {
+            var user = await _context.Users.Include(u => u.Email).FirstOrDefaultAsync(u => u.Employee_Mail == email && u.Password == password);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }
+
         // GET: api/Users/5
         [HttpGet("GETId/{id}")]
         public async Task<ActionResult<ExamModels.User>> GetUser(int id)

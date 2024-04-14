@@ -153,7 +153,7 @@ namespace ExamServer
                 FDictCommands.Add("025", new Action<byte[], GlobalClass, NetworkStream, Logging, Mail>(command.Update_Exams));
                 FDictCommands.Add("026", new Action<byte[], GlobalClass, NetworkStream, Logging, Mail>(command.Del_Exams));
                 FDictCommands.Add("027", new Action<byte[], GlobalClass, NetworkStream, Logging, Mail>(command.Get_ExamsList));
-
+                
                 FDictCommands.Add("028", new Action<byte[], GlobalClass, NetworkStream, Logging, Mail>(command.Create_Questions));
                 FDictCommands.Add("029", new Action<byte[], GlobalClass, NetworkStream, Logging, Mail>(command.Update_Questions));
                 FDictCommands.Add("030", new Action<byte[], GlobalClass, NetworkStream, Logging, Mail>(command.Del_Questions));
