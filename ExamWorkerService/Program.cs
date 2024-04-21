@@ -9,22 +9,28 @@ namespace ExamWorkerService
     {
         public static void Main(string[] args)
         {
-            var isWindowsService = !(args.Length > 0 && args[0] == "--console");
+            //var isWindowsService = !(args.Length > 0 && args[0] == "--console");
             //Сделай сразу разделение
+            //if (Environment.OSVersion.Platform == PlatformID.Unix)
+            //{
 
-            if (isWindowsService)
+            //}
+
+            if (Environment.OSVersion.Platform == PlatformID.Unix)
             {
-                var hostBuilder = CreateHostBuilders(args);
-                hostBuilder.UseWindowsService();
+
+                var hostBuilder = CreateHostBuilder(args);
+
+                hostBuilder.UseSystemd();
                 var host = hostBuilder.Build();
                 host.Run();
 
             }
             else
             {
-                var hostBuilder = CreateHostBuilder(args);
 
-                hostBuilder.UseSystemd();
+                var hostBuilder = CreateHostBuilders(args);
+                hostBuilder.UseWindowsService();
                 var host = hostBuilder.Build();
                 host.Run();
 
