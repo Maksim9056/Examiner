@@ -80,7 +80,7 @@ namespace ExamWeb
                 app.UseHsts();
             }
 
-     
+            app.UsePathBase("/Authorization");
             app.UseHttpsRedirection();
             app.UseAuthorization();
             // добавление middleware аутентификации​
@@ -90,7 +90,9 @@ namespace ExamWeb
                 .AddInteractiveServerRenderMode()
                 .AddInteractiveWebAssemblyRenderMode()
                 .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
-            app.UseSession();
+            //app.UseSession();
+
+            //app.UsePathBase("/Authorization");
             app.Run();
         }
     }

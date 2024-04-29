@@ -1,78 +1,108 @@
 ﻿@page "/"
+@page "/Authorization"
 @rendermode InteractiveServer
-@inject Home Homes
-@using Microsoft.AspNetCore.Http;
-@using System.IdentityModel.Tokens.Jwt
-@using System.Security.Claims
-@using Microsoft.IdentityModel.Tokens
 @inject IHttpClientFactory ClientFactory
 @inject NavigationManager NavigationManager
+<h1>Авторизация</h1>
+
 
 
 <div>
-    <button @onclick="RegUser">Регистрация</button>
+    <p>Почта</p>
+    <input type="email" @bind="EMAIL" />
 </div>
-@try
-{
-  
-}
-catch (Exception ex)
-{
-    <p><em>Ошибка !!</em></p>
-}
 
-@code{
-    [Parameter]
-    public string urlAddres { get; set; }
-    // [Inject]
-    HttpClient httpClient = null!;
+<div>
+    <p>Пароль</p>
+    <input type="password" @bind="Password" />
+</div>
 
-    protected override async Task OnInitializedAsync()
-    {
-        try
-        {
-            httpClient = ClientFactory.CreateClient();
-
-
-            if (Homes == null)
-            {
-                // httpClient.
-                var claims = new List<Claim> { new Claim(ClaimTypes.Name, "") };
-                // создаем JWT-токен
-                var jwt = new JwtSecurityToken(
-                    issuer: AuthOptions.ISSUER,
-                    audience: AuthOptions.AUDIENCE,
-                    claims: claims,
-                    expires: DateTime.UtcNow.Add(TimeSpan.MaxValue),
-                    signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
-            }
-            else
-            {
-                if (Homes.urlAddres != null)
-                {
-                    // urlAddres = Homes.urlAddres;
-
-                }
-
-            }
-            StateHasChanged();
-        }
-        catch(Exception)
-        {
-
-        }
+<style>
+    .button {
+        margin-top: 10px; /* Измените значение по вашему усмотрению */
     }
 
+    .another-button {
+        margin-top: 10px;
+        margin-right: 90px; /* Измените значение по вашему усмотрению */
+    }
+</style>
 
-    public async Task RegUser()
+<div>
+    <button type="submit" class="button" @onclick="SubmitForm">Войти</button>
+</div>
+
+<div>
+    <button type="submit" class="another-button" @onclick="RegForm">Регистрация</button>
+</div>
+@code {
+    [Parameter]
+    public string urlAddress { get; set; } // Corrected property name
+    string Password { get; set; }
+
+    string EMAIL { get; set; }
+    [Parameter]
+    public string urlAddres { get; set; }
+    public string url = "http://localhost:5000/api/UsersControllers/GETCheck/";
+
+    User users;
+
+    HttpClient httpClient = null!;
+
+    private async void SubmitForm()
     {
         try
         {
-            NavigationManager.NavigateTo("/Authorization");
+
+
+            if (!string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(EMAIL))
+            {
+                httpClient = ClientFactory.CreateClient();
+                httpClient.BaseAddress = new Uri(url + EMAIL + "," + Password);
+                await LoadData();
+            }
         }
         catch (Exception)
         {
 
         }
+    }
+
+    private void RegForm()
+    {
+        try
+        {
+            NavigationManager.NavigateTo($"/RegUser");
+
+        }
+        catch (Exception)
+        {
+
+        }
+    }
+    async Task LoadData()
+    {
+        // try
+        // {
+        //     users = await httpClient.GetFromJsonAsync<Users>(httpClient.BaseAddress);
+
+
+        //     if (users == null)
+        //     {
+
+        //     }
+        //     else
+        //     {
+
+        //          userStateService.users = users;
+        //         NavigationManager.NavigateTo($"/UserUse");
+        //     }
+
+
+        // }
+        // catch (Exception)
+        // {
+
+        // }
     }
 }
