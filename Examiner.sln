@@ -22,9 +22,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решен
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamAPI", "ExamAPI\ExamAPI.csproj", "{B4C2E02C-9A46-4B31-B3B9-36D965DD3645}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamWeb", "ExamWeb\ExamWeb\ExamWeb.csproj", "{52B22AB3-2146-47C6-AB3F-418F5A91C799}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamWeb", "ExamWeb\ExamWeb\ExamWeb.csproj", "{52B22AB3-2146-47C6-AB3F-418F5A91C799}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamWeb.Client", "ExamWeb\ExamWeb.Client\ExamWeb.Client.csproj", "{E383EA97-DC3E-4B14-9C2D-90CEC2CD8351}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamWeb.Client", "ExamWeb\ExamWeb.Client\ExamWeb.Client.csproj", "{E383EA97-DC3E-4B14-9C2D-90CEC2CD8351}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

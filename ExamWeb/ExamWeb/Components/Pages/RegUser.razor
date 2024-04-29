@@ -1,0 +1,225 @@
+﻿@* @page "/RegUser"
+@rendermode InteractiveServer
+@using ExamModels
+@using System.Net.Http.Json
+@using System.Text
+@using Newtonsoft.Json
+ *@
+ 
+@*  @using static System.Reflection.Metadata.BlobBuilder
+@inject IHttpClientFactory ClientFactory
+
+@inject NavigationManager NavigationManager
+ *@
+
+@* 
+
+<style>
+    div {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="tel"] {
+        width: 50%;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box; /* чтобы входное поле учитывало границу в своих размерах */
+        font-size: 16px;
+    }
+
+    media (min-width: 768px) {
+        /* Пример адаптации для устройств с шириной экрана 768px и более */
+        input [type="text"], input[type="password"], input[type="email"], input[type="tel"]
+
+    {
+        width: 50%; /* Изменяем ширину полей на 50% при ширине экрана 768px и более */
+    }
+
+    }
+</style>
+
+<div>
+    <label>Имя</label>
+    <input type="text" @bind="Username">
+</div>
+
+<div>
+    <label>Пароль</label>
+    <input type="password" @bind="Password">
+</div>
+
+ <div>
+    <label>Роль</label>
+       <div>
+
+</div>
+ </div>
+
+<div>
+    <label>Почта</label>
+    <input type="email" @bind="Email">
+</div>
+
+<div>
+    <label>Телефон</label>
+    <input type="tel" @bind="Phone">
+</div>
+<InputFile OnChange="@HandleFileUpload" />
+
+
+<button class="btn btn-primary" @onclick="SubmitForm">Зарегистрироваться</button>
+
+
+@code {
+    // string url = "http://localhost:5000/api/FilesControllers";
+    // string urluser = "http://localhost:5000/api/UsersControllers/POST";
+
+    // public string Username { get; set; }
+    // public string Password { get; set; }
+    // public string Email { get; set; }
+    // public string Surname { get; set; }
+    // public string Phone { get; set; }
+    // public Filles Files { get; set; }
+    // public byte[] bytes;
+
+
+    // HttpClient httpClient = null!;
+
+    // private async void SubmitForm()
+    // {
+    //     try
+    //     {
+    //         if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Surname) && !string.IsNullOrEmpty(Phone))
+    //         {
+
+    //             if (Files == null)
+    //             {
+
+    //             }
+    //             else
+    //             {
+    //                 List<int> groups = new List<int>();
+    //                 List<int> friends = new List<int>();
+
+    //                 Users users = new Users(0, Username, Password, Email, Files);
+    //                 string str = json(users, 2);
+    //                 HttpContent content = new StringContent(str, Encoding.UTF8, "application/json");
+    //                 httpClient = ClientFactory.CreateClient();
+    //                 httpClient.BaseAddress = new Uri(urluser);
+    //                 var response = await httpClient.PostAsync(urluser, content);
+    //                 // Проверяем, успешно ли выполнен запрос
+    //                 if (response.IsSuccessStatusCode)
+    //                 {
+    //                     // Считываем содержимое ответа в строку
+    //                     string responseContent = await response.Content.ReadAsStringAsync();
+
+    //                     Files = JsonConvert.DeserializeObject<Files>(responseContent);
+    //                     // Теперь вы можете работать с содержимым ответа
+    //                     Console.WriteLine("Содержимое ответа: " + responseContent);
+    //                     NavigationManager.NavigateTo($"/");
+
+    //                 }
+    //                 else
+    //                 {
+    //                     // Если запрос не удался, вы можете обработать соответствующий случай здесь
+    //                     Console.WriteLine("Ошибка: " + response.StatusCode);
+    //                 }
+
+    //             }
+
+    //         }
+    //     }
+    //     catch (Exception)
+    //     {
+
+    //     }
+    // }
+
+
+    // public string json(object obj, int i)
+    // {
+    //     try
+    //     {
+
+
+    //         string str = "";
+    //         Files files = null;
+    //         Users users = null;
+    //         switch (i)
+    //         {
+    //             case 1:
+    //                 files = (Files)obj;
+    //                 str = JsonConvert.SerializeObject(Files);
+    //                 break;
+    //             case 2:
+    //                 users = (Users)obj;
+    //                 str = JsonConvert.SerializeObject(users);
+    //                 break;
+    //         }
+    //         return str;
+    //     }
+    //     catch (Exception)
+    //     {
+    //         return string.Empty;
+    //     }
+    // }
+
+
+    // private async Task HandleFileUpload(InputFileChangeEventArgs e)
+    // {
+    //     try
+    //     {
+    //         using (MemoryStream ms = new MemoryStream())
+    //         {
+    //             //Открыть один раз  дать значение
+    //             var mss = e.File.OpenReadStream();
+    //             // Копируем в поток
+    //             await mss.CopyToAsync(ms);
+    //             //Преобразуем в данные В МАССИВ BYTE[]
+    //             bytes = ms.ToArray();
+    //         }
+
+    //         Files = new Files(0, bytes);
+    //         string jsonString = json(Files, 1);
+    //         httpClient = ClientFactory.CreateClient();
+    //         httpClient.BaseAddress = new Uri(url);
+    //         HttpContent content = new StringContent(jsonString, Encoding.UTF8, "text/plain");
+
+    //         var response = await httpClient.PostAsync(url, content);
+    //         // Проверяем, успешно ли выполнен запрос
+    //         if (response.IsSuccessStatusCode)
+    //         {
+    //             // Считываем содержимое ответа в строку
+    //             string responseContent = await response.Content.ReadAsStringAsync();
+
+    //             Files = JsonConvert.DeserializeObject<Files>(responseContent);
+    //             // Теперь вы можете работать с содержимым ответа
+    //             Console.WriteLine("Содержимое ответа: " + responseContent);
+    //         }
+    //         else
+    //         {
+    //             // Если запрос не удался, вы можете обработать соответствующий случай здесь
+    //             Console.WriteLine("Ошибка: " + response.StatusCode);
+    //         }
+
+    //         // kod = response.Content.Headers;
+    //         // NavigationManager.NavigateTo($"/ListChatsAll/{users}");
+    //     }
+    //     catch (Exception)
+    //     {
+
+    //     }
+    // }
+}
+@*
+
+*@

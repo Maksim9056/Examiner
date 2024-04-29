@@ -1,38 +1,78 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 @inject Home Homes
+@using Microsoft.AspNetCore.Http;
+@using System.IdentityModel.Tokens.Jwt
+@using System.Security.Claims
+@using Microsoft.IdentityModel.Tokens
+@inject IHttpClientFactory ClientFactory
+@inject NavigationManager NavigationManager
 
-@if (urlAddres != null)
+
+<div>
+    <button @onclick="RegUser">Регистрация</button>
+</div>
+@try
 {
-    <Authorization @urlAddres="urlAddres" />
-
+  
 }
+catch (Exception ex)
+{
+    <p><em>Ошибка !!</em></p>
+}
+
 @code{
     [Parameter]
     public string urlAddres { get; set; }
+    // [Inject]
+    HttpClient httpClient = null!;
+
     protected override async Task OnInitializedAsync()
     {
         try
         {
+            httpClient = ClientFactory.CreateClient();
 
 
             if (Homes == null)
             {
-
+                // httpClient.
+                var claims = new List<Claim> { new Claim(ClaimTypes.Name, "") };
+                // создаем JWT-токен
+                var jwt = new JwtSecurityToken(
+                    issuer: AuthOptions.ISSUER,
+                    audience: AuthOptions.AUDIENCE,
+                    claims: claims,
+                    expires: DateTime.UtcNow.Add(TimeSpan.MaxValue),
+                    signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
             }
             else
             {
                 if (Homes.urlAddres != null)
                 {
-                    urlAddres = Homes.urlAddres;
-               
+                    // urlAddres = Homes.urlAddres;
+
                 }
 
             }
+            StateHasChanged();
         }
         catch(Exception)
         {
-            
+
+        }
+    }
+
+
+    public async Task RegUser()
+    {
+        try
+        {
+            NavigationManager.NavigateTo("/Authorization");
+        }
+        catch (Exception)
+        {
+
         }
     }
 }

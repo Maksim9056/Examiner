@@ -7,9 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Components\Pages\RegUser.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\ExamModels\ExamModels.csproj" />
     <ProjectReference Include="..\ExamWeb.Client\ExamWeb.Client.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\Pages\RegUser.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\Pages\RegUser.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Components\Pages\RegUser.razor" />
   </ItemGroup>
 
 </Project>
