@@ -46,6 +46,7 @@
 <div style="text-align: left;">
 <img src="https://github.com/Maksim9056/Examiner/assets/108364585/ec69b2b2-a002-4c86-8607-4fca9530c321" alt="Управление экзаменами" width="300" />
 </div>
+
 ### 4. Справочник Вопросов
 
 4.1. Перейдите в раздел "Справочник Вопросов".
