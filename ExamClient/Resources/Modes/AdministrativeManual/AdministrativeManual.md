@@ -23,6 +23,7 @@
 <div style="text-align: left;">
 <img src="https://github.com/Maksim9056/Examiner/assets/108364585/72d8cf86-86c0-40d6-b4a5-4882acd60dd3" alt="Управление пользователями" width="300" />
 </div>
+
 ### 2. Справочник Тестов
 
 2.1. Перейдите в раздел "Справочник Тестов".
@@ -33,6 +34,7 @@
 <div style="text-align: left;">
 <img src="https://github.com/Maksim9056/Examiner/assets/108364585/634d8a60-cc6c-4c56-a757-e845a1d3378b" alt="Управление тестами" width="300" />
 </div>
+
 ### 3. Справочник Экзаменов
 
 3.1. Перейдите в раздел "Справочник Экзаменов".
@@ -53,6 +55,7 @@
 <div style="text-align: left;">
 <img src="https://github.com/Maksim9056/Examiner/assets/108364585/3af3af2e-fae4-4ab3-a03a-fa357b981cb8" alt="Управление вопросами" width="300" />
 </div>
+
 ### 5. Справочник Ответов
 
 5.1. Перейдите в раздел "Справочник Ответов".
