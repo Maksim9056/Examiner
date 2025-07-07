@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
-// Проверяем, что приложение запущено на Linux
+// Проверяем, что приложение запущено на Linux ..
  if (Environment.OSVersion.Platform == PlatformID.Unix)
 {
     // Команда для запуска службы PostgreSQL в Linux с использованием systemctl
