@@ -17,6 +17,8 @@ namespace Client.Project
         private AnswerEditorViewModel viewModel;
         private AnswerManager viewModelManager;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public AnswerCreate()
         {
             try

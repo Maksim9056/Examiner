@@ -15,6 +15,8 @@ namespace Client.Project
         private ExamsEditorViewModel viewModel;
         private ExamManager viewModelManager;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public ExamsCreate()
         {
             InitializeComponent();

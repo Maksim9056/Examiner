@@ -9,7 +9,6 @@ using System.Text.Json;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Windows.Data;
 using static ExamModels.CommandCL;
 //using System.Drawing;
 //using static System.Net.Mime.MediaTypeNames;
@@ -1393,8 +1392,8 @@ namespace ExamModels
         }
     }
 
-
-    public class BooleanToStringConverter : IValueConverter
+    //   public class BooleanToStringConverter :: IValueConverter
+    public class BooleanToStringConverter 
         {
             public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
             {

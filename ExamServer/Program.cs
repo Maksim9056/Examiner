@@ -93,8 +93,9 @@ namespace ExamServer
             {
                 Console.WriteLine("SocketException:{0}", e.Message);
             }
-            catch(Exception ) 
+            catch(Exception E) 
             {
+                Console.WriteLine(E.Message);
                 Environment.Exit(0);
             }
             Console.WriteLine("\nНажмите Enter");
