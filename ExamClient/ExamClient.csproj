@@ -296,6 +296,7 @@
     <Folder Include="Platforms\Android\Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ExamAPI\ExamAPI.csproj" />
     <ProjectReference Include="..\ExamModels\ExamModels.csproj" />
   </ItemGroup>
   <ItemGroup>
